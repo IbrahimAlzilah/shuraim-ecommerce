@@ -59,9 +59,6 @@ export async function TestimonialsSection() {
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h2>
-        <p className="text-xs sm:text-sm text-muted-foreground">
-          {t("subtitle")}
-        </p>
       </div>
 
       <Rail
@@ -74,16 +71,13 @@ export async function TestimonialsSection() {
             key={review.id}
             className="flex min-w-[280px] sm:min-w-[320px] max-w-[340px] flex-col justify-between gap-4 rounded-2xl border bg-card p-5 shadow-2xs transition-all duration-300 hover:shadow-xs"
           >
-            {/* Top Bar: Stars + Demo data badge */}
+            {/* Top Bar: Stars */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-1 text-[#E76F51]">
                 {Array.from({ length: review.rating }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
                 ))}
               </div>
-              <span className="rounded-full bg-[#E76F51]/10 px-2 py-0.5 text-[10px] font-semibold text-[#E76F51] border border-[#E76F51]/20">
-                {t("demoBadge")}
-              </span>
             </div>
 
             {/* Review text */}

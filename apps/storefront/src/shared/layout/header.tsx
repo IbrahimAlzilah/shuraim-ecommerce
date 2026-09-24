@@ -23,7 +23,7 @@ export async function Header() {
         <div className="md:hidden">
           <MobileNav nav={nav} />
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -34,6 +34,10 @@ export async function Header() {
           </Link>
           <LocationBadge />
         </div>
+        <div
+          className="hidden h-6 w-px bg-border md:block shrink-0"
+          aria-hidden="true"
+        />
         <div className="hidden flex-1 md:block">
           <SearchFieldTrigger />
         </div>

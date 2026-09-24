@@ -167,8 +167,6 @@
     },
     "testimonials": {
       "title": "What our customers say",
-      "subtitle": "Sample reviews for demo purposes only",
-      "demoBadge": "Demo data",
       "verifiedBuyer": "Verified buyer",
       "reviews": {
         "r1": {
