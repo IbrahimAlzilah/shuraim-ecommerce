@@ -1,0 +1,5 @@
+export { SearchDrawer } from "./components/search-drawer"
+export { SearchTrigger } from "./components/search-trigger"
+export { SearchFieldTrigger } from "./components/search-field-trigger"
+export { ProductFilters } from "./components/product-filters"
+export { useSearchStore } from "./hooks/use-search-store"

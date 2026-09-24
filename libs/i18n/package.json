@@ -1,0 +1,28 @@
+{
+  "name": "@rawnaq/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next-intl": "^4.14.6"
+  },
+  "devDependencies": {
+    "@rawnaq/eslint-config": "workspace:*",
+    "@rawnaq/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "eslint": "^9",
+    "next": "16.3.3",
+    "react": "19.2.4",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "@rawnaq/typescript-config/react-library.json",
+  "compilerOptions": {
+    "paths": {
+      "@rawnaq/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@rawnaq/backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Custom backend placeholder - will be implemented in future phases'",
+    "lint": "echo 'Backend scaffold lint clean'"
+  }
+}
