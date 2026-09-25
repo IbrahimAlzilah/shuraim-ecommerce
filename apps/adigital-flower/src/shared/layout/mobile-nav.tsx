@@ -55,7 +55,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/logo.jpg"
-                  alt="Aigital Flower | Flowers & Gifts"
+                  alt="Aigital Flower | Beauty, Accessories & Tech"
                   className="h-8 w-auto object-contain rounded-md dark:bg-white dark:p-0.5"
                 />
               </Link>

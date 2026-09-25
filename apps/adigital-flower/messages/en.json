@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Aigital Flower | Flowers & Gifts",
-    "description": "Aigital Flower online flowers and gifts store"
+    "title": "Aigital Flower | Beauty, Skincare, Accessories & Tech",
+    "description": "Aigital Flower online store in Yemen — Premium cosmetics, skincare, makeup, accessories & beauty tech"
   },
   "HomePage": {
     "title": "Project ready!",
@@ -62,8 +62,8 @@
   },
   "Footer": {
     "rights": "All rights reserved.",
-    "brandBio": "Digital Flower store specialized in premium flowers, bespoke gifts, and curated floral arrangements.",
-    "licensed": "Licensed and verified store in Sultanate of Oman (MOCIIP)",
+    "brandBio": "Aigital Flower is Yemen's premier destination for luxury cosmetics, skincare, makeup, elegant accessories, and smart beauty tech devices.",
+    "licensed": "Officially licensed and registered in the Republic of Yemen",
     "vat": "VAT Number:",
     "cr": "Commercial Registration:",
     "storeSections": "Store Sections",
@@ -99,8 +99,8 @@
     }
   },
   "AnnouncementBar": {
-    "message": "Free gift with order + 100% authentic products guaranteed",
-    "freeShipping": "Free & fast delivery across Oman on orders over 25 OMR",
+    "message": "100% authentic products guaranteed + fast delivery across Yemen",
+    "freeShipping": "Fast shipping across Yemen (Sana'a, Aden, Taiz, Hadramout) & Cash on Delivery",
     "returns": "Easy, free returns within 14 days",
     "previous": "Previous message",
     "next": "Next message"
@@ -123,14 +123,14 @@
     "outOfStock": "Out of stock",
     "itemsCount": "({count} items)",
     "emptyCartTitle": "Your cart is currently empty",
-    "emptyCartDesc": "You haven't added any products yet. Explore our curated selection!",
+    "emptyCartDesc": "You haven't added any products yet. Explore our latest skincare, makeup, accessories and beauty tech!",
     "continueShopping": "Browse featured products",
-    "freeShippingQualified": "Congratulations! You qualified for free delivery across Oman!",
-    "freeShippingAddMore": "Add {amount} more for free shipping + gift"
+    "freeShippingQualified": "Congratulations! You qualified for free delivery across Yemen!",
+    "freeShippingAddMore": "Add {amount} more for free delivery + free gift"
   },
   "Catalog": {
     "title": "Products",
-    "subtitle": "Explore our original collection of flowers, gifts, and arrangements",
+    "subtitle": "Explore our premium collection of cosmetics, skincare, accessories, and beauty tech devices",
     "noResults": "No products found.",
     "noResultsAdvice": "Try clearing applied filters to see more products",
     "inStock": "In stock",
@@ -149,8 +149,8 @@
     "vatIncluded": "Prices include VAT",
     "lowStockWarning": "⚡ Only {count} items left in stock!",
     "aboutProduct": "About Product",
-    "fastShipping": "Fast chilled delivery within 1-3 days",
-    "freeShippingPerk": "Free shipping & gift above 25 OMR",
+    "fastShipping": "Fast and secure delivery within 24 - 48 hours",
+    "freeShippingPerk": "Free delivery & gifts on qualifying orders",
     "guaranteedAuthentic": "100% authentic from authorized distributor",
     "easyReturns": "Easy returns within 14 days",
     "filterAndSort": "Filter & Sort",
@@ -181,9 +181,9 @@
       "recipientName": "Full name",
       "recipientPlaceholder": "e.g. Sara Mohammed",
       "phone": "Phone",
-      "phoneHint": "For courier contact and delivery appointment",
+      "phoneHint": "For courier contact and local delivery confirmation",
       "line1": "Address line 1",
-      "line1Placeholder": "e.g. Al-Yasmin Dist, Anas Bin Malik St, Bldg 4",
+      "line1Placeholder": "e.g. Hadda St, Al-Rowaishan, near the University",
       "line2": "Address line 2",
       "city": "City",
       "cityPlaceholder": "Choose or type your city",
@@ -192,7 +192,7 @@
       "country": "Country",
       "errors": {
         "required": "Required",
-        "invalidPhone": "Enter a valid Saudi phone number"
+        "invalidPhone": "Enter a valid phone number"
       }
     },
     "shipping": {
@@ -296,52 +296,52 @@
       "newArrivals": "New arrivals"
     },
     "whyUs": {
-      "title": "Why Shuraim?",
+      "title": "Why Aigital Flower?",
       "authentic": {
-        "title": "100% authentic",
-        "description": "Genuine products from trusted sources."
+        "title": "100% Authentic",
+        "description": "Genuine products from trusted sources and authorized distributors."
       },
       "shipping": {
-        "title": "Fast delivery",
-        "description": "Delivery to all cities across the Sultanate."
+        "title": "Fast Delivery",
+        "description": "Fast and reliable delivery across all Yemeni governorates."
       },
       "returns": {
-        "title": "Clear returns",
-        "description": "A detailed return and exchange policy."
+        "title": "Clear Returns",
+        "description": "A detailed return and exchange policy for your peace of mind."
       },
       "payment": {
-        "title": "Secure payment",
-        "description": "Multiple, protected payment options."
+        "title": "Secure Payment",
+        "description": "Protected payment options (Kuraimi, Floosak, OneCash, cards & COD)."
       }
     },
     "testimonials": {
-      "title": "What our customers say",
+      "title": "What our customers in Yemen say",
       "verifiedBuyer": "Verified buyer",
       "reviews": {
         "r1": {
-          "text": "Excellent product, highly recommended.",
-          "author": "Fahad M.",
-          "city": "Muscat"
+          "text": "100% authentic product! It made a real difference to my skin, delivered same-day in Sana'a.",
+          "author": "Arwa Al-Hashidi",
+          "city": "Sana'a"
         },
         "r2": {
-          "text": "Best purchase this month.",
-          "author": "Amal S.",
-          "city": "Salalah"
+          "text": "The best online beauty store in Yemen! Great service and smooth Kuraimi Mobile checkout.",
+          "author": "Reem Al-Yafei",
+          "city": "Aden"
         },
         "r3": {
-          "text": "Results beat my expectations and delivery was fast.",
-          "author": "Amal Q.",
-          "city": "Sohar"
+          "text": "Luxury accessories and authentic smart beauty tech. Highly recommended!",
+          "author": "Huda Al-Mikhlafi",
+          "city": "Taiz"
         },
         "r4": {
-          "text": "Great quality that lasts all day.",
-          "author": "Hind A.",
-          "city": "Nizwa"
+          "text": "Exceptional customer support and arrived securely packaged in Mukalla.",
+          "author": "Fatima Bawazir",
+          "city": "Mukalla"
         },
         "r5": {
-          "text": "Best packaging and genuine cosmetics.",
-          "author": "Amal M.",
-          "city": "Barka"
+          "text": "Fast delivery and guaranteed authentic cosmetics. Thank you Aigital Flower!",
+          "author": "Marwa Al-Ansi",
+          "city": "Ibb"
         }
       }
     },

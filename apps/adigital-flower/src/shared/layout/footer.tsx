@@ -18,7 +18,7 @@ export function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/logo.jpg"
-                alt="Aigital Flower | Flowers & Gifts"
+                alt="Aigital Flower | Beauty, Accessories & Tech"
                 className="h-10 sm:h-12 w-auto object-contain rounded-md dark:bg-white dark:p-1 transition-opacity group-hover:opacity-90"
               />
             </Link>

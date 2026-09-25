@@ -42,45 +42,7 @@ export const NAVIGATION_ITEMS: NavItem[] = [
       subtitle: { ar: "أقوى سيرومات الترطيب والعلاج الأصلية 100%", en: "Top 100% Authentic Serums" },
       imageUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&auto=format&fit=crop&q=80",
       link: "/categories/skincare",
-      badge: "خصومات الصيف",
-    },
-  },
-  {
-    id: "k-beauty",
-    title: { ar: "الجمال الكوري ✨", en: "K-Beauty" },
-    slug: "k-beauty",
-    badge: "ترند",
-    columns: [
-      {
-        title: { ar: "روائع العناية الكورية", en: "K-Beauty Heroes" },
-        items: [
-          { id: "kb1", name: { ar: "خلاصة الحلزون (Snail Mucin)", en: "Snail Mucin" }, slug: "snail-mucin", isPopular: true },
-          { id: "kb2", name: { ar: "سنتيلا لتهدئة الاحمرار", en: "Centella Asiatica" }, slug: "centella", isPopular: true },
-          { id: "kb3", name: { ar: "واقيات شمس خفيفة كالماء", en: "Watery Sunscreen" }, slug: "korean-sunscreen", isPopular: true },
-          { id: "kb4", name: { ar: "ماسكات ورقية مرطبة", en: "Sheet Masks" }, slug: "sheet-masks" },
-        ],
-      },
-      {
-        title: { ar: "روتين الزجاج (Glass Skin)", en: "Glass Skin Routine" },
-        items: [
-          { id: "gs1", name: { ar: "إيسنس تنقية المسام", en: "Essence" }, slug: "essence" },
-          { id: "gs2", name: { ar: "كريمات حليب الأرز", en: "Rice Cream" }, slug: "rice-cream", isPopular: true },
-          { id: "gs3", name: { ar: "مقشرات التونر اليومية", en: "Daily Toner Pads" }, slug: "toner-pads" },
-        ],
-      },
-    ],
-    featuredBrands: [
-      { id: "kb-b1", name: "Beauty of Joseon", slug: "beauty-of-joseon" },
-      { id: "kb-b2", name: "COSRX", slug: "cosrx" },
-      { id: "kb-b3", name: "Anua", slug: "anua" },
-      { id: "kb-b4", name: "Skin1004", slug: "skin1004" },
-    ],
-    banner: {
-      title: { ar: "بشرة زجاجية ونضارة كورية", en: "Korean Glass Skin" },
-      subtitle: { ar: "أشهر المنتجات الفيروسية المعتمدة رسمياً", en: "Top Viral Products" },
-      imageUrl: "https://images.unsplash.com/photo-1512290900672-1f5533146b9a?w=400&auto=format&fit=crop&q=80",
-      link: "/categories/k-beauty",
-      badge: "الأكثر طلباً",
+      badge: "خصومات حصرية",
     },
   },
   {
@@ -120,19 +82,65 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     },
   },
   {
-    id: "haircare",
-    title: { ar: "العناية بالشعر", en: "Haircare" },
-    slug: "haircare",
+    id: "accessories",
+    title: { ar: "الإكسسوارات", en: "Accessories" },
+    slug: "accessories",
     columns: [
       {
-        title: { ar: "منتجات العناية", en: "Care Products" },
+        title: { ar: "مجوهرات وإكسسوارات عصرية", en: "Jewelry & Modern Accessories" },
         items: [
-          { id: "h1", name: { ar: "شامبو وبلسم علاجي", en: "Shampoo & Conditioner" }, slug: "shampoo", isPopular: true },
-          { id: "h2", name: { ar: "زيوت وسيروم التقوية", en: "Hair Oils & Serum" }, slug: "hair-oils", isPopular: true },
-          { id: "h3", name: { ar: "ماسكات ترميم الشعر", en: "Hair Masks" }, slug: "hair-masks" },
+          { id: "acc1", name: { ar: "سلاسل وقلادات مطلية", en: "Necklaces & Pendants" }, slug: "necklaces", isPopular: true },
+          { id: "acc2", name: { ar: "أساور وخلاخل راقية", en: "Bracelets & Anklets" }, slug: "bracelets", isPopular: true },
+          { id: "acc3", name: { ar: "خواتم وأقراط أنيقة", en: "Rings & Earrings" }, slug: "earrings" },
+        ],
+      },
+      {
+        title: { ar: "نظارات ومقتنيات", en: "Eyewear & Lifestyle" },
+        items: [
+          { id: "acc4", name: { ar: "نظارات شمسية عصرية", en: "Sunglasses" }, slug: "sunglasses", isPopular: true },
+          { id: "acc5", name: { ar: "حقائب يد ومحافظ صغيرة", en: "Handbags & Wallets" }, slug: "handbags" },
+          { id: "acc6", name: { ar: "إكسسوارات شعر وأطواق", en: "Hair Accessories" }, slug: "hair-accessories" },
         ],
       },
     ],
+    banner: {
+      title: { ar: "لمسة أناقة تميز حضورك", en: "Elevate Your Elegance" },
+      subtitle: { ar: "أحدث صيحات المجوهرات والإكسسوارات العصرية بتصاميم راقية", en: "Latest Trendy Jewelry & Fashion Accessories" },
+      imageUrl: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&auto=format&fit=crop&q=80",
+      link: "/categories/accessories",
+      badge: "تشكيلة جديدة",
+    },
+  },
+  {
+    id: "electronics",
+    title: { ar: "الإلكترونيات والجمال الذكي", en: "Beauty Tech & Electronics" },
+    slug: "electronics",
+    badge: "تقنية",
+    columns: [
+      {
+        title: { ar: "أجهزة العناية الذكية", en: "Smart Beauty Devices" },
+        items: [
+          { id: "el-dev1", name: { ar: "أجهزة تنظيف الوجه بالموجات", en: "Sonic Face Cleansers" }, slug: "sonic-cleansers", isPopular: true },
+          { id: "el-dev2", name: { ar: "أجهزة تدليك وشد البشرة", en: "Skin Lifting & Microcurrent" }, slug: "skin-lifting", isPopular: true },
+          { id: "el-dev3", name: { ar: "أجهزة إزالة الشعر بالليزر المنزلي", en: "IPL Laser Hair Removal" }, slug: "ipl-hair-removal", isPopular: true },
+        ],
+      },
+      {
+        title: { ar: "تصفيف الشعر والإلكترونيات", en: "Hair Styling & Tech Gadgets" },
+        items: [
+          { id: "el-dev4", name: { ar: "مصففات ومجففات شعر أيونية", en: "Ionic Hair Dryers & Stylers" }, slug: "hair-dryers", isPopular: true },
+          { id: "el-dev5", name: { ar: "أجهزة تمويج الشعر السيراميكية", en: "Ceramic Curling Irons" }, slug: "curling-irons" },
+          { id: "el-dev6", name: { ar: "ساعات ذكية وسماعات أنيقة", en: "Smart Watches & Earbuds" }, slug: "smart-wearables" },
+        ],
+      },
+    ],
+    banner: {
+      title: { ar: "تقنيات العناية والجمال الذكي", en: "Smart Beauty & Lifestyle Tech" },
+      subtitle: { ar: "أجهزة ذكية متطورة للعناية بالبشرة والشعر ومواكبة العصر", en: "Advanced smart devices for skincare, hair & modern lifestyle" },
+      imageUrl: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&auto=format&fit=crop&q=80",
+      link: "/categories/electronics",
+      badge: "أحدث التقنيات",
+    },
   },
   {
     id: "fragrances",
@@ -140,20 +148,15 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     slug: "fragrances",
     columns: [
       {
-        title: { ar: "تشكيلة العطور", en: "Perfumes" },
+        title: { ar: "تشكيلة العطور الفاخرة", en: "Luxury Perfumes" },
         items: [
           { id: "fg1", name: { ar: "عطور نسائية فاخرة", en: "Women's Perfume" }, slug: "women-perfumes", isPopular: true },
           { id: "fg2", name: { ar: "عطور النيش العالمية", en: "Niche Fragrances" }, slug: "niche-perfumes", isPopular: true },
-          { id: "fg3", name: { ar: "مسك وبخور فاخر", en: "Musk & Bakhoor" }, slug: "musk-bakhoor" },
-          { id: "fg4", name: { ar: "معطرات الشعر والجسم", en: "Hair & Body Mists" }, slug: "body-mists" },
+          { id: "fg3", name: { ar: "بخور وعود فاخر", en: "Oud & Bakhoor" }, slug: "oud-bakhoor" },
+          { id: "fg4", name: { ar: "معطرات الجسم والشعر", en: "Hair & Body Mists" }, slug: "body-mists" },
         ],
       },
     ],
-  },
-  {
-    id: "brands",
-    title: { ar: "الماركات العالمية", en: "Brands" },
-    slug: "brands",
   },
   {
     id: "offers",
@@ -164,12 +167,12 @@ export const NAVIGATION_ITEMS: NavItem[] = [
 ]
 
 export const POPULAR_SEARCHES = [
-  "سيروم الحلزون كوزريكس",
-  "واقي شمس بيوتي اوف جوسون",
-  "غسول سيرافي للبشرة الدهنية",
-  "سيروم نياسيناميد ذا اوردينري",
+  "أجهزة تنظيف البشرة الذكية",
+  "سلاسل وإكسسوارات مطلية",
+  "سيروم الهيالورونيك",
+  "مصفف شعر أيوني احترافي",
+  "فاونديشن كونسيلر مات",
+  "جهاز ليزر منزلي IPL",
   "عطور نيش فاخرة",
-  "فاونديشن لومينوس",
-  "أحمر شفاه مات ثابت",
-  "زيت روزماري للشعر",
+  "نظارات شمسية عصرية",
 ]
