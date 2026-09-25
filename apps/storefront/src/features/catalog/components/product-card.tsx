@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
   const hoverImage = product.images[1] ?? primaryImage
 
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-md">
+    <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-xs">
       {/* Product Image Box */}
       <Link
         href={`/products/${product.slug}`}
@@ -49,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Discount Badge */}
         {hasDiscount && product.inStock && (
-          <span className="bg-destructive text-destructive-foreground absolute start-2 top-2 rounded-md px-2 py-0.5 text-xs font-semibold shadow-sm">
+          <span className="bg-destructive text-white/95 absolute start-2 top-0 rounded-md px-2 py-0.5 text-xs font-semibold shadow-sm">
             خصم {discountPercent}%
           </span>
         )}
@@ -70,7 +70,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Product Details */}
-      <CardContent className="flex flex-1 flex-col justify-between gap-3 p-3.5">
+      <CardContent className="flex flex-1 flex-col justify-between gap-3 px-3.5 py-0">
         <div className="flex flex-col gap-1.5">
           {/* Subtitle / Category / Brand */}
           {product.subtitle && (
@@ -108,7 +108,7 @@ export function ProductCard({ product }: { product: Product }) {
             product={product}
             variant={product.inStock ? "default" : "outline"}
             size="sm"
-            className="w-full text-xs font-medium"
+            className="w-full text-xs font-medium rounded-full py-4"
           />
         </div>
       </CardContent>

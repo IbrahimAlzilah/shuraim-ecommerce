@@ -54,7 +54,7 @@ export async function Header() {
         </div>
       </div>
       <div className="hidden border-t md:block" aria-label={t("categories")}>
-        <MegaMenu items={nav} />
+        <MegaMenu />
       </div>
     </header>
   )

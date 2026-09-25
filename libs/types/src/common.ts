@@ -14,6 +14,12 @@ export interface ApiError {
   code?: string
 }
 
+export interface LocalizedString {
+  ar: string
+  en: string
+}
+
 export type ApiResponse<T> =
   | { success: true; data: T }
   | { success: false; error: ApiError }
+
