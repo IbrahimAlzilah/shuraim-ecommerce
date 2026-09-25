@@ -1,7 +1,7 @@
 "use client"
 
 import { Search, X, TrendingUp, ArrowRight } from "lucide-react"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { useEffect, useRef } from "react"
 
 import { Link } from "@rawnaq/i18n/navigation"
@@ -23,6 +23,7 @@ const POPULAR_SEARCHES = [
 ]
 
 export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) {
+  const t = useTranslations("Search")
   const isOpen = useSearchStore((state) => state.isOpen)
   const closeSearch = useSearchStore((state) => state.closeSearch)
   const query = useSearchStore((state) => state.query)
@@ -71,8 +72,8 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="ابحثي عن منتج، ماركة، أو تصنيف... (مثال: سيروم، مكياج، عطور)"
-                className="h-12 ps-10 pe-10 text-base rounded-xl"
+                placeholder={t("placeholder")}
+                className="h-11 sm:h-12 ps-10 pe-10 text-sm sm:text-base rounded-xl"
               />
               {query && (
                 <button
@@ -85,7 +86,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
               )}
             </div>
 
-            <Button variant="ghost" size="icon" onClick={closeSearch} aria-label="إغلاق البحث">
+            <Button variant="ghost" size="icon" onClick={closeSearch} aria-label={t("close")}>
               <X className="size-5" />
             </Button>
           </div>
@@ -95,7 +96,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
             <div className="mt-4 pb-2">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground mb-2.5">
                 <TrendingUp className="size-3.5" />
-                <span>عمليات البحث الشائعة</span>
+                <span>{t("popularSearches")}</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {POPULAR_SEARCHES.map((term) => (
@@ -116,7 +117,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
 
       {/* Results Container */}
       <div
-        className="flex-1 overflow-y-auto px-4 py-6 sm:px-6"
+        className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))]"
         onClick={(e) => {
           if (e.target === e.currentTarget) closeSearch()
         }}
@@ -124,18 +125,18 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
         <div className="mx-auto max-w-4xl">
           {trimmed && (
             <div className="rounded-2xl bg-background p-4 sm:p-6 shadow-xl border">
-              <div className="flex items-center justify-between pb-3 border-b text-sm text-muted-foreground">
+              <div className="flex items-center justify-between pb-3 border-b text-xs sm:text-sm text-muted-foreground">
                 <span>
-                  نتائج البحث عن: <strong className="text-foreground">&ldquo;{query}&rdquo;</strong>
+                  {t("resultsFor", { query })}
                 </span>
-                <span>{filteredProducts.length} منتج</span>
+                <span>{t("productsCount", { count: filteredProducts.length })}</span>
               </div>
 
               {filteredProducts.length === 0 ? (
                 <div className="py-12 text-center">
-                  <p className="text-base font-medium text-foreground">لم نجد أي منتجات مطابقة</p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    جربي البحث بكلمات مختلفة مثل: غسول، أحمر شفاه، عطر، سيروم
+                  <p className="text-base font-medium text-foreground">{t("noResults")}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                    {t("noResultsAdvice")}
                   </p>
                 </div>
               ) : (

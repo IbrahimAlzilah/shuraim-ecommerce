@@ -23,7 +23,7 @@ export async function BrandStrip({ brands }: { brands: Brand[] }) {
           href="/products"
           className="text-xs font-semibold text-primary hover:underline"
         >
-          عرض جميع الماركات ←
+          {t("brands.viewAll")}
         </Link>
       </div>
 
@@ -42,7 +42,7 @@ export async function BrandStrip({ brands }: { brands: Brand[] }) {
               {brand.name}
             </span>
             <span className="mt-1 line-clamp-1 text-[11px] text-muted-foreground">
-              {brand.description ?? "منتجات أصلية"}
+              {brand.description ?? t("brands.defaultDescription")}
             </span>
           </Link>
         ))}

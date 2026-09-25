@@ -20,6 +20,15 @@
     "description": "The page you're looking for doesn't exist or has been moved.",
     "backHome": "Back to home"
   },
+  "Search": {
+    "placeholder": "Search products, brands, or categories...",
+    "close": "Close search",
+    "popularSearches": "Popular Searches",
+    "resultsFor": "Search results for: \"{query}\"",
+    "productsCount": "{count} products",
+    "noResults": "No matching products found",
+    "noResultsAdvice": "Try searching with different terms or check spelling"
+  },
   "Header": {
     "wishlist": "Wishlist",
     "cart": "Cart",
@@ -30,10 +39,63 @@
     "searchPlaceholder": "Search for products...",
     "deliverTo": "Deliver to:",
     "defaultLocation": "Sultanate of Oman - Muscat",
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Toggle theme",
+    "close": "Close",
+    "bundles": "Offers & Bundles",
+    "newArrivals": "New Arrivals",
+    "allCategories": "Categories",
+    "viewAll": "View all {category}",
+    "needHelp": "Need help choosing?",
+    "helpDescription": "Our expert team is here to assist you 24/7.",
+    "chatWhatsapp": "Chat on WhatsApp",
+    "popular": "Popular",
+    "featuredBrands": "Featured Brands:",
+    "browseCollection": "Browse Collection"
+  },
+  "BottomBar": {
+    "home": "Home",
+    "categories": "Categories",
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "ariaLabel": "Mobile bottom navigation"
   },
   "Footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "brandBio": "Specialized beauty & care platform delivering 100% authentic global brands.",
+    "licensed": "Licensed and verified store in Sultanate of Oman (MOCIIP)",
+    "vat": "VAT Number:",
+    "cr": "Commercial Registration:",
+    "storeSections": "Store Sections",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "customerServiceNote": "We are happy to assist you and answer any queries.",
+    "whatsappSupport": "WhatsApp Support",
+    "instantReply": "Instant reply within minutes",
+    "about": "About Us",
+    "shippingPolicy": "Shipping & Delivery",
+    "returnsPolicy": "Returns & Exchanges",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "faq": "FAQ",
+    "cod": "Cash on Delivery",
+    "copyright": "Shuraim Store © {year} — All rights reserved.",
+    "crNumber": "CR 1384920 (Muscat)",
+    "categories": {
+      "skincare": "Skincare",
+      "makeup": "Makeup & Cosmetics",
+      "hairCare": "Hair Care",
+      "fragrance": "Authentic Fragrances",
+      "koreanCare": "Korean Care",
+      "bundles": "Value Bundles"
+    },
+    "paymentBadges": {
+      "omannet": "OmanNet Debit",
+      "thawani": "Thawani Pay",
+      "applePay": "Apple Pay",
+      "tabby": "Tabby",
+      "cards": "Visa / Master"
+    }
   },
   "AnnouncementBar": {
     "message": "Free gift with order + 100% authentic products guaranteed",
@@ -57,18 +119,50 @@
     "decrease": "Decrease quantity",
     "close": "Close cart",
     "addToCart": "Add to cart",
-    "outOfStock": "Out of stock"
+    "outOfStock": "Out of stock",
+    "itemsCount": "({count} items)",
+    "emptyCartTitle": "Your cart is currently empty",
+    "emptyCartDesc": "You haven't added any products yet. Explore our curated selection!",
+    "continueShopping": "Browse featured products",
+    "freeShippingQualified": "Congratulations! You qualified for free delivery across Oman!",
+    "freeShippingAddMore": "Add {amount} more for free shipping + gift"
   },
   "Catalog": {
     "title": "Products",
+    "subtitle": "Explore our original collection of care, beauty, and perfumes",
     "noResults": "No products found.",
+    "noResultsAdvice": "Try clearing applied filters to see more products",
     "inStock": "In stock",
     "outOfStock": "Out of stock",
     "lowStock": "Only {count} left",
     "discount": "{percent}% off",
     "previousImage": "Previous image",
     "nextImage": "Next image",
-    "selectImage": "View image {index}"
+    "selectImage": "View image {index}",
+    "breadcrumbHome": "Home",
+    "breadcrumbProducts": "Products",
+    "breadcrumbAria": "Breadcrumbs",
+    "authenticProduct": "100% Authentic Product",
+    "basedOnReviews": "Based on {count} verified reviews",
+    "savedPercent": "Save {percent}%",
+    "vatIncluded": "Prices include VAT",
+    "lowStockWarning": "⚡ Only {count} items left in stock!",
+    "aboutProduct": "About Product",
+    "fastShipping": "Fast chilled delivery within 1-3 days",
+    "freeShippingPerk": "Free shipping & gift above 25 OMR",
+    "guaranteedAuthentic": "100% authentic from authorized distributor",
+    "easyReturns": "Easy returns within 14 days",
+    "filterAndSort": "Filter & Sort",
+    "filters": "Filters",
+    "sortBy": "Sort by:",
+    "sortFeatured": "Featured",
+    "sortPriceAsc": "Price: Low to High",
+    "sortPriceDesc": "Price: High to Low",
+    "sortRating": "Highest Rated",
+    "categories": "Categories",
+    "brands": "Brands",
+    "all": "All",
+    "clearFilters": "Clear all"
   },
   "Checkout": {
     "steps": {
@@ -79,13 +173,19 @@
     "continue": "Continue",
     "back": "Back",
     "placeOrder": "Place order (simulated)",
+    "processing": "Processing...",
+    "securePaymentNotice": "All payment transactions are 100% encrypted and secure",
     "emptyCart": "Your cart is empty.",
     "address": {
       "recipientName": "Full name",
+      "recipientPlaceholder": "e.g. Sara Mohammed",
       "phone": "Phone",
+      "phoneHint": "For courier contact and delivery appointment",
       "line1": "Address line 1",
+      "line1Placeholder": "e.g. Al-Yasmin Dist, Anas Bin Malik St, Bldg 4",
       "line2": "Address line 2",
       "city": "City",
+      "cityPlaceholder": "Choose or type your city",
       "region": "Region",
       "postalCode": "Postal code",
       "country": "Country",
@@ -95,11 +195,42 @@
       }
     },
     "shipping": {
-      "eta": "Delivery in {days} days"
+      "eta": "Delivery in {days} days",
+      "free": "Free"
     },
     "payment": {
       "card": "Card",
       "cash-on-delivery": "Cash on delivery"
+    },
+    "paymentMethods": {
+      "omannet": {
+        "title": "Direct Debit Card (OmanNet)",
+        "subtitle": "Direct payment via Omani bank cards (Bank Muscat, Dhofar, Sohar, Meethaq, NBO)",
+        "badge": "Fastest Option"
+      },
+      "thawani": {
+        "title": "Thawani Smart Wallet",
+        "subtitle": "Instant secure payment via authorized Omani Thawani gateway",
+        "badge": "Digital Wallet"
+      },
+      "applePay": {
+        "title": "Apple Pay",
+        "subtitle": "One-touch checkout with Face ID or Touch ID",
+        "badge": "One-Click"
+      },
+      "tabby": {
+        "title": "Tabby (Split in 4)",
+        "subtitle": "Split your purchase in 4 monthly payments in OMR with zero interest",
+        "badge": "4 Payments"
+      },
+      "card": {
+        "title": "Credit / Debit Card (Visa / Mastercard)",
+        "subtitle": "Encrypted secure checkout supporting major credit and debit cards"
+      },
+      "cod": {
+        "title": "Cash on Delivery (COD)",
+        "subtitle": "Pay in cash or POS card machine upon receiving your order in Oman"
+      }
     },
     "summary": {
       "subtotal": "Subtotal",
@@ -127,7 +258,9 @@
       "next": "Next"
     },
     "brands": {
-      "title": "Featured brands"
+      "title": "Featured brands",
+      "viewAll": "View all brands →",
+      "defaultDescription": "Authentic products"
     },
     "hero": {
       "previous": "Previous slide",
@@ -204,6 +337,7 @@
   },
   "Wishlist": {
     "title": "Wishlist",
+    "subtitle": "Your saved favorites to shop anytime",
     "empty": "Your wishlist is empty.",
     "add": "Add to wishlist",
     "remove": "Remove from wishlist",

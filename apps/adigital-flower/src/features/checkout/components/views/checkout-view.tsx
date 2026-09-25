@@ -54,53 +54,62 @@ export function CheckoutView() {
   }
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col gap-6 p-6">
-      <CheckoutStepper step={step} />
+    <div className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6 lg:p-8">
+      <div className="grid gap-6 lg:grid-cols-12 items-start">
+        {/* Main Step Column */}
+        <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-6 rounded-2xl border bg-card p-4 sm:p-6 shadow-xs">
+          <CheckoutStepper step={step} />
 
-      {step === "address" && (
-        <ShippingAddressForm
-          address={address}
-          onSubmit={(value) => {
-            setAddress(value)
-            goToStep("shipping")
-          }}
-        />
-      )}
+          {step === "address" && (
+            <ShippingAddressForm
+              address={address}
+              onSubmit={(value) => {
+                setAddress(value)
+                goToStep("shipping")
+              }}
+            />
+          )}
 
-      {step === "shipping" && (
-        <ShippingMethodSelector
-          methods={shippingMethods}
-          selected={shippingMethod}
-          onSelect={(method) => {
-            setShippingMethod(method)
-            goToStep("payment")
-          }}
-          onBack={back}
-        />
-      )}
+          {step === "shipping" && (
+            <ShippingMethodSelector
+              methods={shippingMethods}
+              selected={shippingMethod}
+              onSelect={(method) => {
+                setShippingMethod(method)
+                goToStep("payment")
+              }}
+              onBack={back}
+            />
+          )}
 
-      {step === "payment" && (
-        <PaymentMethodSelector
-          selected={paymentMethod}
-          onSelect={setPaymentMethod}
-          onBack={back}
-          onSubmit={() => void submitOrder(items)}
-          isSubmitting={isSubmitting}
-        />
-      )}
+          {step === "payment" && (
+            <PaymentMethodSelector
+              selected={paymentMethod}
+              onSelect={setPaymentMethod}
+              onBack={back}
+              onSubmit={() => void submitOrder(items)}
+              isSubmitting={isSubmitting}
+            />
+          )}
+        </div>
 
-      <OrderSummary
-        subtotal={subtotal}
-        shippingFee={shippingMethod?.price ?? 0}
-        discount={coupon.discount?.amount}
-      />
-      <CouponInput
-        discount={coupon.discount}
-        error={coupon.error}
-        isApplying={coupon.isApplying}
-        onApply={(code) => void coupon.apply(code)}
-        onClear={coupon.clear}
-      />
+        {/* Sticky Summary & Coupon Column */}
+        <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 lg:sticky lg:top-24 rounded-2xl border bg-card p-4 sm:p-5 shadow-xs">
+          <OrderSummary
+            subtotal={subtotal}
+            shippingFee={shippingMethod?.price ?? 0}
+            discount={coupon.discount?.amount}
+          />
+          <CouponInput
+            discount={coupon.discount}
+            error={coupon.error}
+            isApplying={coupon.isApplying}
+            onApply={(code) => void coupon.apply(code)}
+            onClear={coupon.clear}
+          />
+        </div>
+      </div>
     </div>
   )
 }
+

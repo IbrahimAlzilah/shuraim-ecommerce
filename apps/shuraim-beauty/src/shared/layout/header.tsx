@@ -36,7 +36,7 @@ export async function Header() {
           <LocationBadge />
         </div>
         <div
-          className="hidden h-6 w-px bg-border md:block shrink-0"
+          className="hidden h-6 w-px bg-border lg:block shrink-0"
           aria-hidden="true"
         />
         <div className="hidden flex-1 md:block">

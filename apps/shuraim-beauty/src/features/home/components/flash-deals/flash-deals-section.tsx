@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
+import { Rail } from "@rawnaq/ui/components/rail"
 
 import type { FlashDeal } from "../../types/home"
 
@@ -16,16 +17,22 @@ export async function FlashDealsSection({ deals }: { deals: FlashDeal[] }) {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-medium">{t("flashDeals.title")}</h2>
-        <Button variant="link" asChild>
+        <h2 className="text-xl font-bold tracking-tight text-foreground">{t("flashDeals.title")}</h2>
+        <Button variant="link" asChild className="text-xs sm:text-sm">
           <Link href="/products">{t("flashDeals.viewAll")}</Link>
         </Button>
       </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <Rail
+        label={t("flashDeals.title")}
+        prevLabel={t("rail.previous")}
+        nextLabel={t("rail.next")}
+      >
         {deals.map((deal) => (
-          <ProductCard key={deal.product.id} product={deal.product} />
+          <div key={deal.product.id} className="w-[180px] sm:w-[220px] md:w-[240px] shrink-0">
+            <ProductCard product={deal.product} />
+          </div>
         ))}
-      </div>
+      </Rail>
     </section>
   )
 }

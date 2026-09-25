@@ -1,5 +1,6 @@
 import type { Product } from "@rawnaq/types"
 import { Star } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import { AddToCartButton } from "@/features/cart"
 import { WishlistButton } from "@/features/wishlist"
@@ -9,6 +10,7 @@ import { Card, CardContent } from "@rawnaq/ui/components/card"
 import { ProductPrice } from "./product-price"
 
 export function ProductCard({ product }: { product: Product }) {
+  const t = useTranslations("Catalog")
   const hasDiscount =
     product.price.compareAtAmount !== undefined &&
     product.price.compareAtAmount > product.price.amount
@@ -21,7 +23,7 @@ export function ProductCard({ product }: { product: Product }) {
   const hoverImage = product.images[1] ?? primaryImage
 
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-xs">
+    <Card className="group relative flex h-full flex-col pt-0 overflow-hidden transition-all duration-300 hover:shadow-xs">
       {/* Product Image Box */}
       <Link
         href={`/products/${product.slug}`}
@@ -49,8 +51,8 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Discount Badge */}
         {hasDiscount && product.inStock && (
-          <span className="bg-destructive text-white/95 absolute start-2 top-0 rounded-md px-2 py-0.5 text-xs font-semibold shadow-sm">
-            خصم {discountPercent}%
+          <span className="bg-destructive text-white/95 absolute start-2 top-2 rounded-md px-1.5 py-0.5 text-[10px] sm:text-xs font-semibold shadow-xs">
+            {t("discount", { percent: discountPercent })}
           </span>
         )}
 
@@ -58,19 +60,19 @@ export function ProductCard({ product }: { product: Product }) {
         {!product.inStock && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[1px]">
             <span className="rounded-md bg-black/80 px-2.5 py-1 text-xs font-semibold text-white">
-              نفد من المخزون
+              {t("outOfStock")}
             </span>
           </div>
         )}
       </Link>
 
       {/* Wishlist Button */}
-      <div className="absolute end-2 top-2 z-10 rounded-full bg-background/80 shadow-sm backdrop-blur-sm">
+      <div className="absolute inset-e-2 top-2 z-10 rounded-full bg-background/80 shadow-xs backdrop-blur-sm">
         <WishlistButton productId={product.id} />
       </div>
 
       {/* Product Details */}
-      <CardContent className="flex flex-1 flex-col justify-between gap-3 px-3.5 py-0">
+      <CardContent className="flex flex-1 flex-col justify-between gap-2.5 p-3 sm:p-3.5">
         <div className="flex flex-col gap-1.5">
           {/* Subtitle / Category / Brand */}
           {product.subtitle && (
@@ -80,7 +82,7 @@ export function ProductCard({ product }: { product: Product }) {
           {/* Title */}
           <Link
             href={`/products/${product.slug}`}
-            className="line-clamp-2 text-sm font-medium leading-snug transition-colors hover:text-primary"
+            className="line-clamp-2 text-xs sm:text-sm font-medium leading-snug transition-colors hover:text-primary"
           >
             {product.name}
           </Link>
@@ -89,7 +91,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.rating && (
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <div className="flex items-center text-amber-500">
-                <Star className="size-3.5 fill-current" />
+                <Star className="size-3 sm:size-3.5 fill-current" />
               </div>
               <span className="font-semibold text-foreground">{product.rating.average}</span>
               <span>({product.rating.count})</span>
@@ -97,7 +99,7 @@ export function ProductCard({ product }: { product: Product }) {
           )}
 
           {/* Price */}
-          <div className="mt-1">
+          <div className="mt-0.5">
             <ProductPrice price={product.price} />
           </div>
         </div>
@@ -108,7 +110,7 @@ export function ProductCard({ product }: { product: Product }) {
             product={product}
             variant={product.inStock ? "default" : "outline"}
             size="sm"
-            className="w-full text-xs font-medium rounded-full py-4"
+            className="w-full text-xs font-medium rounded-full h-8 sm:h-9"
           />
         </div>
       </CardContent>

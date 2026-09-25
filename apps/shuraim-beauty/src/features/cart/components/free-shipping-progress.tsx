@@ -1,13 +1,14 @@
 "use client"
 
 import { Truck, Gift, CheckCircle2 } from "lucide-react"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 import { formatCurrency } from "@rawnaq/utils"
 
 const FREE_SHIPPING_THRESHOLD = 25
 
 export function FreeShippingProgress({ subtotal }: { subtotal: number }) {
+  const t = useTranslations("Cart")
   const locale = useLocale()
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal)
   const percent = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100))
@@ -24,15 +25,13 @@ export function FreeShippingProgress({ subtotal }: { subtotal: number }) {
         <span className="font-medium text-foreground">
           {isQualified ? (
             <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
-              مبروك! حصلت على شحن مجاني لكافة محافظات سلطنة عُمان!
+              {t("freeShippingQualified")}
             </span>
           ) : (
             <span>
-              أضيفي بـ{" "}
-              <b className="text-primary font-bold">
-                {formatCurrency(remaining, "OMR", locale)}
-              </b>{" "}
-              للحصول على <strong>شحن مجاني + هدية</strong>
+              {t("freeShippingAddMore", {
+                amount: formatCurrency(remaining, "OMR", locale),
+              })}
             </span>
           )}
         </span>

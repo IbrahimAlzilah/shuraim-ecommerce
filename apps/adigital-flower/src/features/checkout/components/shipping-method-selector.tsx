@@ -64,10 +64,10 @@ export function ShippingMethodSelector({
                 </div>
               </div>
 
-              <div className="text-end">
+              <div className="text-end shrink-0">
                 <span className="text-sm font-bold text-foreground">
                   {method.price === 0
-                    ? "مجاناً"
+                    ? t("shipping.free")
                     : formatCurrency(method.price, "YER", locale)}
                 </span>
               </div>

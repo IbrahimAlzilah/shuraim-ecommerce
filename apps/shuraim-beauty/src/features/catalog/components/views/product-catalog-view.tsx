@@ -40,7 +40,7 @@ export async function ProductCatalogView({
       <div className="flex flex-col gap-1">
         <h1 className="text-2xl font-bold tracking-tight text-foreground">{t("title")}</h1>
         <p className="text-sm text-muted-foreground">
-          استكشفي تشكيلتنا الأصلية من مستحضرات العناية والتجميل والعطور
+          {t("subtitle")}
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export async function ProductCatalogView({
         <div className="rounded-xl border border-dashed py-16 text-center">
           <p className="text-base font-medium text-foreground">{t("noResults")}</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            جربي إزالة الفلاتر المحددة لمشاهدة المزيد من المنتجات
+            {t("noResultsAdvice")}
           </p>
         </div>
       ) : (

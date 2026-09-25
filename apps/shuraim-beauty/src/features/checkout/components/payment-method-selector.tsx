@@ -8,45 +8,42 @@ import { cn } from "@rawnaq/ui/lib/utils"
 
 import type { PaymentMethod } from "../types/checkout-flow"
 
-const PAYMENT_OPTIONS: {
-  id: PaymentMethod
-  title: string
-  subtitle: string
-  badge?: string
-}[] = [
+const PAYMENT_OPTIONS = [
   {
-    id: "omannet",
-    title: "بطاقة الخصم المباشر (OmanNet)",
-    subtitle: "الدفع المباشر عبر بطاقات البنوك العُمانية (بنك مسقط، ظفار، صحار، ميثاق، NBO)",
-    badge: "الخيار الأسرع",
+    id: "omannet" as PaymentMethod,
+    titleKey: "paymentMethods.omannet.title" as const,
+    subtitleKey: "paymentMethods.omannet.subtitle" as const,
+    badgeKey: "paymentMethods.omannet.badge" as const,
   },
   {
-    id: "thawani",
-    title: "محفظة ثواني الذكية (Thawani Pay)",
-    subtitle: "الدفع الفوري الآمن عبر بوابة ثواني العُمانية المعتمدة",
-    badge: "دفع رقمي",
+    id: "thawani" as PaymentMethod,
+    titleKey: "paymentMethods.thawani.title" as const,
+    subtitleKey: "paymentMethods.thawani.subtitle" as const,
+    badgeKey: "paymentMethods.thawani.badge" as const,
   },
   {
-    id: "apple-pay",
-    title: "Apple Pay",
-    subtitle: "إنهاء الطلب بلمسة واحدة عبر بصمة الوجه أو الإصبع",
-    badge: "بنقرة واحدة",
+    id: "apple-pay" as PaymentMethod,
+    titleKey: "paymentMethods.applePay.title" as const,
+    subtitleKey: "paymentMethods.applePay.subtitle" as const,
+    badgeKey: "paymentMethods.applePay.badge" as const,
   },
   {
-    id: "tabby",
-    title: "تابي (Tabby)",
-    subtitle: "قسّمي مشترياتكِ على 4 دفعات شهرية بالريال العُماني بدون فوائد",
-    badge: "4 دفعات شهرية",
+    id: "tabby" as PaymentMethod,
+    titleKey: "paymentMethods.tabby.title" as const,
+    subtitleKey: "paymentMethods.tabby.subtitle" as const,
+    badgeKey: "paymentMethods.tabby.badge" as const,
   },
   {
-    id: "card",
-    title: "البطاقة الائتمانية (Visa / Mastercard)",
-    subtitle: "دفع مشفر وآمن يدعم جميع البطاقات الائتمانية والخصم",
+    id: "card" as PaymentMethod,
+    titleKey: "paymentMethods.card.title" as const,
+    subtitleKey: "paymentMethods.card.subtitle" as const,
+    badgeKey: undefined,
   },
   {
-    id: "cash-on-delivery",
-    title: "الدفع عند الاستلام (COD)",
-    subtitle: "ادفعي نقداً أو عبر جهاز الدفع عند استلام طلبكِ في سلطنة عُمان",
+    id: "cash-on-delivery" as PaymentMethod,
+    titleKey: "paymentMethods.cod.title" as const,
+    subtitleKey: "paymentMethods.cod.subtitle" as const,
+    badgeKey: undefined,
   },
 ]
 
@@ -68,20 +65,24 @@ export function PaymentMethodSelector({
   return (
     <div className="flex flex-col gap-3.5">
       <div className="flex items-center gap-2 text-xs text-muted-foreground pb-1">
-        <ShieldCheck className="size-4 text-emerald-600" />
-        <span>جميع عمليات الدفع مشفرة ومحمية بنسبة 100%</span>
+        <ShieldCheck className="size-4 text-emerald-600 shrink-0" />
+        <span>{t("securePaymentNotice")}</span>
       </div>
 
       <div className="flex flex-col gap-2.5">
         {PAYMENT_OPTIONS.map((option) => {
           const isSelected = selected === option.id
+          const title = t(option.titleKey)
+          const subtitle = t(option.subtitleKey)
+          const badge = option.badgeKey ? t(option.badgeKey) : null
+
           return (
             <button
               key={option.id}
               type="button"
               onClick={() => onSelect(option.id)}
               className={cn(
-                "group relative flex items-start gap-3 rounded-xl border p-3.5 text-start transition-all",
+                "group relative flex items-start gap-3 rounded-xl border p-3 sm:p-3.5 text-start transition-all",
                 isSelected
                   ? "border-primary bg-primary/5 shadow-xs"
                   : "border-border bg-card hover:border-muted-foreground/30 hover:bg-muted/30"
@@ -95,17 +96,17 @@ export function PaymentMethodSelector({
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col gap-0.5">
+              <div className="flex flex-1 flex-col gap-0.5 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm font-bold text-foreground">{option.title}</span>
-                  {option.badge && (
+                  <span className="text-xs sm:text-sm font-bold text-foreground">{title}</span>
+                  {badge && (
                     <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
-                      {option.badge}
+                      {badge}
                     </span>
                   )}
                 </div>
                 <span className="text-xs text-muted-foreground leading-relaxed">
-                  {option.subtitle}
+                  {subtitle}
                 </span>
               </div>
 
@@ -124,9 +125,10 @@ export function PaymentMethodSelector({
           disabled={!selected || isSubmitting}
           className="flex-1 text-sm font-semibold"
         >
-          {isSubmitting ? "جاري المعالجة..." : t("placeOrder")}
+          {isSubmitting ? t("processing") : t("placeOrder")}
         </Button>
       </div>
     </div>
   )
 }
+

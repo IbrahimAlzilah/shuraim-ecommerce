@@ -20,6 +20,15 @@
     "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
     "backHome": "العودة للرئيسية"
   },
+  "Search": {
+    "placeholder": "ابحث عن منتج، ماركة، أو تصنيف...",
+    "close": "إغلاق البحث",
+    "popularSearches": "عمليات البحث الشائعة",
+    "resultsFor": "نتائج البحث عن: \"{query}\"",
+    "productsCount": "{count} منتج",
+    "noResults": "لم نجد أي منتجات مطابقة",
+    "noResultsAdvice": "جرب البحث بكلمات مختلفة أو تأكد من صحة الكلمات"
+  },
   "Header": {
     "wishlist": "المفضلة",
     "cart": "السلة",
@@ -30,10 +39,64 @@
     "searchPlaceholder": "ابحث عن المنتجات...",
     "deliverTo": "التوصيل إلى:",
     "defaultLocation": "الجمهورية اليمنية - صنعاء",
-    "toggleTheme": "تبديل المظهر"
+    "toggleTheme": "تبديل المظهر",
+    "close": "إغلاق",
+    "bundles": "عروض وبكجات",
+    "newArrivals": "وصل حديثاً",
+    "allCategories": "التصنيفات",
+    "viewAll": "عرض كل {category}",
+    "needHelp": "تحتاج مساعدة في اختيار المناسب؟",
+    "helpDescription": "فريق خدمة العملاء متواجد لمساعدتك على مدار الساعة.",
+    "chatWhatsapp": "تحدث معنا عبر الواتساب",
+    "popular": "رائج",
+    "featuredBrands": "أبرز الماركات:",
+    "browseCollection": "تصفحي المجموعة"
+  },
+  "BottomBar": {
+    "home": "الرئيسية",
+    "categories": "الأقسام",
+    "search": "بحث",
+    "cart": "السلة",
+    "account": "حسابي",
+    "ariaLabel": "شريط التنقل السفلي للهاتف"
   },
   "Footer": {
-    "rights": "جميع الحقوق محفوظة."
+    "rights": "جميع الحقوق محفوظة.",
+    "brandBio": "متجر ديجيتال فلاور المتخصص في أرقى باقات الزهور الطبيعية، الهدايا الفاخرة، وتنسيقات المناسبات الخاصة.",
+    "licensed": "متجر مرخص ومعتمد في سلطنة عُمان (MOCIIP)",
+    "vat": "الرقم التعريفي الضريبي (VAT):",
+    "cr": "السجل التجاري:",
+    "storeSections": "أقسام المتجر",
+    "quickLinks": "روابط تهمك",
+    "customerService": "خدمة العملاء",
+    "customerServiceNote": "نسعد بخدمتك والإجابة على أي استفسارات تخص طلباتك.",
+    "whatsappSupport": "خدمة الواتساب",
+    "instantReply": "رد فوري خلال دقائق",
+    "about": "من نحن",
+    "shippingPolicy": "الشحن والتوصيل",
+    "returnsPolicy": "سياسة الاسترجاع والاستبدال",
+    "privacyPolicy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام",
+    "faq": "الأسئلة الشائعة",
+    "cod": "دفع عند الاستلام",
+    "copyright": "متجر ديجيتال فلاور © {year} — جميع الحقوق محفوظة.",
+    "crNumber": "YE-CR 205417 (صنعاء)",
+    "categories": {
+      "skincare": "العناية بالبشرة",
+      "makeup": "المكياج ومستحضرات التجميل",
+      "hairCare": "العناية بالشعر",
+      "fragrance": "العطور والعود والبخور",
+      "accessories": "الإكسسوارات",
+      "electronics": "الإلكترونيات",
+      "koreanCare": "العناية الكورية",
+      "bundles": "بكجات التوفير"
+    },
+    "paymentBadges": {
+      "kuraimi": "الكريمي موبايل",
+      "floosak": "فلوسك Floosak",
+      "onecash": "ون كاش OneCash",
+      "cards": "Visa / Master"
+    }
   },
   "AnnouncementBar": {
     "message": "هدية مجانية مع كل طلب + منتجات أصلية 100% بضمان ذهبي",
@@ -48,8 +111,8 @@
     "retry": "إعادة المحاولة"
   },
   "Cart": {
-    "title": "السلة",
-    "empty": "سلتك فارغة.",
+    "title": "سلة التسوق",
+    "empty": "سلتك فارغة حالياً.",
     "subtotal": "المجموع الفرعي",
     "checkout": "إتمام الطلب",
     "remove": "إزالة",
@@ -57,18 +120,50 @@
     "decrease": "إنقاص الكمية",
     "close": "إغلاق السلة",
     "addToCart": "أضف إلى السلة",
-    "outOfStock": "غير متوفر"
+    "outOfStock": "غير متوفر",
+    "itemsCount": "({count} منتجات)",
+    "emptyCartTitle": "سلتك فارغة حالياً",
+    "emptyCartDesc": "لم تقم بإضافة أي منتجات بعد. استكشف تشكيلاتنا الفاخرة لتكمل هديتك!",
+    "continueShopping": "تصفح المنتجات المميزة",
+    "freeShippingQualified": "مبروك! حصلت على شحن مجاني لكافة محافظات سلطنة عُمان!",
+    "freeShippingAddMore": "أضف بـ {amount} للحصول على شحن مجاني + هدية"
   },
   "Catalog": {
     "title": "المنتجات",
+    "subtitle": "استكشف تشكيلتنا الفاخرة من الورود الطبيعية وتنسيقات الهدايا",
     "noResults": "لا توجد منتجات.",
+    "noResultsAdvice": "جرب إزالة الفلاتر المحددة لمشاهدة المزيد من المنتجات",
     "inStock": "متوفر",
     "outOfStock": "غير متوفر",
     "lowStock": "متبقي {count} فقط",
     "discount": "خصم {percent}%",
     "previousImage": "الصورة السابقة",
     "nextImage": "الصورة التالية",
-    "selectImage": "عرض الصورة {index}"
+    "selectImage": "عرض الصورة {index}",
+    "breadcrumbHome": "الرئيسية",
+    "breadcrumbProducts": "المنتجات",
+    "breadcrumbAria": "مسار التصفح",
+    "authenticProduct": "منتج أصلي موثّق",
+    "basedOnReviews": "بناءً على {count} تقييماً معتمداً",
+    "savedPercent": "وفّرتِ {percent}%",
+    "vatIncluded": "الأسعار شاملة ضريبة القيمة المضافة",
+    "lowStockWarning": "⚡ تبقّت {count} قطع فقط في المستودع!",
+    "aboutProduct": "عن المنتج",
+    "fastShipping": "شحن سريع مبرد خلال 1-3 أيام",
+    "freeShippingPerk": "شحن مجاني وهدية فوق 25 ر.ع.",
+    "guaranteedAuthentic": "أصلي ومضمون 100% من الوكيل",
+    "easyReturns": "استرجاع سهل خلال 14 يوماً",
+    "filterAndSort": "تصفية وترتيب",
+    "filters": "الفلاتر",
+    "sortBy": "ترتيب حسب:",
+    "sortFeatured": "المميز",
+    "sortPriceAsc": "السعر: من الأقل للأعلى",
+    "sortPriceDesc": "السعر: من الأعلى للأقل",
+    "sortRating": "الأعلى تقييماً",
+    "categories": "التصنيفات",
+    "brands": "الماركات",
+    "all": "الكل",
+    "clearFilters": "إعادة ضبط"
   },
   "Checkout": {
     "steps": {
@@ -79,27 +174,78 @@
     "continue": "متابعة",
     "back": "رجوع",
     "placeOrder": "تأكيد الطلب (محاكاة)",
+    "processing": "جاري المعالجة...",
+    "securePaymentNotice": "جميع عمليات الدفع مشفرة ومحمية بنسبة 100%",
     "emptyCart": "سلتك فارغة.",
     "address": {
-      "recipientName": "الاسم الكامل",
-      "phone": "الجوال",
-      "line1": "العنوان (السطر الأول)",
+      "recipientName": "اسم المستلم",
+      "recipientPlaceholder": "مثال: سارة محمد",
+      "phone": "رقم الجوال",
+      "phoneHint": "للتواصل وتأكيد موعد التوصيل عبر أسياد إكسبريس أو المندوب",
+      "line1": "تفاصيل العنوان (الحي، الشارع، أو العنوان الوطني)",
+      "line1Placeholder": "مثال: حي الياسمين - شارع أنس بن مالك - مبنى رقم 4",
       "line2": "العنوان (السطر الثاني)",
       "city": "المدينة",
+      "cityPlaceholder": "اختاري أو اكتبي اسم مدينتكِ",
       "region": "المنطقة",
       "postalCode": "الرمز البريدي",
       "country": "الدولة",
       "errors": {
         "required": "هذا الحقل مطلوب",
-        "invalidPhone": "أدخل رقم جوال سعودي صحيح"
+        "invalidPhone": "أدخل رقم جوال صحيح"
       }
     },
     "shipping": {
-      "eta": "التوصيل خلال {days} أيام"
+      "eta": "التوصيل خلال {days} أيام",
+      "free": "مجاناً"
     },
     "payment": {
       "card": "بطاقة ائتمانية",
       "cash-on-delivery": "الدفع عند الاستلام"
+    },
+    "paymentMethods": {
+      "kuraimi": {
+        "title": "الكريمي موبايل",
+        "subtitle": "الدفع الفوري عبر محفظة بنك الكريمي الإسلامي",
+        "badge": "الأكثر استخداماً"
+      },
+      "floosak": {
+        "title": "فلوسك (Floosak)",
+        "subtitle": "الدفع الآمن عبر محفظة فلوسك الإلكترونية",
+        "badge": "دفع رقمي"
+      },
+      "onecash": {
+        "title": "ون كاش (OneCash)",
+        "subtitle": "تحويل ودفع فوري عبر محفظة ون كاش"
+      },
+      "omannet": {
+        "title": "بطاقة الخصم المباشر (OmanNet)",
+        "subtitle": "الدفع المباشر عبر بطاقات البنوك العُمانية (بنك مسقط، ظفار، صحار، ميثاق، NBO)",
+        "badge": "الخيار الأسرع"
+      },
+      "thawani": {
+        "title": "محفظة ثواني الذكية (Thawani Pay)",
+        "subtitle": "الدفع الفوري الآمن عبر بوابة ثواني العُمانية المعتمدة",
+        "badge": "دفع رقمي"
+      },
+      "applePay": {
+        "title": "Apple Pay",
+        "subtitle": "إنهاء الطلب بلمسة واحدة عبر بصمة الوجه أو الإصبع",
+        "badge": "بنقرة واحدة"
+      },
+      "tabby": {
+        "title": "تابي (Tabby)",
+        "subtitle": "قسّمي مشترياتكِ على 4 دفعات شهرية بالريال العُماني بدون فوائد",
+        "badge": "4 دفعات شهرية"
+      },
+      "card": {
+        "title": "البطاقة الائتمانية (Visa / Mastercard)",
+        "subtitle": "دفع مشفر وآمن يدعم جميع البطاقات الائتمانية والخصم"
+      },
+      "cod": {
+        "title": "الدفع عند الاستلام (COD)",
+        "subtitle": "ادفعي نقداً عند استلام طلبكِ"
+      }
     },
     "summary": {
       "subtotal": "المجموع الفرعي",
@@ -127,7 +273,9 @@
       "next": "التالي"
     },
     "brands": {
-      "title": "علامات تجارية مميزة"
+      "title": "علامات تجارية مميزة",
+      "viewAll": "عرض جميع الماركات ←",
+      "defaultDescription": "منتجات أصلية"
     },
     "hero": {
       "previous": "الشريحة السابقة",
@@ -204,6 +352,7 @@
   },
   "Wishlist": {
     "title": "المفضلة",
+    "subtitle": "منتجاتكِ المفضلة المحفوظة لتسوقها في أي وقت",
     "empty": "قائمة المفضلة فارغة.",
     "add": "إضافة إلى المفضلة",
     "remove": "إزالة من المفضلة",

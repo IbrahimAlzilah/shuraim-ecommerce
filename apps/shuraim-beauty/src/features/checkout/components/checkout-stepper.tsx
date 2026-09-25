@@ -20,12 +20,12 @@ export function CheckoutStepper({
   const currentIndex = STEPS.indexOf(step)
 
   return (
-    <ol className="flex items-center gap-2 text-sm">
+    <ol className="flex items-center justify-between sm:justify-start gap-1 sm:gap-2 text-xs sm:text-sm">
       {STEPS.map((s, index) => (
-        <li key={s} className="flex items-center gap-2">
+        <li key={s} className="flex items-center gap-1.5 sm:gap-2">
           <span
             className={cn(
-              "flex size-6 items-center justify-center rounded-full text-xs",
+              "flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold",
               index <= currentIndex
                 ? "bg-primary text-primary-foreground"
                 : "bg-muted text-muted-foreground"
@@ -34,12 +34,15 @@ export function CheckoutStepper({
             {index + 1}
           </span>
           <span
-            className={index === currentIndex ? "font-medium" : "text-muted-foreground"}
+            className={cn(
+              "whitespace-nowrap text-xs sm:text-sm",
+              index === currentIndex ? "font-bold text-foreground" : "text-muted-foreground"
+            )}
           >
             {t(`steps.${s}`)}
           </span>
           {index < STEPS.length - 1 && (
-            <span className="bg-border mx-1 h-px w-6" />
+            <span className="bg-border mx-1 sm:mx-2 h-px w-4 sm:w-8" />
           )}
         </li>
       ))}

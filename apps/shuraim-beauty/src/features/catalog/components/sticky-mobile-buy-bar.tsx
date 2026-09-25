@@ -11,7 +11,7 @@ export function StickyMobileBuyBar({ product }: { product: Product }) {
   const primaryImage = product.images[0]
 
   return (
-    <div className="fixed bottom-16 inset-x-0 z-30 border-t bg-background/95 p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur-md md:hidden animate-in slide-in-from-bottom-2 duration-300">
+    <div className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] inset-x-0 z-30 border-t bg-background/95 p-2.5 sm:p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur-md md:hidden animate-in slide-in-from-bottom-2 duration-300">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 overflow-hidden">
           {primaryImage && (

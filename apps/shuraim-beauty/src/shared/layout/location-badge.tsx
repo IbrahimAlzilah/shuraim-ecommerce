@@ -11,7 +11,7 @@ export function LocationBadge() {
   const address = user?.addresses[0]
 
   return (
-    <div className="hidden items-center gap-1.5 text-xs md:flex">
+    <div className="hidden items-center gap-1.5 text-xs lg:flex">
       <MapPin className="text-primary size-4 shrink-0" />
       <div className="flex flex-col leading-tight">
         <span className="text-muted-foreground">{t("deliverTo")}</span>

@@ -21,13 +21,18 @@ export function WishlistView() {
   }, [ids])
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-6">
-      <h1 className="text-xl font-medium">{t("title")}</h1>
+    <div className="mx-auto flex max-w-5xl flex-col gap-6 p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col gap-1 border-b pb-4">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">{t("title")}</h1>
+        <p className="text-xs sm:text-sm text-muted-foreground">{t("subtitle")}</p>
+      </div>
 
       {products.length === 0 ? (
-        <p className="text-muted-foreground text-sm">{t("empty")}</p>
+        <div className="rounded-2xl border border-dashed py-16 text-center">
+          <p className="text-base font-semibold text-foreground">{t("empty")}</p>
+        </div>
       ) : (
-        <div className="divide-y">
+        <div className="divide-y rounded-2xl border bg-card p-4 sm:p-6 shadow-xs">
           {products.map((product) => (
             <WishlistItem key={product.id} product={product} />
           ))}

@@ -54,13 +54,13 @@ function MessageCarousel({
             type="button"
             aria-label={prevLabel}
             onClick={() => go(-1)}
-            className="absolute inset-s-2 rounded-full p-1 opacity-80 hover:opacity-100 sm:inset-s-4"
+            className="absolute start-1 sm:start-4 top-1/2 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-100 transition-opacity"
           >
             <ChevronLeft className="size-4 rtl:rotate-180" />
           </button>
         )}
 
-        <span key={activeIndex} className="truncate px-4 sm:px-6">
+        <span key={activeIndex} className="block line-clamp-1 px-7 sm:px-12 text-center text-xs sm:text-sm">
           {messages[activeIndex]}
         </span>
 
@@ -69,7 +69,7 @@ function MessageCarousel({
             type="button"
             aria-label={nextLabel}
             onClick={() => go(1)}
-            className="absolute inset-e-2 rounded-full p-1 opacity-80 hover:opacity-100 sm:end-4"
+            className="absolute end-1 sm:end-4 top-1/2 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-100 transition-opacity"
           >
             <ChevronRight className="size-4 rtl:rotate-180" />
           </button>

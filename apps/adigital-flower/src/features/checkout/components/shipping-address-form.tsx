@@ -69,11 +69,11 @@ export function ShippingAddressForm({
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="recipientName" className="flex items-center gap-1.5 text-xs font-semibold">
             <User className="size-3.5 text-primary" />
-            <span>اسم المستلم *</span>
+            <span>{t("address.recipientName")} *</span>
           </Label>
           <Input
             id="recipientName"
-            placeholder="مثال: سارة محمد"
+            placeholder={t("address.recipientPlaceholder")}
             value={values.recipientName ?? ""}
             aria-invalid={Boolean(errors.recipientName)}
             onChange={(e) => update("recipientName", e.target.value)}
@@ -86,7 +86,7 @@ export function ShippingAddressForm({
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="phone" className="flex items-center gap-1.5 text-xs font-semibold">
             <Phone className="size-3.5 text-primary" />
-            <span>رقم الجوال *</span>
+            <span>{t("address.phone")} *</span>
           </Label>
           <Input
             id="phone"
@@ -100,7 +100,7 @@ export function ShippingAddressForm({
           {errors.phone ? (
             <span className="text-destructive text-xs">{t(`address.errors.${errors.phone}`)}</span>
           ) : (
-            <span className="text-[11px] text-muted-foreground">للتواصل وتأكيد موعد التوصيل عبر المندوب أو شركة الشحن</span>
+            <span className="text-[11px] text-muted-foreground">{t("address.phoneHint")}</span>
           )}
         </div>
       </div>
@@ -109,7 +109,7 @@ export function ShippingAddressForm({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="country" className="text-xs font-semibold">
-            الدولة *
+            {t("address.country")} *
           </Label>
           <select
             id="country"
@@ -123,12 +123,12 @@ export function ShippingAddressForm({
 
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="city" className="text-xs font-semibold">
-            المدينة *
+            {t("address.city")} *
           </Label>
           <Input
             id="city"
             list="cities-list"
-            placeholder="اختاري أو اكتبي اسم مدينتكِ"
+            placeholder={t("address.cityPlaceholder")}
             value={values.city ?? ""}
             aria-invalid={Boolean(errors.city)}
             onChange={(e) => update("city", e.target.value)}
@@ -148,11 +148,11 @@ export function ShippingAddressForm({
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="line1" className="flex items-center gap-1.5 text-xs font-semibold">
           <MapPin className="size-3.5 text-primary" />
-          <span>تفاصيل العنوان (الحي، الشارع، أو العنوان الوطني) *</span>
+          <span>{t("address.line1")} *</span>
         </Label>
         <Input
           id="line1"
-          placeholder="مثال: حي الياسمين - شارع أنس بن مالك - مبنى رقم 4"
+          placeholder={t("address.line1Placeholder")}
           value={values.line1 ?? ""}
           aria-invalid={Boolean(errors.line1)}
           onChange={(e) => update("line1", e.target.value)}

@@ -38,7 +38,7 @@ export async function WhyUsSection() {
           return (
             <div
               key={index}
-              className="flex items-start gap-3.5 rounded-2xl border border-amber-200/50 bg-[#FAF3E8] p-5 shadow-2xs transition-all duration-300 hover:border-amber-300/80 hover:shadow-xs dark:border-border dark:bg-card/70"
+              className="flex items-start gap-3.5 rounded-2xl border border-border bg-card/60 p-4 sm:p-5 shadow-2xs transition-all duration-300 hover:border-primary/40 hover:shadow-xs"
             >
               <div className="mt-0.5 text-primary shrink-0">
                 <Icon className="size-5" />

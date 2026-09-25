@@ -3,7 +3,7 @@
 import type { NavItem } from "@/features/catalog"
 import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Phone } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
@@ -11,6 +11,17 @@ import { Button } from "@rawnaq/ui/components/button"
 export function MobileNav({ nav }: { nav: NavItem[] }) {
   const t = useTranslations("Header")
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
 
   function close() {
     setIsOpen(false)
@@ -37,9 +48,9 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
           />
 
           {/* Drawer Panel */}
-          <div className="relative flex w-4/5 max-w-sm flex-col bg-background shadow-2xl animate-in slide-in-from-start duration-300">
+          <div className="relative flex h-dvh w-[85%] max-w-sm flex-col bg-background shadow-2xl animate-in slide-in-from-start duration-300 overflow-hidden">
             {/* Header */}
-            <div className="flex items-center justify-between border-b px-4 py-3">
+            <div className="flex items-center justify-between border-b px-4 py-3 shrink-0">
               <Link href="/" onClick={close} className="flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -48,35 +59,35 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                   className="h-8 w-auto object-contain rounded-md dark:bg-white dark:p-0.5"
                 />
               </Link>
-              <Button variant="ghost" size="icon-sm" onClick={close} aria-label="إغلاق">
+              <Button variant="ghost" size="icon-sm" onClick={close} aria-label={t("close")}>
                 <X className="size-5" />
               </Button>
             </div>
 
             {/* Quick Highlights */}
-            <div className="grid grid-cols-2 gap-2 border-b bg-muted/30 p-3">
+            <div className="grid grid-cols-2 gap-2 border-b bg-muted/30 p-3 shrink-0">
               <Link
                 href="/products?category=bundles"
                 onClick={close}
-                className="flex items-center gap-1.5 rounded-lg border bg-background p-2 text-xs font-medium text-foreground hover:border-primary"
+                className="flex items-center gap-1.5 rounded-lg border bg-background p-2 text-xs font-medium text-foreground hover:border-primary transition-colors"
               >
-                <Tag className="size-3.5 text-primary" />
-                <span>عروض وبكجات</span>
+                <Tag className="size-3.5 text-primary shrink-0" />
+                <span className="truncate">{t("bundles")}</span>
               </Link>
               <Link
                 href="/products"
                 onClick={close}
-                className="flex items-center gap-1.5 rounded-lg border bg-background p-2 text-xs font-medium text-foreground hover:border-primary"
+                className="flex items-center gap-1.5 rounded-lg border bg-background p-2 text-xs font-medium text-foreground hover:border-primary transition-colors"
               >
-                <Sparkles className="size-3.5 text-amber-500" />
-                <span>وصل حديثاً</span>
+                <Sparkles className="size-3.5 text-amber-500 shrink-0" />
+                <span className="truncate">{t("newArrivals")}</span>
               </Link>
             </div>
 
             {/* Navigation Categories List */}
-            <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex-1 overflow-y-auto p-4 overscroll-contain">
               <p className="mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                التصنيفات
+                {t("allCategories")}
               </p>
               <nav className="flex flex-col gap-1 text-sm">
                 {nav.map((item) =>
@@ -92,7 +103,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                           onClick={close}
                           className="text-xs font-semibold text-primary py-1"
                         >
-                          عرض كل {item.label} ←
+                          {t("viewAll", { category: item.label })}
                         </Link>
                         {item.columns.map((column) => (
                           <div key={column.id} className="flex flex-col gap-1">
@@ -132,20 +143,20 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
             </div>
 
             {/* Footer Support Info */}
-            <div className="border-t bg-muted/20 p-4 text-xs text-muted-foreground">
+            <div className="border-t bg-muted/20 p-4 text-xs text-muted-foreground shrink-0 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
               <div className="flex items-center gap-2 mb-2 font-medium text-foreground">
-                <HelpCircle className="size-4 text-primary" />
-                <span>تحتاجين مساعدة في اختيار المناسب؟</span>
+                <HelpCircle className="size-4 text-primary shrink-0" />
+                <span>{t("needHelp")}</span>
               </div>
-              <p className="mb-2">فريق خبيرات التجميل متواجد لخدمتكِ على مدار الساعة.</p>
+              <p className="mb-2 leading-relaxed">{t("helpDescription")}</p>
               <a
                 href="https://wa.me/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 font-semibold text-emerald-600 hover:underline"
               >
-                <Phone className="size-3.5" />
-                <span>تحدثي مع خبيرة عبر الواتساب</span>
+                <Phone className="size-3.5 shrink-0" />
+                <span>{t("chatWhatsapp")}</span>
               </a>
             </div>
           </div>

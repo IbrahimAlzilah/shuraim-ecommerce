@@ -31,13 +31,13 @@ export function CartDrawer() {
       />
 
       {/* Drawer */}
-      <div className="bg-background relative flex h-full w-full max-w-md flex-col gap-4 p-5 shadow-2xl animate-in slide-in-from-end duration-300">
+      <div className="bg-background relative flex h-dvh w-full sm:max-w-md flex-col gap-4 p-4 sm:p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] shadow-2xl animate-in slide-in-from-end duration-300">
         <div className="flex items-center justify-between border-b pb-3">
           <div className="flex items-center gap-2">
             <ShoppingBag className="size-5 text-primary" />
             <h2 className="text-lg font-bold text-foreground">
               {t("title")}{" "}
-              <span className="text-xs font-normal text-muted-foreground">({items.length} منتجات)</span>
+              <span className="text-xs font-normal text-muted-foreground">{t("itemsCount", { count: items.length })}</span>
             </h2>
           </div>
           <Button
@@ -55,14 +55,14 @@ export function CartDrawer() {
             <div className="flex size-16 items-center justify-center rounded-full bg-muted">
               <ShoppingBag className="size-8 text-muted-foreground" />
             </div>
-            <h3 className="text-base font-semibold text-foreground">سلتك فارغة حالياً</h3>
+            <h3 className="text-base font-semibold text-foreground">{t("emptyCartTitle")}</h3>
             <p className="text-xs text-muted-foreground max-w-xs">
-              لم تقومي بإضافة أي منتجات بعد. استكشفي مستحضرات العناية والجمال المختارة لتكملي إطلالتك!
+              {t("emptyCartDesc")}
             </p>
             <Button asChild onClick={closeDrawer} className="mt-2 text-xs font-medium">
               <Link href="/products">
                 <Sparkles className="size-3.5" />
-                <span>تصفحي المنتجات المميزة</span>
+                <span>{t("continueShopping")}</span>
               </Link>
             </Button>
           </div>

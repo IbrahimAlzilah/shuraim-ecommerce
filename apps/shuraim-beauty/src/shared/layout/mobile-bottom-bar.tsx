@@ -2,26 +2,29 @@
 
 import { Home, LayoutGrid, Search, ShoppingBag, User } from "lucide-react"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 
-import { useAuth } from "@/features/auth"
+import { useAuth, useAuthActions } from "@/features/auth"
 import { useCart, useCartStore } from "@/features/cart"
 import { useSearchStore } from "@/features/search-filters"
 import { Link } from "@rawnaq/i18n/navigation"
 
 export function MobileBottomBar() {
+  const t = useTranslations("BottomBar")
   const pathname = usePathname()
   const { itemCount } = useCart()
   const openCart = useCartStore((state) => state.openDrawer)
   const openSearch = useSearchStore((state) => state.openSearch)
-  const { isAuthenticated, openModal } = useAuth()
+  const { isAuthenticated, user, openModal } = useAuth()
+  const { logout } = useAuthActions()
 
   const isHome = pathname === "/" || pathname === "/ar" || pathname === "/en"
   const isCatalog = pathname.includes("/products")
 
   return (
     <nav
-      aria-label="شريط التنقل السفلي للهاتف"
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-background/95 backdrop-blur-md md:hidden shadow-[0_-4px_16px_rgba(0,0,0,0.04)]"
+      aria-label={t("ariaLabel")}
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-background/95 backdrop-blur-md md:hidden shadow-[0_-4px_16px_rgba(0,0,0,0.04)] pb-[env(safe-area-inset-bottom,0px)]"
     >
       <div className="grid h-16 grid-cols-5 items-center justify-around px-1">
         {/* Home */}
@@ -32,7 +35,7 @@ export function MobileBottomBar() {
           }`}
         >
           <Home className="size-5" />
-          <span className="text-[10px]">الرئيسية</span>
+          <span className="text-[10px] font-medium">{t("home")}</span>
         </Link>
 
         {/* Categories / Products */}
@@ -43,7 +46,7 @@ export function MobileBottomBar() {
           }`}
         >
           <LayoutGrid className="size-5" />
-          <span className="text-[10px]">الأقسام</span>
+          <span className="text-[10px] font-medium">{t("categories")}</span>
         </Link>
 
         {/* Search */}
@@ -53,7 +56,7 @@ export function MobileBottomBar() {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
         >
           <Search className="size-5" />
-          <span className="text-[10px]">بحث</span>
+          <span className="text-[10px] font-medium">{t("search")}</span>
         </button>
 
         {/* Cart */}
@@ -70,7 +73,7 @@ export function MobileBottomBar() {
               </span>
             )}
           </div>
-          <span className="text-[10px]">السلة</span>
+          <span className="text-[10px] font-medium">{t("cart")}</span>
         </button>
 
         {/* Account */}
@@ -79,12 +82,16 @@ export function MobileBottomBar() {
           onClick={() => {
             if (!isAuthenticated) {
               openModal("login")
+            } else {
+              void logout()
             }
           }}
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
         >
           <User className="size-5" />
-          <span className="text-[10px]">حسابي</span>
+          <span className="text-[10px] font-medium truncate max-w-[60px]">
+            {isAuthenticated && user?.name ? user.name.split(" ")[0] : t("account")}
+          </span>
         </button>
       </div>
     </nav>

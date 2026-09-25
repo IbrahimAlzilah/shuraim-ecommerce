@@ -69,7 +69,7 @@ export default async function RootLayout({
       <body suppressHydrationWarning>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <div className="flex min-h-svh flex-col pb-16 md:pb-0">
+            <div className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom,0px))] md:pb-0">
               <AnnouncementBar />
               <Header />
               <main className="flex-1">{children}</main>
