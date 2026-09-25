@@ -1,0 +1,81 @@
+"use client"
+
+import { ShoppingBag, X, Sparkles } from "lucide-react"
+import { useTranslations } from "next-intl"
+
+import { Link } from "@rawnaq/i18n/navigation"
+import { Button } from "@rawnaq/ui/components/button"
+
+import { useCart } from "../hooks/use-cart"
+import { useCartStore } from "../hooks/use-cart-store"
+import { CartItem } from "./cart-item"
+import { CartSummary } from "./cart-summary"
+
+export function CartDrawer() {
+  const t = useTranslations("Cart")
+  const isOpen = useCartStore((state) => state.isDrawerOpen)
+  const closeDrawer = useCartStore((state) => state.closeDrawer)
+  const { items, subtotal } = useCart()
+
+  if (!isOpen) {
+    return null
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex justify-end">
+      {/* Backdrop */}
+      <button
+        aria-label={t("close")}
+        className="bg-black/50 backdrop-blur-xs absolute inset-0 transition-opacity"
+        onClick={closeDrawer}
+      />
+
+      {/* Drawer */}
+      <div className="bg-background relative flex h-full w-full max-w-md flex-col gap-4 p-5 shadow-2xl animate-in slide-in-from-end duration-300">
+        <div className="flex items-center justify-between border-b pb-3">
+          <div className="flex items-center gap-2">
+            <ShoppingBag className="size-5 text-primary" />
+            <h2 className="text-lg font-bold text-foreground">
+              {t("title")}{" "}
+              <span className="text-xs font-normal text-muted-foreground">({items.length} منتجات)</span>
+            </h2>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-label={t("close")}
+            onClick={closeDrawer}
+          >
+            <X className="size-5" />
+          </Button>
+        </div>
+
+        {items.length === 0 ? (
+          <div className="flex flex-1 flex-col items-center justify-center gap-3 p-6 text-center">
+            <div className="flex size-16 items-center justify-center rounded-full bg-muted">
+              <ShoppingBag className="size-8 text-muted-foreground" />
+            </div>
+            <h3 className="text-base font-semibold text-foreground">سلتك فارغة حالياً</h3>
+            <p className="text-xs text-muted-foreground max-w-xs">
+              لم تقومي بإضافة أي منتجات بعد. استكشفي مستحضرات العناية والجمال المختارة لتكملي إطلالتك!
+            </p>
+            <Button asChild onClick={closeDrawer} className="mt-2 text-xs font-medium">
+              <Link href="/products">
+                <Sparkles className="size-3.5" />
+                <span>تصفحي المنتجات المميزة</span>
+              </Link>
+            </Button>
+          </div>
+        ) : (
+          <div className="flex-1 divide-y overflow-y-auto pe-1">
+            {items.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+          </div>
+        )}
+
+        {items.length > 0 && <CartSummary subtotal={subtotal} />}
+      </div>
+    </div>
+  )
+}

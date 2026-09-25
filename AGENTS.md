@@ -6,10 +6,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Translations
 
-The `storefront` app renders all UI text through `next-intl` (`useTranslations`/`getTranslations`),
-backed by flat key→value JSON files at `apps/storefront/messages/en.json` and
-`apps/storefront/messages/ar.json`. A missing key throws in development, so a value
-changed only in JSON (not in a component) is easy to miss when grepping `.tsx` files.
+Each storefront app (`shuraim-beauty`, `adigital-flower`) renders all UI text through
+`next-intl` (`useTranslations`/`getTranslations`), backed by flat key→value JSON files at
+`apps/<app>/messages/en.json` and `apps/<app>/messages/ar.json`. A missing key throws in
+development, so a value changed only in JSON (not in a component) is easy to miss when
+grepping `.tsx` files.
 
 Whenever you add or change any user-facing string, in the SAME turn:
 
@@ -18,7 +19,7 @@ Whenever you add or change any user-facing string, in the SAME turn:
    translation in `ar.json` (not a copy of the English text).
 3. Verify both JSON files still parse and have the same key set before finishing.
 
-## Feature Slices (`apps/storefront/src/features/*`)
+## Feature Slices (`apps/<storefront-app>/src/features/*`)
 
 Each `features/[feature-name]/` folder is a self-contained domain module with
 the anatomy: `api/`, `components/`, `hooks/`, `types/`, `utils/`, `index.ts`.
@@ -43,8 +44,19 @@ the anatomy: `api/`, `components/`, `hooks/`, `types/`, `utils/`, `index.ts`.
 
 ## Monorepo structure
 
-- `apps/*` for applications (`storefront`, `backend`), `libs/*` for shared
-  libraries — never `packages/*`.
+This monorepo hosts two independent storefronts, each a full standalone copy
+(no shared feature code between them, only `libs/*`), sharing one backend:
+
+- `apps/shuraim-beauty` — the شريم | Shuraim Beauty store.
+- `apps/adigital-flower` — the adigital-flower store.
+- `apps/backend` — shared backend used by both storefronts.
+
+Because the two storefront apps were forked from a common base, a fix that
+applies to one (e.g. a shared-feature bug) usually needs to be applied to the
+other storefront app manually too — check before assuming a one-app fix is
+enough.
+
+- `apps/*` for applications, `libs/*` for shared libraries — never `packages/*`.
 - All workspace packages are scoped `@rawnaq/*`. Reference other workspace
   packages by name (`@rawnaq/types`), never by relative/deep file path.
 - `libs/config/*` holds only tooling configuration (`eslint-config`,
@@ -53,13 +65,14 @@ the anatomy: `api/`, `components/`, `hooks/`, `types/`, `utils/`, `index.ts`.
 
 ## Backend app
 
-`apps/backend` is scaffolding only. Ignore it entirely unless the user
-explicitly asks you to work on it — see `apps/backend/AGENTS.md`.
+`apps/backend` is scaffolding only, shared by both storefronts. Ignore it
+entirely unless the user explicitly asks you to work on it — see
+`apps/backend/AGENTS.md`.
 
 ## Verification discipline
 
 Before treating any edit as done, re-read the current file from disk rather
 than relying on memory of its last-known content — other sessions/agents may
 edit this repo concurrently. After edits, run `pnpm turbo typecheck lint`
-(and `pnpm --filter storefront run build` for storefront changes) before
-reporting success.
+(and `pnpm --filter <app-name> run build` for the storefront app(s) you
+touched) before reporting success.

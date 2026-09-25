@@ -30,9 +30,82 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  apps/adigital-flower:
+    dependencies:
+      '@hookform/resolvers':
+        specifier: ^5
+        version: 5.9.1(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(react-hook-form@7.88.0(react@19.2.4))(zod@4.4.3)
+      '@rawnaq/i18n':
+        specifier: workspace:*
+        version: link:../../libs/i18n
+      '@rawnaq/types':
+        specifier: workspace:*
+        version: link:../../libs/types
+      '@rawnaq/ui':
+        specifier: workspace:*
+        version: link:../../libs/ui
+      '@rawnaq/utils':
+        specifier: workspace:*
+        version: link:../../libs/utils
+      cn:
+        specifier: ^0.3.2
+        version: 0.3.2
+      lucide-react:
+        specifier: ^1.47.0
+        version: 1.47.0(react@19.2.4)
+      next:
+        specifier: 16.3.3
+        version: 16.3.3(@types/node@20.19.41)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      next-intl:
+        specifier: ^4.14.6
+        version: 4.14.6(@swc/helpers@0.5.23)(next@16.3.3(@types/node@20.19.41)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: 19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: 19.2.4
+        version: 19.2.4(react@19.2.4)
+      react-hook-form:
+        specifier: ^7
+        version: 7.88.0(react@19.2.4)
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+      zustand:
+        specifier: ^5
+        version: 5.0.15(@types/react@19.2.15)(react@19.2.4)
+    devDependencies:
+      '@rawnaq/eslint-config':
+        specifier: workspace:^
+        version: link:../../libs/config/eslint-config
+      '@rawnaq/typescript-config':
+        specifier: workspace:*
+        version: link:../../libs/config/typescript-config
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.3.0
+      '@types/node':
+        specifier: ^20
+        version: 20.19.41
+      '@types/react':
+        specifier: ^19
+        version: 19.2.15
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.2.3(@types/react@19.2.15)
+      eslint:
+        specifier: ^9
+        version: 9.39.4(jiti@2.7.0)
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   apps/backend: {}
 
-  apps/storefront:
+  apps/shuraim-beauty:
     dependencies:
       '@hookform/resolvers':
         specifier: ^5
