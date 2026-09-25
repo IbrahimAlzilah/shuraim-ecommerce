@@ -24,7 +24,7 @@ export function MegaMenu({ items = NAVIGATION_ITEMS }: MegaMenuProps) {
       className="hidden md:block bg-background relative z-40 select-none"
       onMouseLeave={() => setActiveItem(null)}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden">
         <ul className="flex items-center gap-1 xl:gap-2 whitespace-nowrap min-w-max">
           {items.map((item) => {
             const hasFlyout = Boolean(
@@ -73,7 +73,7 @@ export function MegaMenu({ items = NAVIGATION_ITEMS }: MegaMenuProps) {
 
       {/* Flyout Panel */}
       {activeItem && activeItem.columns && (
-        <div className="absolute top-full start-0 end-0 bg-background border-b border-border shadow-xl py-6 lg:py-8 px-4 sm:px-6 animate-in fade-in slide-in-from-top-1 duration-200 z-50">
+        <div className="absolute top-full inset-s-0 inset-e-0 bg-background border-b border-border shadow-xl py-6 lg:py-8 px-4 sm:px-6 animate-in fade-in slide-in-from-top-1 duration-200 z-50">
           <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
             {/* Columns */}
             <div className={cn("grid gap-4 lg:gap-6", activeItem.banner ? "md:col-span-8 grid-cols-2 lg:grid-cols-3" : "md:col-span-12 grid-cols-2 md:grid-cols-4")}>
@@ -129,7 +129,7 @@ export function MegaMenu({ items = NAVIGATION_ITEMS }: MegaMenuProps) {
 
             {/* Banner Side */}
             {activeItem.banner && (
-              <div className="md:col-span-4 bg-gradient-to-br from-amber-50/80 via-amber-50/30 to-background dark:from-neutral-900 dark:via-neutral-900/60 dark:to-neutral-800 rounded-2xl p-5 border border-amber-200/60 dark:border-neutral-700 flex flex-col justify-between overflow-hidden relative group">
+              <div className="md:col-span-4 bg-linear-to-br from-amber-50/80 via-amber-50/30 to-background dark:from-neutral-900 dark:via-neutral-900/60 dark:to-neutral-800 rounded-2xl p-5 border border-amber-200/60 dark:border-neutral-700 flex flex-col justify-between overflow-hidden relative group">
                 <div>
                   {activeItem.banner.badge && (
                     <span className="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-[#E76F51]/15 text-[#E76F51] mb-3 shadow-2xs">

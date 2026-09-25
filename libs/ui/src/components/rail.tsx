@@ -74,7 +74,7 @@ function Rail({
         ref={scrollerRef}
         role="group"
         aria-label={label}
-        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth py-1 px-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth py-1 px-0.5 scrollbar-none [&::-webkit-scrollbar]:hidden"
       >
         {React.Children.map(children, (child) => (
           <div className="shrink-0 snap-start">{child}</div>
@@ -86,7 +86,7 @@ function Rail({
           type="button"
           aria-label={prevLabel}
           onClick={() => scrollByDirection("prev")}
-          className="bg-background ring-foreground/10 absolute start-0 sm:-start-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors"
+          className="bg-background ring-foreground/10 absolute inset-s-0 sm:-inset-s-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors"
         >
           <ChevronRight className="rtl:rotate-0 size-4 rotate-180" />
         </button>
@@ -97,7 +97,7 @@ function Rail({
           type="button"
           aria-label={nextLabel}
           onClick={() => scrollByDirection("next")}
-          className="bg-background ring-foreground/10 absolute end-0 sm:-end-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors"
+          className="bg-background ring-foreground/10 absolute inset-e-0 sm:-inset-e-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors"
         >
           <ChevronRight className="size-4 rtl:rotate-180" />
         </button>

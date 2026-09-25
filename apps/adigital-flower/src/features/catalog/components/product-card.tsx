@@ -51,7 +51,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Discount Badge */}
         {hasDiscount && product.inStock && (
-          <span className="bg-destructive text-white/95 absolute start-2 top-2 rounded-md px-1.5 py-0.5 text-[10px] sm:text-xs font-semibold shadow-xs">
+          <span className="bg-destructive text-white/95 absolute inset-s-2 top-2 rounded-md px-1.5 py-0.5 text-[10px] sm:text-xs font-semibold shadow-xs">
             {t("discount", { percent: discountPercent })}
           </span>
         )}
@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Product Details */}
-      <CardContent className="flex flex-1 flex-col justify-between gap-2.5 p-3 sm:p-3.5">
+      <CardContent className="flex flex-1 flex-col justify-between gap-2.5 px-3 sm:px-3.5">
         <div className="flex flex-col gap-1.5">
           {/* Subtitle / Category / Brand */}
           {product.subtitle && (

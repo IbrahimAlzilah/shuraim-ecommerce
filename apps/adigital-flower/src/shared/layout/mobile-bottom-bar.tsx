@@ -68,7 +68,7 @@ export function MobileBottomBar() {
           <div className="relative">
             <ShoppingBag className="size-5" />
             {itemCount > 0 && (
-              <span className="absolute -end-2 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground animate-in zoom-in-50">
+              <span className="absolute -inset-e-2 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground animate-in zoom-in-50">
                 {itemCount}
               </span>
             )}
@@ -89,7 +89,7 @@ export function MobileBottomBar() {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
         >
           <User className="size-5" />
-          <span className="text-[10px] font-medium truncate max-w-[60px]">
+          <span className="text-[10px] font-medium truncate max-w-15">
             {isAuthenticated && user?.name ? user.name.split(" ")[0] : t("account")}
           </span>
         </button>

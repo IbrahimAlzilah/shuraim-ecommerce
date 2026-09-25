@@ -69,7 +69,7 @@ export async function TestimonialsSection() {
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="flex w-[260px] sm:w-[320px] max-w-[340px] shrink-0 flex-col justify-between gap-4 rounded-2xl border bg-card p-4 sm:p-5 shadow-2xs transition-all duration-300 hover:shadow-xs"
+            className="flex w-65 sm:w-[320px] max-w-85 shrink-0 flex-col justify-between gap-4 rounded-2xl border bg-card p-4 sm:p-5 shadow-2xs transition-all duration-300 hover:shadow-xs"
           >
             {/* Top Bar: Stars */}
             <div className="flex items-center justify-between gap-2">
@@ -81,7 +81,7 @@ export async function TestimonialsSection() {
             </div>
 
             {/* Review text */}
-            <p className="text-sm font-medium leading-relaxed text-foreground/90 min-h-[44px]">
+            <p className="text-sm font-medium leading-relaxed text-foreground/90 min-h-11">
               &ldquo;{review.text}&rdquo;
             </p>
 

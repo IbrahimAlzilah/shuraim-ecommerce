@@ -143,7 +143,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
             </div>
 
             {/* Footer Support Info */}
-            <div className="border-t bg-muted/20 p-4 text-xs text-muted-foreground shrink-0 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
+            <div className="border-t bg-muted/20 p-4 text-xs text-muted-foreground shrink-0 pb-[calc(1rem+env(safe-area-inset-bottom,0))]">
               <div className="flex items-center gap-2 mb-2 font-medium text-foreground">
                 <HelpCircle className="size-4 text-primary shrink-0" />
                 <span>{t("needHelp")}</span>

@@ -28,7 +28,7 @@ export async function FlashDealsSection({ deals }: { deals: FlashDeal[] }) {
         nextLabel={t("rail.next")}
       >
         {deals.map((deal) => (
-          <div key={deal.product.id} className="w-[180px] sm:w-[220px] md:w-[240px] shrink-0">
+          <div key={deal.product.id} className="w-45 sm:w-55 md:w-60 shrink-0">
             <ProductCard product={deal.product} />
           </div>
         ))}

@@ -54,7 +54,7 @@ function MessageCarousel({
             type="button"
             aria-label={prevLabel}
             onClick={() => go(-1)}
-            className="absolute start-1 sm:start-4 top-1/2 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-100 transition-opacity"
+            className="absolute inset-s-1 sm:inset-s-4 top-1/2 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-100 transition-opacity"
           >
             <ChevronLeft className="size-4 rtl:rotate-180" />
           </button>
@@ -69,7 +69,7 @@ function MessageCarousel({
             type="button"
             aria-label={nextLabel}
             onClick={() => go(1)}
-            className="absolute end-1 sm:end-4 top-1/2 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-100 transition-opacity"
+            className="absolute inset-e-1 sm:inset-e-4 top-1/2 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-100 transition-opacity"
           >
             <ChevronRight className="size-4 rtl:rotate-180" />
           </button>

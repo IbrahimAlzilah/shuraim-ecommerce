@@ -31,7 +31,7 @@ export function CartDrawer() {
       />
 
       {/* Drawer */}
-      <div className="bg-background relative flex h-dvh w-full sm:max-w-md flex-col gap-4 p-4 sm:p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] shadow-2xl animate-in slide-in-from-end duration-300">
+      <div className="bg-background relative flex h-dvh w-full sm:max-w-md flex-col gap-4 p-4 sm:p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,0))] shadow-2xl animate-in slide-in-from-end duration-300">
         <div className="flex items-center justify-between border-b pb-3">
           <div className="flex items-center gap-2">
             <ShoppingBag className="size-5 text-primary" />

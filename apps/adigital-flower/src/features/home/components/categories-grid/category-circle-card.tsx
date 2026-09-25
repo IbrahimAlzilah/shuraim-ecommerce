@@ -23,7 +23,7 @@ export function CategoryCircleCard({ category }: { category: ProductCategory }) 
           </div>
         )}
       </div>
-      <span className="text-xs sm:text-sm font-medium text-foreground/90 group-hover:text-primary transition-colors max-w-[100px] line-clamp-2 leading-tight text-center">
+      <span className="text-xs sm:text-sm font-medium text-foreground/90 group-hover:text-primary transition-colors max-w-25 line-clamp-2 leading-tight text-center">
         {category.name}
       </span>
     </Link>

@@ -71,7 +71,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
               variant="secondary"
               size="icon-sm"
               aria-label={t("previousImage")}
-              className="absolute start-2 top-1/2 -translate-y-1/2"
+              className="absolute inset-s-2 top-1/2 -translate-y-1/2"
               onClick={previous}
             >
               <ChevronLeft className="rtl:rotate-180" />
@@ -80,7 +80,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
               variant="secondary"
               size="icon-sm"
               aria-label={t("nextImage")}
-              className="absolute end-2 top-1/2 -translate-y-1/2"
+              className="absolute inset-e-2 top-1/2 -translate-y-1/2"
               onClick={next}
             >
               <ChevronRight className="rtl:rotate-180" />
@@ -90,7 +90,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
       </div>
 
       {images.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
           {images.map((image, index) => (
             <button
               key={image.url}

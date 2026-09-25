@@ -29,7 +29,7 @@ function PasswordInput({
         tabIndex={-1}
         aria-label={isVisible ? hideLabel : showLabel}
         onClick={() => setIsVisible((value) => !value)}
-        className="text-muted-foreground hover:text-foreground absolute end-2 top-1/2 -translate-y-1/2"
+        className="text-muted-foreground hover:text-foreground absolute inset-e-2 top-1/2 -translate-y-1/2"
       >
         {isVisible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
       </button>

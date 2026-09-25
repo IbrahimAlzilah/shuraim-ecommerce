@@ -67,7 +67,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
         <div className="mx-auto max-w-4xl px-4 py-4 sm:px-6">
           <div className="flex items-center gap-3">
             <div className="relative flex-1">
-              <Search className="text-muted-foreground absolute start-3 top-1/2 size-5 -translate-y-1/2" />
+              <Search className="text-muted-foreground absolute inset-s-3 top-1/2 size-5 -translate-y-1/2" />
               <Input
                 ref={inputRef}
                 value={query}
@@ -79,7 +79,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
                 <button
                   type="button"
                   onClick={() => setQuery("")}
-                  className="text-muted-foreground hover:text-foreground absolute end-3 top-1/2 -translate-y-1/2"
+                  className="text-muted-foreground hover:text-foreground absolute inset-e-3 top-1/2 -translate-y-1/2"
                 >
                   <X className="size-4" />
                 </button>
@@ -117,7 +117,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
 
       {/* Results Container */}
       <div
-        className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))]"
+        className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0))]"
         onClick={(e) => {
           if (e.target === e.currentTarget) closeSearch()
         }}
@@ -178,7 +178,7 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
                           )}
                         </div>
                       </div>
-                      <ArrowRight className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-[-2px] transition-all rtl:rotate-180" />
+                      <ArrowRight className="size-4 text-muted-foreground group-hover:text-primary group-hover:-translate-x-0.5 transition-all rtl:rotate-180" />
                     </Link>
                   ))}
                 </div>

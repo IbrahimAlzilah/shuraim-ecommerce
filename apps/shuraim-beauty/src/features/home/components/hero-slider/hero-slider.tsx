@@ -34,7 +34,7 @@ export function HeroSlider({ banners }: { banners: HomeBanner[] }) {
             variant="secondary"
             size="icon-sm"
             aria-label={t("hero.previous")}
-            className="absolute start-2 top-1/2 -translate-y-1/2 z-10 shadow-sm"
+            className="absolute inset-s-2 top-1/2 -translate-y-1/2 z-10 shadow-sm"
             onClick={() => go(activeIndex - 1)}
           >
             <ChevronLeft className="size-4 rtl:rotate-180" />
@@ -43,7 +43,7 @@ export function HeroSlider({ banners }: { banners: HomeBanner[] }) {
             variant="secondary"
             size="icon-sm"
             aria-label={t("hero.next")}
-            className="absolute end-2 top-1/2 -translate-y-1/2 z-10 shadow-sm"
+            className="absolute inset-e-2 top-1/2 -translate-y-1/2 z-10 shadow-sm"
             onClick={() => go(activeIndex + 1)}
           >
             <ChevronRight className="size-4 rtl:rotate-180" />
