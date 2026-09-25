@@ -33,7 +33,17 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "Metadata" })
 
-  return { title: t("title"), description: t("description") }
+  return {
+    title: t("title"),
+    description: t("description"),
+    icons: {
+      icon: [
+        { url: "/icon.png", sizes: "512x512", type: "image/png" },
+        { url: "/favicon.ico", sizes: "any" },
+      ],
+      apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    },
+  }
 }
 
 export default async function RootLayout({
