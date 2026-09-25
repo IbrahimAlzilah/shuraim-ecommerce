@@ -1,7 +1,11 @@
 import type { ProductCategory } from "@rawnaq/types"
 import { getTranslations } from "next-intl/server"
 
-import { Rail } from "@rawnaq/ui/components/rail"
+import { Link } from "@rawnaq/i18n/navigation"
+import {
+  SectionCarousel,
+  SectionCarouselItem,
+} from "@rawnaq/ui/components/section-carousel"
 
 import { CategoryCircleCard } from "./category-circle-card"
 
@@ -17,17 +21,25 @@ export async function FeaturedCategories({
   }
 
   return (
-    <section className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">{t("categories.title")}</h2>
-      <Rail
-        label={t("categories.title")}
-        prevLabel={t("rail.previous")}
-        nextLabel={t("rail.next")}
-      >
+    <section className="flex flex-col gap-3">
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-foreground">
+          {t("categories.title")}
+        </h2>
+        <Link href="/products" className="text-sm font-medium text-primary hover:underline">
+          {t("categories.viewAll")}
+        </Link>
+      </div>
+      <SectionCarousel>
         {categories.map((category) => (
-          <CategoryCircleCard key={category.id} category={category} />
+          <SectionCarouselItem
+            key={category.id}
+            className="basis-[30%] sm:basis-[22%] md:basis-[16.666%] lg:basis-[12.5%] xl:basis-[11.111%]"
+          >
+            <CategoryCircleCard category={category} />
+          </SectionCarouselItem>
         ))}
-      </Rail>
+      </SectionCarousel>
     </section>
   )
 }

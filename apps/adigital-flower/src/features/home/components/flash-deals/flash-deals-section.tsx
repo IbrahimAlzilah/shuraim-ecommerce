@@ -2,8 +2,10 @@ import { ProductCard } from "@/features/catalog"
 import { getTranslations } from "next-intl/server"
 
 import { Link } from "@rawnaq/i18n/navigation"
-import { Button } from "@rawnaq/ui/components/button"
-import { Rail } from "@rawnaq/ui/components/rail"
+import {
+  SectionCarousel,
+  SectionCarouselItem,
+} from "@rawnaq/ui/components/section-carousel"
 
 import type { FlashDeal } from "../../types/home"
 
@@ -15,24 +17,25 @@ export async function FlashDealsSection({ deals }: { deals: FlashDeal[] }) {
   }
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold tracking-tight text-foreground">{t("flashDeals.title")}</h2>
-        <Button variant="link" asChild className="text-xs sm:text-sm">
-          <Link href="/products">{t("flashDeals.viewAll")}</Link>
-        </Button>
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-foreground">
+          {t("flashDeals.title")}
+        </h2>
+        <Link href="/products" className="text-sm font-medium text-primary hover:underline">
+          {t("flashDeals.viewAll")}
+        </Link>
       </div>
-      <Rail
-        label={t("flashDeals.title")}
-        prevLabel={t("rail.previous")}
-        nextLabel={t("rail.next")}
-      >
+      <SectionCarousel>
         {deals.map((deal) => (
-          <div key={deal.product.id} className="w-45 sm:w-55 md:w-60 shrink-0">
+          <SectionCarouselItem
+            key={deal.product.id}
+            className="basis-[46%] sm:basis-[46%] md:basis-[31%] lg:basis-[20%] xl:basis-[20%]"
+          >
             <ProductCard product={deal.product} />
-          </div>
+          </SectionCarouselItem>
         ))}
-      </Rail>
+      </SectionCarousel>
     </section>
   )
 }

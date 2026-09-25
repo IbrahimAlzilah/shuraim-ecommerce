@@ -269,7 +269,8 @@
       "goTo": "Go to slide {index}"
     },
     "categories": {
-      "title": "Shop by category"
+      "title": "Shop by category",
+      "viewAll": "View all"
     },
     "flashDeals": {
       "title": "Flash deals",
@@ -279,7 +280,8 @@
     "productSections": {
       "all": "All",
       "bestSellers": "Best sellers",
-      "newArrivals": "New arrivals"
+      "newArrivals": "New arrivals",
+      "viewAll": "View all"
     },
     "whyUs": {
       "title": "Why Shuraim?",

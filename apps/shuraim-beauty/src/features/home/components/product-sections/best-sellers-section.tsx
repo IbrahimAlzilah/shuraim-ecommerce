@@ -1,7 +1,12 @@
 import type { Product } from "@rawnaq/types"
 import { getTranslations } from "next-intl/server"
 
-import { ProductSectionTabs } from "./product-section-grid"
+import { Link } from "@rawnaq/i18n/navigation"
+import { ProductCard } from "@/features/catalog"
+import {
+  SectionCarousel,
+  SectionCarouselItem,
+} from "@rawnaq/ui/components/section-carousel"
 
 export async function BestSellersSection({ products }: { products: Product[] }) {
   const t = await getTranslations("Home")
@@ -11,9 +16,28 @@ export async function BestSellersSection({ products }: { products: Product[] }) 
   }
 
   return (
-    <section className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">{t("productSections.bestSellers")}</h2>
-      <ProductSectionTabs products={products} />
+    <section className="flex flex-col gap-3">
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-foreground">
+          {t("productSections.bestSellers")}
+        </h2>
+        <Link
+          href="/products?sort=popular"
+          className="text-sm font-medium text-primary hover:underline"
+        >
+          {t("productSections.viewAll")}
+        </Link>
+      </div>
+      <SectionCarousel>
+        {products.map((product) => (
+          <SectionCarouselItem
+            key={product.id}
+            className="basis-[46%] sm:basis-[46%] md:basis-[31%] lg:basis-[20%] xl:basis-[20%]"
+          >
+            <ProductCard product={product} />
+          </SectionCarouselItem>
+        ))}
+      </SectionCarousel>
     </section>
   )
 }

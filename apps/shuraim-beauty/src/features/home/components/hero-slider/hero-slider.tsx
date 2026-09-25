@@ -1,69 +1,109 @@
 "use client"
 
-import type { HomeBanner } from "../../types/home"
+import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { useState } from "react"
 
-import { Button } from "@rawnaq/ui/components/button"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@rawnaq/ui/components/carousel"
 import { cn } from "@rawnaq/ui/lib/utils"
 
+import type { HomeBanner } from "../../types/home"
 import { HeroSlideItem } from "./hero-slide-item"
 
 export function HeroSlider({ banners }: { banners: HomeBanner[] }) {
   const t = useTranslations("Home")
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
 
-  const activeBanner = banners[activeIndex]
+  useEffect(() => {
+    if (!api) return
 
-  if (!activeBanner) {
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
+
+    queueMicrotask(() => {
+      onSelect()
+    })
+
+    api.on("select", onSelect)
+
+    const interval = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext()
+      } else {
+        api.scrollTo(0)
+      }
+    }, 4000)
+
+    return () => {
+      api.off("select", onSelect)
+      clearInterval(interval)
+    }
+  }, [api])
+
+  if (banners.length === 0) {
     return null
   }
 
-  function go(index: number) {
-    setActiveIndex((index + banners.length) % banners.length)
-  }
-
   return (
-    <div className="relative">
-      <HeroSlideItem banner={activeBanner} />
+    <section className="relative w-full">
+      <Carousel
+        setApi={setApi}
+        opts={{ loop: true }}
+        className="group relative overflow-hidden rounded-2xl bg-muted shadow-xs"
+      >
+        <CarouselContent>
+          {banners.map((banner) => (
+            <CarouselItem key={banner.id}>
+              <HeroSlideItem banner={banner} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
 
-      {banners.length > 1 && (
-        <>
-          <Button
-            variant="secondary"
-            size="icon-sm"
-            aria-label={t("hero.previous")}
-            className="absolute inset-s-2 top-1/2 -translate-y-1/2 z-10 shadow-sm"
-            onClick={() => go(activeIndex - 1)}
-          >
-            <ChevronLeft className="size-4 rtl:rotate-180" />
-          </Button>
-          <Button
-            variant="secondary"
-            size="icon-sm"
-            aria-label={t("hero.next")}
-            className="absolute inset-e-2 top-1/2 -translate-y-1/2 z-10 shadow-sm"
-            onClick={() => go(activeIndex + 1)}
-          >
-            <ChevronRight className="size-4 rtl:rotate-180" />
-          </Button>
+        {/* Hover Arrows matching reference */}
+        {banners.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => api?.scrollPrev()}
+              className="absolute start-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-foreground shadow-md opacity-0 group-hover:opacity-100 hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none cursor-pointer"
+              aria-label={t("hero.previous")}
+            >
+              <ChevronLeft className="size-5 rtl:rotate-180" />
+            </button>
+            <button
+              type="button"
+              onClick={() => api?.scrollNext()}
+              className="absolute end-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-foreground shadow-md opacity-0 group-hover:opacity-100 hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none cursor-pointer"
+              aria-label={t("hero.next")}
+            >
+              <ChevronRight className="size-5 rtl:rotate-180" />
+            </button>
 
-          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-            {banners.map((banner, index) => (
-              <button
-                key={banner.id}
-                aria-label={t("hero.goTo", { index: index + 1 })}
-                onClick={() => go(index)}
-                className={cn(
-                  "size-1.5 rounded-full",
-                  index === activeIndex ? "bg-white" : "bg-white/50"
-                )}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+            {/* Indicators matching reference */}
+            <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+              {banners.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => api?.scrollTo(i)}
+                  className={cn(
+                    "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                    i === current ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"
+                  )}
+                  aria-label={t("hero.goTo", { index: i + 1 })}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </Carousel>
+    </section>
   )
 }

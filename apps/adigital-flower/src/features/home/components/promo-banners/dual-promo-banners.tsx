@@ -9,17 +9,17 @@ export function DualPromoBanners({ banners }: { banners: [HomeBanner, HomeBanner
         <Link
           key={banner.id}
           href={banner.href}
-          className="group relative aspect-video overflow-hidden rounded-xl"
+          className="group relative aspect-video overflow-hidden rounded-2xl border border-border/60 shadow-xs transition-all duration-300 hover:shadow-md"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={banner.imageUrl}
             alt={banner.title}
-            className="size-full object-cover transition-transform group-hover:scale-105"
+            className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 flex flex-col justify-end gap-1 bg-linear-to-t from-black/60 to-transparent p-4 text-white">
-            <span className="font-medium">{banner.title}</span>
-            {banner.subtitle && <span className="text-xs">{banner.subtitle}</span>}
+          <div className="absolute inset-0 flex flex-col justify-end gap-1 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-5 text-white">
+            <span className="font-bold text-base sm:text-lg">{banner.title}</span>
+            {banner.subtitle && <span className="text-xs sm:text-sm text-white/90">{banner.subtitle}</span>}
           </div>
         </Link>
       ))}

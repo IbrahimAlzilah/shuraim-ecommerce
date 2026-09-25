@@ -18,7 +18,7 @@ export async function HomeView() {
   const [firstBanner, secondBanner] = banners
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 py-6 sm:px-6">
+    <div className="mx-auto max-w-7xl space-y-8 px-4 py-6 pb-8 sm:px-6 lg:space-y-12">
       <HeroSlider banners={banners} />
       <FeaturedCategories categories={categories} />
       <FlashDealsSection deals={flashDeals} />

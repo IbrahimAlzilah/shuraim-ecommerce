@@ -284,7 +284,8 @@
       "goTo": "الانتقال للشريحة {index}"
     },
     "categories": {
-      "title": "تسوّق حسب القسم"
+      "title": "تسوّق حسب القسم",
+      "viewAll": "عرض الكل"
     },
     "flashDeals": {
       "title": "عروض محدودة",
@@ -294,7 +295,8 @@
     "productSections": {
       "all": "الكل",
       "bestSellers": "الأكثر مبيعًا",
-      "newArrivals": "وصل حديثًا"
+      "newArrivals": "وصل حديثًا",
+      "viewAll": "عرض الكل"
     },
     "whyUs": {
       "title": "لماذا أيجيتال فلاور؟",

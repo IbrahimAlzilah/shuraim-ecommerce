@@ -6,7 +6,7 @@ export function FullWidthPromoBanner({ banner }: { banner: HomeBanner }) {
   return (
     <Link
       href={banner.href}
-      className="group relative flex aspect-16/8 sm:aspect-21/9 min-h-40 sm:min-h-55 w-full overflow-hidden rounded-xl sm:rounded-2xl"
+      className="group relative flex aspect-16/8 sm:aspect-21/9 min-h-40 sm:min-h-55 w-full overflow-hidden rounded-2xl border border-border/60 shadow-xs transition-all duration-300 hover:shadow-md"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

@@ -24,20 +24,18 @@ function Rail({
     const el = scrollerRef.current
     if (!el) return
 
-    const isRtl = getComputedStyle(el).direction === "rtl"
-    const scrollLeft = Math.abs(el.scrollLeft)
+    const scrollOffset = Math.abs(el.scrollLeft)
     const maxScroll = el.scrollWidth - el.clientWidth
 
-    if (maxScroll <= 0) {
+    if (maxScroll <= 2) {
       setEdges({ start: true, end: true })
       return
     }
 
-    setEdges(
-      isRtl
-        ? { start: scrollLeft >= maxScroll - 1, end: scrollLeft <= 1 }
-        : { start: scrollLeft <= 1, end: scrollLeft >= maxScroll - 1 }
-    )
+    setEdges({
+      start: scrollOffset <= 2,
+      end: scrollOffset >= maxScroll - 2,
+    })
   }, [])
 
   React.useEffect(() => {
@@ -68,13 +66,26 @@ function Rail({
     el.scrollBy({ left: rtlAdjustedSign * amount, behavior: "smooth" })
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault()
+      scrollByDirection("next")
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault()
+      scrollByDirection("prev")
+    }
+  }
+
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative group/rail", className)}>
       <div
         ref={scrollerRef}
-        role="group"
+        role="region"
         aria-label={label}
-        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth py-1 px-0.5 scrollbar-none [&::-webkit-scrollbar]:hidden"
+        aria-orientation="horizontal"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth py-1 px-0.5 scrollbar-none [&::-webkit-scrollbar]:hidden focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring/50 rounded-xl"
       >
         {React.Children.map(children, (child) => (
           <div className="shrink-0 snap-start">{child}</div>
@@ -86,7 +97,7 @@ function Rail({
           type="button"
           aria-label={prevLabel}
           onClick={() => scrollByDirection("prev")}
-          className="bg-background ring-foreground/10 absolute inset-s-0 sm:-inset-s-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors"
+          className="bg-background ring-foreground/10 absolute inset-s-0 sm:-inset-s-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors cursor-pointer"
         >
           <ChevronRight className="rtl:rotate-0 size-4 rotate-180" />
         </button>
@@ -97,7 +108,7 @@ function Rail({
           type="button"
           aria-label={nextLabel}
           onClick={() => scrollByDirection("next")}
-          className="bg-background ring-foreground/10 absolute inset-e-0 sm:-inset-e-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors"
+          className="bg-background ring-foreground/10 absolute inset-e-0 sm:-inset-e-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full p-2 shadow-md ring-1 sm:flex hover:bg-muted transition-colors cursor-pointer"
         >
           <ChevronRight className="size-4 rtl:rotate-180" />
         </button>
