@@ -20,21 +20,21 @@ export function OrderSummary({
     <div className="border-border flex flex-col gap-2 rounded-lg border p-4 text-sm">
       <div className="flex justify-between">
         <span className="text-muted-foreground">{t("summary.subtotal")}</span>
-        <span>{formatCurrency(subtotal, "OMR", locale)}</span>
+        <span>{formatCurrency(subtotal, "YER", locale)}</span>
       </div>
       <div className="flex justify-between">
         <span className="text-muted-foreground">{t("summary.shipping")}</span>
-        <span>{formatCurrency(shippingFee, "OMR", locale)}</span>
+        <span>{formatCurrency(shippingFee, "YER", locale)}</span>
       </div>
       {discount > 0 && (
         <div className="flex justify-between">
           <span className="text-muted-foreground">{t("summary.discount")}</span>
-          <span>-{formatCurrency(discount, "OMR", locale)}</span>
+          <span>-{formatCurrency(discount, "YER", locale)}</span>
         </div>
       )}
       <div className="flex justify-between border-t pt-2 font-medium">
         <span>{t("summary.total")}</span>
-        <span>{formatCurrency(total, "OMR", locale)}</span>
+        <span>{formatCurrency(total, "YER", locale)}</span>
       </div>
     </div>
   )

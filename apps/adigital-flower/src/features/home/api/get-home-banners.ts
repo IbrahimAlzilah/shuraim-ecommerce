@@ -4,8 +4,8 @@ import type { HomeBanner } from "../types/home"
 const mockBanners: HomeBanner[] = [
   {
     id: "b-1",
-    title: "تشكيلة شريم الحصرية | Shuraim Beauty",
-    subtitle: "اكتشفي أرقى مستحضرات العناية والجمال الأصلية",
+    title: "تشكيلة أيجيتال فلاور الحصرية | Aigital Flower",
+    subtitle: "اكتشفي أرقى مستحضرات العناية والجمال والإكسسوارات",
     imageUrl: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80",
     href: "/products",
     ctaLabel: "تسوقي الآن",

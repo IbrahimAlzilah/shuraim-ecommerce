@@ -17,7 +17,7 @@ export function OrderSuccessView({ order }: { order: Order }) {
       <p className="text-muted-foreground text-sm">{t("success.description")}</p>
       <p className="text-sm">
         {t("success.orderNumber", { id: order.id })} —{" "}
-        {formatCurrency(order.total, "OMR", locale)}
+        {formatCurrency(order.total, "YER", locale)}
       </p>
       <Button asChild>
         <Link href="/">{t("success.backHome")}</Link>

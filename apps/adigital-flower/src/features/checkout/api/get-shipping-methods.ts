@@ -3,25 +3,25 @@ import type { ShippingMethod } from "../types/checkout-flow"
 // Stand-in shipping options until a real carrier/rates API is integrated.
 const mockShippingMethods: ShippingMethod[] = [
   {
-    id: "asyad-express",
-    label: "أسياد إكسبريس / بريد عُمان (كافة محافظات وولايات السلطنة)",
-    price: 1.5,
-    etaDays: 2,
-    badge: "1-3 أيام عمل",
-  },
-  {
-    id: "muscat-express",
-    label: "توصيل سريع خلال 24 ساعة (محافظة مسقط)",
-    price: 1.0,
+    id: "sanaa-express",
+    label: "توصيل سريع خلال 24 ساعة (أمانة العاصمة صنعاء)",
+    price: 1000,
     etaDays: 1,
     badge: "خلال 24 ساعة",
   },
   {
-    id: "aramex-oman",
-    label: "أرامكس عُمان للشحن السريع المبرد (توصيل للمنزل)",
-    price: 2.5,
-    etaDays: 2,
-    badge: "شحن مبرد",
+    id: "yemen-domestic",
+    label: "شركة الشحن المحلي (جميع المحافظات اليمنية)",
+    price: 2000,
+    etaDays: 4,
+    badge: "3-5 أيام عمل",
+  },
+  {
+    id: "aden-express",
+    label: "توصيل سريع خلال 24 ساعة (محافظة عدن)",
+    price: 1200,
+    etaDays: 1,
+    badge: "خلال 24 ساعة",
   },
 ]
 

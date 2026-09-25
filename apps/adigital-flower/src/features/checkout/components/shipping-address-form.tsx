@@ -12,25 +12,26 @@ import { Label } from "@rawnaq/ui/components/label"
 import { validateAddress, type AddressErrors } from "../utils/validate-address"
 
 const MAJOR_CITIES = [
-  "مسقط",
-  "السيب",
-  "بوشر",
-  "مطرح",
-  "العامرات",
-  "الخوض",
-  "الموالح",
-  "الموج",
-  "صلالة",
-  "صحار",
-  "نزوى",
-  "بركاء",
-  "الرستاق",
-  "صور",
-  "إبراء",
-  "عبري",
-  "البريمي",
-  "المصنعة",
-  "سمائل",
+  "صنعاء",
+  "عدن",
+  "تعز",
+  "الحديدة",
+  "إب",
+  "ذمار",
+  "المكلا",
+  "لحج",
+  "زنجبار",
+  "الضالع",
+  "البيضاء",
+  "حجة",
+  "صعدة",
+  "عمران",
+  "المحويت",
+  "ريمة",
+  "مأرب",
+  "سيئون",
+  "عتق",
+  "الغيضة",
 ]
 
 export function ShippingAddressForm({
@@ -42,7 +43,7 @@ export function ShippingAddressForm({
 }) {
   const t = useTranslations("Checkout")
   const [values, setValues] = useState<Partial<Address>>({
-    country: "سلطنة عُمان",
+    country: "الجمهورية اليمنية",
     ...address,
   })
   const [errors, setErrors] = useState<AddressErrors>({})
@@ -91,7 +92,7 @@ export function ShippingAddressForm({
             id="phone"
             type="tel"
             dir="ltr"
-            placeholder="+968 9XXXXXXX"
+            placeholder="+967 7XXXXXXXX"
             value={values.phone ?? ""}
             aria-invalid={Boolean(errors.phone)}
             onChange={(e) => update("phone", e.target.value)}
@@ -99,7 +100,7 @@ export function ShippingAddressForm({
           {errors.phone ? (
             <span className="text-destructive text-xs">{t(`address.errors.${errors.phone}`)}</span>
           ) : (
-            <span className="text-[11px] text-muted-foreground">للتواصل وتأكيد موعد التوصيل عبر أسياد إكسبريس أو المندوب</span>
+            <span className="text-[11px] text-muted-foreground">للتواصل وتأكيد موعد التوصيل عبر المندوب أو شركة الشحن</span>
           )}
         </div>
       </div>
@@ -112,16 +113,11 @@ export function ShippingAddressForm({
           </Label>
           <select
             id="country"
-            value={values.country ?? "سلطنة عُمان"}
+            value={values.country ?? "الجمهورية اليمنية"}
             onChange={(e) => update("country", e.target.value)}
             className="h-10 rounded-lg border bg-background px-3 text-sm font-medium text-foreground outline-none focus:border-primary"
           >
-            <option value="سلطنة عُمان">سلطنة عُمان (Oman)</option>
-            <option value="الإمارات العربية المتحدة">الإمارات العربية المتحدة (UAE)</option>
-            <option value="المملكة العربية السعودية">المملكة العربية السعودية (KSA)</option>
-            <option value="الكويت">الكويت (Kuwait)</option>
-            <option value="البحرين">البحرين (Bahrain)</option>
-            <option value="قطر">قطر (Qatar)</option>
+            <option value="الجمهورية اليمنية">الجمهورية اليمنية (Yemen)</option>
           </select>
         </div>
 

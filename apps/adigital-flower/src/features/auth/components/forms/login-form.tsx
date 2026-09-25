@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
 import { useState } from "react"
 
 import { Link } from "@rawnaq/i18n/navigation"
-import { isGccPhoneNumber, isOmaniPhoneNumber } from "@rawnaq/utils"
+import { isYemeniPhoneNumber } from "@rawnaq/utils"
 import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
 import { Label } from "@rawnaq/ui/components/label"
@@ -63,8 +63,8 @@ export function LoginForm({
       return
     }
 
-    if (!isOmaniPhoneNumber(cleaned) && !isGccPhoneNumber(cleaned)) {
-      setPhoneError("يرجى إدخال رقم هاتف عُماني صحيح (مثال: 9XXXXXXX أو 7XXXXXXX أو +968)")
+    if (!isYemeniPhoneNumber(cleaned)) {
+      setPhoneError("يرجى إدخال رقم هاتف يمني صحيح (مثال: 7XXXXXXXX أو +967)")
       return
     }
 

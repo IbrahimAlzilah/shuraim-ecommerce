@@ -68,7 +68,7 @@ export function ShippingMethodSelector({
                 <span className="text-sm font-bold text-foreground">
                   {method.price === 0
                     ? "مجاناً"
-                    : formatCurrency(method.price, "OMR", locale)}
+                    : formatCurrency(method.price, "YER", locale)}
                 </span>
               </div>
             </button>

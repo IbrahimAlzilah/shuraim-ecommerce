@@ -5,7 +5,7 @@ import { useLocale } from "next-intl"
 
 import { formatCurrency } from "@rawnaq/utils"
 
-const FREE_SHIPPING_THRESHOLD = 25
+const FREE_SHIPPING_THRESHOLD = 30000
 
 export function FreeShippingProgress({ subtotal }: { subtotal: number }) {
   const locale = useLocale()
@@ -24,13 +24,13 @@ export function FreeShippingProgress({ subtotal }: { subtotal: number }) {
         <span className="font-medium text-foreground">
           {isQualified ? (
             <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
-              مبروك! حصلت على شحن مجاني لكافة محافظات سلطنة عُمان!
+              مبروك! حصلت على شحن مجاني لجميع محافظات الجمهورية اليمنية!
             </span>
           ) : (
             <span>
               أضيفي بـ{" "}
               <b className="text-primary font-bold">
-                {formatCurrency(remaining, "OMR", locale)}
+                {formatCurrency(remaining, "YER", locale)}
               </b>{" "}
               للحصول على <strong>شحن مجاني + هدية</strong>
             </span>

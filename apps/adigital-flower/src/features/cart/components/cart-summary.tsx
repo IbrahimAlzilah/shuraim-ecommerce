@@ -21,7 +21,7 @@ export function CartSummary({ subtotal }: { subtotal: number }) {
       <div className="flex items-center justify-between text-sm">
         <span className="text-muted-foreground">{t("subtotal")}</span>
         <span className="text-base font-bold text-foreground">
-          {formatCurrency(subtotal, "OMR", locale)}
+          {formatCurrency(subtotal, "YER", locale)}
         </span>
       </div>
 

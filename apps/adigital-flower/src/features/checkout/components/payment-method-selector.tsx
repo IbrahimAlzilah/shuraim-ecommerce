@@ -15,28 +15,21 @@ const PAYMENT_OPTIONS: {
   badge?: string
 }[] = [
   {
-    id: "omannet",
-    title: "بطاقة الخصم المباشر (OmanNet)",
-    subtitle: "الدفع المباشر عبر بطاقات البنوك العُمانية (بنك مسقط، ظفار، صحار، ميثاق، NBO)",
-    badge: "الخيار الأسرع",
+    id: "kuraimi-mobile",
+    title: "الكريمي موبايل",
+    subtitle: "الدفع الفوري عبر محفظة بنك الكريمي الإسلامي",
+    badge: "الأكثر استخداماً",
   },
   {
-    id: "thawani",
-    title: "محفظة ثواني الذكية (Thawani Pay)",
-    subtitle: "الدفع الفوري الآمن عبر بوابة ثواني العُمانية المعتمدة",
+    id: "floosak",
+    title: "فلوسك (Floosak)",
+    subtitle: "الدفع الآمن عبر محفظة فلوسك الإلكترونية",
     badge: "دفع رقمي",
   },
   {
-    id: "apple-pay",
-    title: "Apple Pay",
-    subtitle: "إنهاء الطلب بلمسة واحدة عبر بصمة الوجه أو الإصبع",
-    badge: "بنقرة واحدة",
-  },
-  {
-    id: "tabby",
-    title: "تابي (Tabby)",
-    subtitle: "قسّمي مشترياتكِ على 4 دفعات شهرية بالريال العُماني بدون فوائد",
-    badge: "4 دفعات شهرية",
+    id: "onecash",
+    title: "ون كاش (OneCash)",
+    subtitle: "تحويل ودفع فوري عبر محفظة ون كاش",
   },
   {
     id: "card",
@@ -46,7 +39,8 @@ const PAYMENT_OPTIONS: {
   {
     id: "cash-on-delivery",
     title: "الدفع عند الاستلام (COD)",
-    subtitle: "ادفعي نقداً أو عبر جهاز الدفع عند استلام طلبكِ في سلطنة عُمان",
+    subtitle: "ادفعي نقداً عند استلام طلبكِ في أي محافظة يمنية",
+    badge: "الأكثر شيوعاً",
   },
 ]
 

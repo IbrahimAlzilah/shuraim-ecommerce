@@ -23,20 +23,16 @@ export function Footer() {
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              منصة الجمال والعناية المتخصصة في تقديم أشهر الماركات العالمية والكورية الأصلية. نحرص على تقديم تجربة تسوق راقية تجمع بين الجودة، التميز، والأسعار المناسبة.
+              متجرك اليمني للصحة والجمال، ويشمل أيضاً الإكسسوارات والإلكترونيات. نوفر أشهر الماركات العالمية والمحلية بجودة موثوقة وأسعار مناسبة لعملائنا في جميع محافظات الجمهورية اليمنية.
             </p>
             <div className="flex flex-col gap-2 pt-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-2">
                 <CheckCircle className="size-4 text-emerald-600" />
-                <span>متجر مرخص ومعتمد في سلطنة عُمان (MOCIIP)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-foreground">الرقم التعريفي الضريبي (VAT):</span>
-                <span dir="ltr">OM1100098765</span>
+                <span>متجر مسجل رسمياً في الجمهورية اليمنية</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-foreground">السجل التجاري:</span>
-                <span dir="ltr">CR 1384920 (مسقط)</span>
+                <span dir="ltr">YE-CR 205417 (صنعاء)</span>
               </div>
             </div>
           </div>
@@ -62,17 +58,17 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/products?category=fragrance" className="hover:text-primary transition-colors">
-                  العطور الأصلية
+                  العطور والعود والبخور
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=korean-care" className="hover:text-primary transition-colors">
-                  العناية الكورية
+                <Link href="/products?category=accessories" className="hover:text-primary transition-colors">
+                  الإكسسوارات
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=bundles" className="hover:text-primary transition-colors">
-                  بكجات التوفير
+                <Link href="/products?category=electronics" className="hover:text-primary transition-colors">
+                  الإلكترونيات
                 </Link>
               </li>
             </ul>
@@ -153,16 +149,13 @@ export function Footer() {
           {/* Payment Method Badges */}
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="rounded-md border bg-background px-2 py-1 font-bold text-[10px] text-foreground">
-              خصم عُمان OmanNet
+              الكريمي موبايل
             </span>
             <span className="rounded-md border bg-background px-2 py-1 font-bold text-[10px] text-foreground">
-              ثواني Thawani
+              فلوسك Floosak
             </span>
             <span className="rounded-md border bg-background px-2 py-1 font-bold text-[10px] text-foreground">
-              Apple Pay
-            </span>
-            <span className="rounded-md border bg-background px-2 py-1 font-bold text-[10px] text-foreground">
-              تابي Tabby
+              ون كاش OneCash
             </span>
             <span className="rounded-md border bg-background px-2 py-1 font-bold text-[10px] text-foreground">
               Visa / Master

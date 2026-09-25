@@ -29,8 +29,8 @@ export function findOrCreateAccountByPhone(phone: string): { user: Customer; tok
     const id = `cust-${Date.now()}`
     account = {
       id,
-      name: "عميل شريم",
-      email: `${phone}@rawnaq.internal`,
+      name: "عميل أيجيتال فلاور",
+      email: `${phone}@adigitalflower.internal`,
       phone,
       addresses: [],
       password: "otp-login",

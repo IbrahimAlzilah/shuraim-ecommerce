@@ -1,5 +1,5 @@
 import type { Address } from "@rawnaq/types"
-import { isGccPhoneNumber } from "@rawnaq/utils"
+import { isYemeniPhoneNumber } from "@rawnaq/utils"
 
 export type AddressErrorCode = "required" | "invalidPhone"
 
@@ -12,7 +12,7 @@ export function validateAddress(address: Partial<Address>): AddressErrors {
     errors.recipientName = "required"
   }
 
-  if (!address.phone || !isGccPhoneNumber(address.phone)) {
+  if (!address.phone || !isYemeniPhoneNumber(address.phone)) {
     errors.phone = "invalidPhone"
   }
 
