@@ -50,7 +50,8 @@
     "chatWhatsapp": "Chat on WhatsApp",
     "popular": "Popular",
     "featuredBrands": "Featured Brands:",
-    "browseCollection": "Browse Collection"
+    "browseCollection": "Browse Collection",
+    "language": "Language"
   },
   "BottomBar": {
     "home": "Home",

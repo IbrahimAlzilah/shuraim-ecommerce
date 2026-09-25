@@ -1,12 +1,13 @@
 "use client"
 
 import type { NavItem } from "@/features/catalog"
-import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Phone } from "lucide-react"
+import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Phone, Globe } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
+import { LocaleSwitcher } from "@/shared/layout/locale-switcher"
 
 export function MobileNav({ nav }: { nav: NavItem[] }) {
   const t = useTranslations("Header")
@@ -82,6 +83,15 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                 <Sparkles className="size-3.5 text-amber-500 shrink-0" />
                 <span className="truncate">{t("newArrivals")}</span>
               </Link>
+            </div>
+
+            {/* Language */}
+            <div className="flex items-center justify-between border-b px-4 py-3 shrink-0">
+              <div className="flex items-center gap-1.5 text-xs font-medium text-foreground">
+                <Globe className="size-3.5 text-primary shrink-0" />
+                <span>{t("language")}</span>
+              </div>
+              <LocaleSwitcher />
             </div>
 
             {/* Navigation Categories List */}

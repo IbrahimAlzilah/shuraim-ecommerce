@@ -20,29 +20,30 @@ export async function Header() {
 
   return (
     <header className="bg-background border-border sticky top-0 z-40 border-b">
-      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:px-6 md:gap-3 lg:gap-4">
         <div className="md:hidden">
           <MobileNav nav={nav} />
         </div>
+
         <div className="flex items-center gap-3 shrink-0">
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/logo.jpg"
               alt="Aigital Flower | Beauty, Accessories & Tech"
-              className="h-9 sm:h-10 border w-auto object-contain rounded-md dark:bg-white dark:p-1 transition-transform duration-200 group-hover:opacity-90"
+              className="h-9 sm:h-10 w-auto object-contain rounded-md dark:bg-white dark:p-1 transition-transform duration-200 group-hover:opacity-90"
             />
           </Link>
           <LocationBadge />
         </div>
-        <div
-          className="hidden h-6 w-px bg-border lg:block shrink-0"
-          aria-hidden="true"
-        />
+
+        <div className="hidden h-6 w-px bg-border md:block shrink-0" aria-hidden="true" />
+
         <div className="hidden flex-1 md:block">
           <SearchFieldTrigger />
         </div>
-        <div className="ms-auto flex items-center gap-1.5 sm:gap-2">
+
+        <div className="ms-auto flex items-center gap-1 sm:gap-1.5 lg:gap-2">
           <SearchTrigger className="md:hidden" />
           <AccountMenu />
           <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
@@ -52,9 +53,10 @@ export async function Header() {
           </Button>
           <CartTrigger />
           <ThemeToggle />
-          <LocaleSwitcher />
+          <LocaleSwitcher className="hidden sm:inline-flex" />
         </div>
       </div>
+
       <div className="hidden border-t md:block" aria-label={t("categories")}>
         <MegaMenu />
       </div>

@@ -73,10 +73,10 @@ export function MegaMenu({ items = NAVIGATION_ITEMS }: MegaMenuProps) {
 
       {/* Flyout Panel */}
       {activeItem && activeItem.columns && (
-        <div className="absolute top-full inset-s-0 inset-e-0 bg-background border-b border-border shadow-xl py-6 lg:py-8 px-4 sm:px-6 animate-in fade-in slide-in-from-top-1 duration-200 z-50">
+        <div className="absolute top-full inset-s-0 inset-e-0 max-h-[70vh] overflow-y-auto bg-background border-b border-border shadow-xl py-6 lg:py-8 px-4 sm:px-6 animate-in fade-in slide-in-from-top-1 duration-200 z-50">
           <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
             {/* Columns */}
-            <div className={cn("grid gap-4 lg:gap-6", activeItem.banner ? "md:col-span-8 grid-cols-2 lg:grid-cols-3" : "md:col-span-12 grid-cols-2 md:grid-cols-4")}>
+            <div className={cn("grid gap-4 lg:gap-6", activeItem.banner ? "md:col-span-8 grid-cols-2 lg:grid-cols-3" : "md:col-span-12 grid-cols-2 lg:grid-cols-4")}>
               {activeItem.columns.map((col, idx) => (
                 <div key={idx}>
                   <h4 className="font-bold text-sm text-primary mb-3 pb-1 border-b border-amber-200/50 dark:border-neutral-800">

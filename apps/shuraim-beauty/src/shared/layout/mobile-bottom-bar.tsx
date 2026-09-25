@@ -89,7 +89,7 @@ export function MobileBottomBar() {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
         >
           <User className="size-5" />
-          <span className="text-[10px] font-medium truncate max-w-15">
+          <span className="text-[10px] font-medium truncate max-w-16">
             {isAuthenticated && user?.name ? user.name.split(" ")[0] : t("account")}
           </span>
         </button>

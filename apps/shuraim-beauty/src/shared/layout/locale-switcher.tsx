@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "@rawnaq/i18n/navigation"
 import { routing, type Locale } from "@rawnaq/i18n/routing"
 import { Button } from "@rawnaq/ui/components/button"
 
-export function LocaleSwitcher() {
+export function LocaleSwitcher({ className }: { className?: string }) {
   const t = useTranslations("LocaleSwitcher")
   const locale = useLocale()
   const router = useRouter()
@@ -31,6 +31,7 @@ export function LocaleSwitcher() {
       disabled={isPending}
       aria-label={t("label")}
       lang={nextLocale}
+      className={className}
     >
       {t(nextLocale)}
     </Button>

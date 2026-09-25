@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="border-t bg-muted/20 text-foreground transition-colors">
       {/* Main Footer Links */}
       <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12 sm:px-6">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 sm:gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 sm:gap-8">
           {/* Brand & Bio */}
           <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-2">
             <Link href="/" className="inline-block group">
@@ -122,7 +122,7 @@ export function Footer() {
           </details>
 
           {/* Customer Service & WhatsApp */}
-          <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1 pt-1 sm:pt-0">
+          <div className="flex flex-col gap-3 sm:col-span-2 md:col-span-2 lg:col-span-1 pt-1 sm:pt-0">
             <h4 className="text-sm font-bold text-foreground">{t("customerService")}</h4>
             <div className="flex flex-col gap-2.5 text-xs text-muted-foreground">
               <p className="leading-relaxed">{t("customerServiceNote")}</p>
