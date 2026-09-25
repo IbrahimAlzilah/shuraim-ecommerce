@@ -44,7 +44,7 @@ function MessageCarousel({
     <div
       dir={dir}
       className={cn(
-        "bg-primary text-primary-foreground relative flex h-10 items-center justify-center px-10 text-center text-xs font-medium sm:text-sm",
+        "bg-primary text-primary-foreground relative flex h-10 items-center justify-center px-4 sm:px-10 text-center text-xs font-medium sm:text-sm",
         className
       )}
     >

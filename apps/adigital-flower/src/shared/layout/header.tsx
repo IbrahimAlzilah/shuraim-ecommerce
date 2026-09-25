@@ -43,21 +43,28 @@ export async function Header() {
           <SearchFieldTrigger />
         </div>
 
-        <div className="ms-auto flex items-center gap-1 sm:gap-1.5 lg:gap-2">
+        <div className="ms-auto flex items-center gap-2 lg:gap-3">
           <SearchTrigger className="md:hidden" />
           <AccountMenu />
+
           <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
             <Link href="/wishlist" aria-label={t("wishlist")}>
               <Heart className="size-5" />
             </Link>
           </Button>
-          <CartTrigger />
-          <ThemeToggle />
+
+          <div className="hidden md:flex">
+            <CartTrigger />
+          </div>
+
+          <div className="hidden md:flex">
+            <ThemeToggle />
+          </div>
           <LocaleSwitcher className="hidden sm:inline-flex" />
         </div>
       </div>
 
-      <div className="hidden border-t md:block" aria-label={t("categories")}>
+      <div className="hidden border-t md:block">
         <MegaMenu />
       </div>
     </header>
