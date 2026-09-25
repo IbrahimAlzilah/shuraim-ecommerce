@@ -29,7 +29,7 @@ export async function Header() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/logo.jpg"
-              alt="شريم | Shuraim Beauty"
+              alt="Aigital Flower | Flowers & Gifts"
               className="h-9 sm:h-10 w-auto object-contain rounded-md dark:bg-white dark:p-1 transition-transform duration-200 group-hover:opacity-90"
             />
           </Link>

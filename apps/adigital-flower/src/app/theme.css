@@ -1,0 +1,59 @@
+/* Aigital Flower brand palette — overrides @rawnaq/ui/globals.css tokens.
+   Derived from public/images/logo.jpg (cream background, charcoal line art,
+   sage green leaves). Import this AFTER @rawnaq/ui/globals.css. */
+
+:root {
+  --background: oklch(0.968 0.013 63.923);
+  --foreground: oklch(0.273 0.010 61.032);
+  --card: oklch(0.968 0.013 63.923);
+  --card-foreground: oklch(0.273 0.010 61.032);
+  --popover: oklch(0.968 0.013 63.923);
+  --popover-foreground: oklch(0.273 0.010 61.032);
+  --primary: oklch(0.565 0.057 125.014);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.913 0.028 65.751);
+  --secondary-foreground: oklch(0.273 0.010 61.032);
+  --muted: oklch(0.941 0.017 70.529);
+  --muted-foreground: oklch(0.606 0.017 61.175);
+  --accent: oklch(0.700 0.082 47.510);
+  --accent-foreground: oklch(1 0 0);
+  --border: oklch(0.895 0.025 71.449);
+  --input: oklch(0.895 0.025 71.449);
+  --ring: oklch(0.565 0.057 125.014);
+  --sidebar: oklch(0.941 0.017 70.529);
+  --sidebar-foreground: oklch(0.273 0.010 61.032);
+  --sidebar-primary: oklch(0.565 0.057 125.014);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.913 0.028 65.751);
+  --sidebar-accent-foreground: oklch(0.273 0.010 61.032);
+  --sidebar-border: oklch(0.895 0.025 71.449);
+  --sidebar-ring: oklch(0.565 0.057 125.014);
+}
+
+.dark {
+  --background: oklch(0.241 0.009 75.189);
+  --foreground: oklch(0.941 0.017 70.529);
+  --card: oklch(0.298 0.016 67.149);
+  --card-foreground: oklch(0.941 0.017 70.529);
+  --popover: oklch(0.298 0.016 67.149);
+  --popover-foreground: oklch(0.941 0.017 70.529);
+  --primary: oklch(0.691 0.068 123.440);
+  --primary-foreground: oklch(0.241 0.009 75.189);
+  --secondary: oklch(0.326 0.017 70.897);
+  --secondary-foreground: oklch(0.941 0.017 70.529);
+  --muted: oklch(0.298 0.016 67.149);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.772 0.069 52.530);
+  --accent-foreground: oklch(0.241 0.009 75.189);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.691 0.068 123.440);
+  --sidebar: oklch(0.298 0.016 67.149);
+  --sidebar-foreground: oklch(0.941 0.017 70.529);
+  --sidebar-primary: oklch(0.691 0.068 123.440);
+  --sidebar-primary-foreground: oklch(0.241 0.009 75.189);
+  --sidebar-accent: oklch(0.326 0.017 70.897);
+  --sidebar-accent-foreground: oklch(0.941 0.017 70.529);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.691 0.068 123.440);
+}

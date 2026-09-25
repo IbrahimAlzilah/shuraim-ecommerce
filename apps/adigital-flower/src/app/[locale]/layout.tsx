@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 
 import "@rawnaq/ui/globals.css"
+import "@/app/theme.css"
 import { ThemeProvider } from "@/shared/providers/theme-provider"
 import { AnnouncementBar } from "@/shared/layout/announcement-bar"
 import { Header } from "@/shared/layout/header"

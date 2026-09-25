@@ -18,7 +18,7 @@ export function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/logo.jpg"
-                alt="شريم | Shuraim Beauty"
+                alt="Aigital Flower | Flowers & Gifts"
                 className="h-12 w-auto object-contain rounded-md dark:bg-white dark:p-1 transition-opacity group-hover:opacity-90"
               />
             </Link>
@@ -134,11 +134,11 @@ export function Footer() {
               </a>
 
               <a
-                href="mailto:care@rawnaq.com"
+                href="mailto:care@adigitalflower.com"
                 className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground"
               >
                 <Mail className="size-3.5" />
-                <span>care@rawnaq.com</span>
+                <span>care@adigitalflower.com</span>
               </a>
             </div>
           </div>
@@ -147,7 +147,7 @@ export function Footer() {
         {/* Bottom Bar: Copyright & Payment Gateways */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row text-xs text-muted-foreground">
           <p>
-            متجر شريم © {year} — {t("rights")}
+            متجر أيجيتال فلاور © {year} — {t("rights")}
           </p>
 
           {/* Payment Method Badges */}
