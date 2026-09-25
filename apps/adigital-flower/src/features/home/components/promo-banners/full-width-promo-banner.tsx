@@ -11,13 +11,9 @@ export function FullWidthPromoBanner({ banner }: { banner: HomeBanner }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={banner.imageUrl}
-        alt={banner.title}
+        alt={banner.title || "Promo Banner"}
         className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 bg-black/45 p-4 text-center text-white">
-        <span className="text-lg sm:text-2xl font-bold tracking-tight">{banner.title}</span>
-        {banner.subtitle && <span className="text-xs sm:text-sm text-white/90 max-w-lg">{banner.subtitle}</span>}
-      </div>
     </Link>
   )
 }

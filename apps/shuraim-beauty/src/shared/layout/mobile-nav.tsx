@@ -13,11 +13,6 @@ import { LocaleSwitcher } from "@/shared/layout/locale-switcher"
 export function MobileNav({ nav }: { nav: NavItem[] }) {
   const t = useTranslations("Header")
   const [isOpen, setIsOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   useEffect(() => {
     if (isOpen) {
@@ -46,7 +41,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
         <Menu className="size-5" />
       </Button>
 
-      {isOpen && mounted && createPortal(
+      {isOpen && typeof document !== "undefined" && createPortal(
         <div className="fixed inset-0 z-50 flex">
           {/* Backdrop */}
           <div
@@ -164,7 +159,6 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                 <HelpCircle className="size-4 text-primary shrink-0" />
                 <span>{t("needHelp")}</span>
               </div>
-              <p className="mb-2 leading-relaxed">{t("helpDescription")}</p>
               <a
                 href="https://wa.me/"
                 target="_blank"
