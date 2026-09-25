@@ -12,8 +12,15 @@ import { TestimonialsSection } from "../components/testimonials/testimonials-sec
 import { WhyUsSection } from "../components/trust-highlights/why-us-section"
 
 export async function HomeView() {
-  const { banners, categories, brands, flashDeals, bestSellers, newArrivals } =
-    await getHomeContent()
+  const {
+    banners,
+    categories,
+    brands,
+    flashDeals,
+    bestSellers,
+    curated,
+    newArrivals,
+  } = await getHomeContent()
 
   const [firstBanner, secondBanner] = banners
 
@@ -27,7 +34,7 @@ export async function HomeView() {
         <DualPromoBanners banners={[firstBanner, secondBanner]} />
       )}
       <BestSellersSection products={bestSellers} />
-      <CuratedCollection products={bestSellers} />
+      <CuratedCollection products={curated} />
       {firstBanner && <FullWidthPromoBanner banner={firstBanner} />}
       <NewArrivalsSection products={newArrivals} />
       <WhyUsSection />

@@ -20,5 +20,6 @@ export interface HomeContent {
   brands: Brand[]
   flashDeals: FlashDeal[]
   bestSellers: Product[]
+  curated: Product[]
   newArrivals: Product[]
 }

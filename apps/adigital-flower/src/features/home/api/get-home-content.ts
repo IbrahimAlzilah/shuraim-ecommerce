@@ -5,7 +5,7 @@ import { getFeaturedCategories } from "./get-featured-categories"
 import { getFlashDeals } from "./get-flash-deals"
 import { getHomeBanners } from "./get-home-banners"
 
-const SECTION_ITEM_COUNT = 5
+const SECTION_ITEM_COUNT = 8
 
 export async function getHomeContent(): Promise<HomeContent> {
   const [banners, categories, brands, flashDeals, { items }] = await Promise.all([
@@ -13,18 +13,16 @@ export async function getHomeContent(): Promise<HomeContent> {
     getFeaturedCategories(),
     getBrands(),
     getFlashDeals(),
-    getProducts({ pageSize: SECTION_ITEM_COUNT * 2 }),
+    getProducts({ pageSize: 32 }),
   ])
 
-  // No real "best seller"/"new arrival" ranking data exists yet — with only
-  // a handful of mock products, the two lists overlap rather than each
-  // being forced to a distinct 6 out of too few items.
   return {
     banners,
-    categories: categories.slice(0, SECTION_ITEM_COUNT),
+    categories,
     brands: brands.slice(0, SECTION_ITEM_COUNT),
     flashDeals: flashDeals.slice(0, SECTION_ITEM_COUNT),
     bestSellers: items.slice(0, SECTION_ITEM_COUNT),
-    newArrivals: items.slice(-SECTION_ITEM_COUNT),
+    curated: items.slice(SECTION_ITEM_COUNT, SECTION_ITEM_COUNT * 2),
+    newArrivals: items.slice(SECTION_ITEM_COUNT * 2, SECTION_ITEM_COUNT * 3),
   }
 }

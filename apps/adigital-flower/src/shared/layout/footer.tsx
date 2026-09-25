@@ -1,7 +1,8 @@
-import { CheckCircle, Phone, Mail, ChevronDown } from "lucide-react"
+import { CheckCircle, Phone, Mail } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { Link } from "@rawnaq/i18n/navigation"
+import { FooterSection } from "@/shared/layout/footer-section"
 
 export function Footer() {
   const t = useTranslations("Footer")
@@ -38,12 +39,8 @@ export function Footer() {
           </div>
 
           {/* Categories */}
-          <details className="group border-b border-border/40 sm:border-0 pb-3 sm:pb-0">
-            <summary className="flex cursor-pointer sm:cursor-default items-center justify-between list-none text-sm font-bold text-foreground sm:pointer-events-none [&::-webkit-details-marker]:hidden">
-              <h4>{t("storeSections")}</h4>
-              <ChevronDown className="size-4 text-muted-foreground transition-transform group-open:rotate-180 sm:hidden" />
-            </summary>
-            <ul className="flex flex-col gap-2 pt-2.5 sm:pt-3 text-xs text-muted-foreground max-sm:hidden group-open:max-sm:flex">
+          <FooterSection title={t("storeSections")}>
+            <ul className="flex flex-col gap-2">
               <li>
                 <Link href="/products?category=skincare" className="hover:text-primary transition-colors py-0.5 inline-block">
                   {t("categories.skincare")}
@@ -75,15 +72,11 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </details>
+          </FooterSection>
 
           {/* Quick links */}
-          <details className="group border-b border-border/40 sm:border-0 pb-3 sm:pb-0">
-            <summary className="flex cursor-pointer sm:cursor-default items-center justify-between list-none text-sm font-bold text-foreground sm:pointer-events-none [&::-webkit-details-marker]:hidden">
-              <h4>{t("quickLinks")}</h4>
-              <ChevronDown className="size-4 text-muted-foreground transition-transform group-open:rotate-180 sm:hidden" />
-            </summary>
-            <ul className="flex flex-col gap-2 pt-2.5 sm:pt-3 text-xs text-muted-foreground max-sm:hidden group-open:max-sm:flex">
+          <FooterSection title={t("quickLinks")}>
+            <ul className="flex flex-col gap-2">
               <li>
                 <Link href="/about" className="hover:text-primary transition-colors py-0.5 inline-block">
                   {t("about")}
@@ -115,7 +108,7 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </details>
+          </FooterSection>
 
           {/* Customer Service & WhatsApp */}
           <div className="flex flex-col gap-3 sm:col-span-2 md:col-span-2 lg:col-span-1 pt-1 sm:pt-0">

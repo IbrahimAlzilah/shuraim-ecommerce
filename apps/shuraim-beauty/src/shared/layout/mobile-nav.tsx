@@ -4,6 +4,7 @@ import type { NavItem } from "@/features/catalog"
 import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Phone, Globe } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
@@ -12,6 +13,11 @@ import { LocaleSwitcher } from "@/shared/layout/locale-switcher"
 export function MobileNav({ nav }: { nav: NavItem[] }) {
   const t = useTranslations("Header")
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (isOpen) {
@@ -40,7 +46,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
         <Menu className="size-5" />
       </Button>
 
-      {isOpen && (
+      {isOpen && mounted && createPortal(
         <div className="fixed inset-0 z-50 flex">
           {/* Backdrop */}
           <div
@@ -170,7 +176,8 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )
