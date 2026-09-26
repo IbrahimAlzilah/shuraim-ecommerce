@@ -7,7 +7,6 @@ import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
 
 import { useCartStore } from "../hooks/use-cart-store"
-import { FreeShippingProgress } from "./free-shipping-progress"
 
 interface CartSummaryProps {
   subtotal: number
@@ -26,9 +25,6 @@ export function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
 
   return (
     <div className="flex flex-col gap-3.5 border-t pt-4">
-      {/* Free Shipping Gamification Bar */}
-      <FreeShippingProgress subtotal={subtotal} />
-
       {/* Subtotal */}
       <div className="flex items-center justify-between text-sm">
         <span className="text-muted-foreground">{t("subtotal")}</span>
@@ -38,7 +34,7 @@ export function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
       </div>
 
       {/* Checkout Button */}
-      <Button asChild size="lg" className="w-full text-sm font-semibold" onClick={handleCheckout}>
+      <Button asChild size="lg" className="w-full text-sm font-medium rounded-full" onClick={handleCheckout}>
         <Link href="/checkout" onClick={handleCheckout}>
           {t("checkout")}
         </Link>

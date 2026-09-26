@@ -9,6 +9,7 @@ import { Button } from "@rawnaq/ui/components/button"
 
 import { useCart } from "../hooks/use-cart"
 import { useCartStore } from "../hooks/use-cart-store"
+import { FreeShippingProgress } from "./free-shipping-progress"
 import { CartItem } from "./cart-item"
 import { CartSummary } from "./cart-summary"
 
@@ -75,11 +76,14 @@ export function CartDrawer() {
             </Button>
           </div>
         ) : (
-          <div className="flex-1 space-y-3 overflow-y-auto pe-1">
-            {items.map((item) => (
-              <CartItem key={item.id} item={item} />
-            ))}
-          </div>
+          <>
+            <FreeShippingProgress subtotal={subtotal} />
+            <div className="flex-1 space-y-3 overflow-y-auto pe-1">
+              {items.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
+          </>
         )}
 
         {items.length > 0 && (
