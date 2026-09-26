@@ -21,7 +21,7 @@ export async function getHomeContent(): Promise<HomeContent> {
     banners,
     promoBanners,
     categories,
-    brands: brands.slice(0, SECTION_ITEM_COUNT),
+    brands: brands.slice(0, 16),
     flashDeals: flashDeals.slice(0, SECTION_ITEM_COUNT),
     bestSellers: items.slice(0, SECTION_ITEM_COUNT),
     curated: items.slice(SECTION_ITEM_COUNT, SECTION_ITEM_COUNT * 2),
