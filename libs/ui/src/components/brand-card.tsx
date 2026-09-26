@@ -55,7 +55,6 @@ export const BrandCard = React.forwardRef<HTMLElement, BrandCardProps>(
         {/* Representative Product Image (Top Section) */}
         <div className="relative aspect-square w-full overflow-hidden bg-muted/15 p-3 sm:p-4 flex items-center justify-center transition-colors group-hover:bg-muted/25">
           {displayProductImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={displayProductImage}
               alt={displayName}
@@ -75,7 +74,6 @@ export const BrandCard = React.forwardRef<HTMLElement, BrandCardProps>(
           <div className="relative z-10 flex items-center justify-center px-2 pb-2.5 pt-1">
             <div className="-mt-5 flex h-9 w-24 sm:w-28 items-center justify-center rounded-full border border-border/80 bg-card/95 px-2.5 py-1 shadow-xs backdrop-blur-xs transition-transform duration-300 group-hover:scale-105">
               {displayLogo ? (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={displayLogo}
                   alt={`${displayName} logo`}
@@ -94,7 +92,6 @@ export const BrandCard = React.forwardRef<HTMLElement, BrandCardProps>(
           <div className="flex h-12 sm:h-14 items-center justify-center border-t border-border/60 bg-card px-3 py-2 transition-colors group-hover:bg-muted/15">
             {displayLogo ? (
               <div className="relative flex h-8 sm:h-9 w-full items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={displayLogo}
                   alt={`${displayName} logo`}
@@ -114,7 +111,7 @@ export const BrandCard = React.forwardRef<HTMLElement, BrandCardProps>(
     )
 
     const baseClass = cn(
-      "group relative flex w-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card text-center shadow-xs transition-all duration-300 hover:border-primary/50 hover:shadow-md hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+      "group relative flex w-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-card text-center shadow-xs transition-all duration-300 hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
       className
     )
 
@@ -122,7 +119,7 @@ export const BrandCard = React.forwardRef<HTMLElement, BrandCardProps>(
       const CustomLink = linkComponent
       return (
         <CustomLink
-          ref={ref as React.Ref<any>}
+          ref={ref as React.Ref<unknown>}
           href={targetHref}
           className={baseClass}
           {...props}
