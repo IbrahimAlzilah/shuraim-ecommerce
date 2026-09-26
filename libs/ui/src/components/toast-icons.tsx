@@ -1,77 +1,69 @@
-import type { ReactNode, SVGProps } from "react"
+import type { ReactNode } from "react"
 
-type ToastIconVariant = "success" | "error" | "warning" | "info"
-
-const ICON_BG: Record<ToastIconVariant, string> = {
-  success: "bg-[#76c013]",
-  error: "bg-[#ef4444]",
-  warning: "bg-[#f59e0b]",
-  info: "bg-[#3b82f6]",
-}
-
-function ToastGlyph(props: SVGProps<SVGSVGElement>) {
-  return (
+export const toastIcons: Record<string, ReactNode> = {
+  success: (
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2.5}
+      stroke="#10b981"
+      strokeWidth={2.4}
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="size-5 shrink-0"
       aria-hidden
-      {...props}
-    />
-  )
-}
-
-function ToastStatusIcon({
-  variant,
-  children,
-}: {
-  variant: ToastIconVariant
-  children: ReactNode
-}) {
-  return (
-    <span
-      className={`flex size-7 shrink-0 items-center justify-center rounded-full text-white ${ICON_BG[variant]}`}
     >
-      {children}
-    </span>
-  )
-}
-
-export const toastIcons = {
-  success: (
-    <ToastStatusIcon variant="success">
-      <ToastGlyph className="size-3.5">
-        <path d="M5 12.5 9.5 17 19 7.5" />
-      </ToastGlyph>
-    </ToastStatusIcon>
+      <circle cx="12" cy="12" r="10" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
   ),
   error: (
-    <ToastStatusIcon variant="error">
-      <ToastGlyph className="size-3.5">
-        <path d="M8 8l8 8M16 8l-8 8" />
-      </ToastGlyph>
-    </ToastStatusIcon>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#ef4444"
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="size-5 shrink-0"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="m15 9-6 6M9 9l6 6" />
+    </svg>
   ),
   warning: (
-    <ToastStatusIcon variant="warning">
-      <ToastGlyph className="size-3.5">
-        <path d="M12 8v4M12 16h.01" />
-      </ToastGlyph>
-    </ToastStatusIcon>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#f59e0b"
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="size-5 shrink-0"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 8v4M12 16h.01" />
+    </svg>
   ),
   info: (
-    <ToastStatusIcon variant="info">
-      <ToastGlyph className="size-3.5">
-        <path d="M12 11v5M12 8h.01" />
-      </ToastGlyph>
-    </ToastStatusIcon>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#3b82f6"
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="size-5 shrink-0"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4M12 8h.01" />
+    </svg>
   ),
   loading: (
-    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white/20">
-      <span className="size-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+    <span className="flex size-5 shrink-0 items-center justify-center">
+      <span className="size-4 animate-spin rounded-full border-2 border-emerald-500/20 border-t-emerald-500" />
     </span>
   ),
 }

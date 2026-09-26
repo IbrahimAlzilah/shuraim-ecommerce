@@ -10,6 +10,8 @@ export function useCart() {
   const updateQuantity = useCartStore((state) => state.updateQuantity)
   const clear = useCartStore((state) => state.clear)
 
+  const openDrawer = useCartStore((state) => state.openDrawer)
+
   const totals = useMemo(() => calculateTotals(items), [items])
 
   return {
@@ -19,5 +21,6 @@ export function useCart() {
     removeItem,
     updateQuantity,
     clear,
+    openDrawer,
   }
 }

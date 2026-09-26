@@ -110,6 +110,7 @@ export function ProductCard({ product }: { product: Product }) {
             product={product}
             variant={product.inStock ? "default" : "outline"}
             size="sm"
+            showStepperWhenInCart
             className="w-full text-xs font-medium rounded-full h-8 sm:h-9"
           />
         </div>

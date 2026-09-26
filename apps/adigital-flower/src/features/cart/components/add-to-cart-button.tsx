@@ -1,11 +1,13 @@
 "use client"
 
 import type { Product } from "@rawnaq/types"
-import { Check, ShoppingBag } from "lucide-react"
+import { Check, Loader2, ShoppingBag } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Button } from "@rawnaq/ui/components/button"
+import { QuantityStepper } from "@rawnaq/ui/components/quantity-stepper"
+import { cn } from "@rawnaq/ui/lib/utils"
 
 import { useToast } from "@/providers/toast-provider"
 import { useCartStore } from "../hooks/use-cart-store"
@@ -17,6 +19,7 @@ interface AddToCartButtonProps {
   className?: string
   showIcon?: boolean
   openDrawerOnAdd?: boolean
+  showStepperWhenInCart?: boolean
 }
 
 export function AddToCartButton({
@@ -26,42 +29,98 @@ export function AddToCartButton({
   className,
   showIcon = true,
   openDrawerOnAdd = false,
+  showStepperWhenInCart = false,
 }: AddToCartButtonProps) {
   const t = useTranslations("Cart")
   const { toast } = useToast()
+  const items = useCartStore((state) => state.items)
   const addItem = useCartStore((state) => state.addItem)
+  const updateQuantity = useCartStore((state) => state.updateQuantity)
   const openDrawer = useCartStore((state) => state.openDrawer)
   const [justAdded, setJustAdded] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const cartItem = mounted
+    ? items.find((item) => item.product.id === product.id || item.id === product.id)
+    : undefined
+
+  async function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     event.stopPropagation()
+
+    if (isLoading || !product.inStock) return
+
+    setIsLoading(true)
+
+    // Interactive loading state with tactile feedback
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
     addItem(product)
+    setIsLoading(false)
+    setJustAdded(true)
+
     if (openDrawerOnAdd) {
       openDrawer()
     }
-    setJustAdded(true)
+
     toast({
       title: t("addedToCart"),
-      description: t("addedToCartDesc"),
+      action: {
+        label: t("viewCart"),
+        onClick: () => {
+          openDrawer()
+        },
+      },
     })
+
     window.setTimeout(() => setJustAdded(false), 1500)
+  }
+
+  if (showStepperWhenInCart && cartItem) {
+    return (
+      <QuantityStepper
+        value={cartItem.quantity}
+        onChange={(q: number) => {
+          updateQuantity(cartItem.id, q)
+        }}
+        max={product.stockCount ?? 99}
+        className={cn(
+          "w-full flex justify-between p-1",
+          className
+        )}
+      />
+    )
   }
 
   return (
     <Button
       variant={variant}
       size={size}
-      className={className}
+      className={cn(
+        isLoading && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90",
+        className
+      )}
       onClick={handleClick}
-      disabled={!product.inStock}
+      disabled={!product.inStock || isLoading}
     >
-      {justAdded ? (
-        <Check className="size-4 animate-in zoom-in-50 duration-200" />
-      ) : showIcon ? (
-        <ShoppingBag className="size-4" />
-      ) : null}
-      <span>{product.inStock ? t("addToCart") : t("outOfStock")}</span>
+      {isLoading ? (
+        <Loader2 className="size-4 animate-spin shrink-0" />
+      ) : justAdded ? (
+        <>
+          <Check className="size-4 animate-in zoom-in-50 duration-200" />
+          <span>{t("addedToCart")}</span>
+        </>
+      ) : (
+        <>
+          {showIcon && <ShoppingBag className="size-4 shrink-0" />}
+          <span>{product.inStock ? t("addToCart") : t("outOfStock")}</span>
+        </>
+      )}
     </Button>
   )
 }

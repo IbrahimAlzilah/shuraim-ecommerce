@@ -16,14 +16,17 @@ export function WishlistItem({ product }: { product: Product }) {
   const tCart = useTranslations("Cart")
   const locale = useLocale()
   const { toggle } = useWishlist(product.id)
-  const { addItem } = useCart()
+  const { addItem, openDrawer } = useCart()
   const { toast } = useToast()
 
   function handleMoveToCart() {
     addItem(product)
     toast({
       title: tCart("addedToCart"),
-      description: tCart("addedToCartDesc"),
+      action: {
+        label: tCart("viewCart"),
+        onClick: () => openDrawer(),
+      },
     })
     toggle()
   }

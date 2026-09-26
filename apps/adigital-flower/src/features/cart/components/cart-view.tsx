@@ -30,7 +30,7 @@ export function CartView() {
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-12 items-start">
-          <div className="lg:col-span-7 xl:col-span-8 divide-y rounded-2xl border bg-card p-4 sm:p-6 shadow-xs">
+          <div className="lg:col-span-7 xl:col-span-8 space-y-3 rounded-2xl border bg-card p-4 sm:p-6 shadow-xs">
             {items.map((item) => (
               <CartItem key={item.id} item={item} />
             ))}

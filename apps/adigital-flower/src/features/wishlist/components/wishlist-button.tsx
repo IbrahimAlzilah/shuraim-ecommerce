@@ -24,7 +24,7 @@ export function WishlistButton({ productId }: { productId: string }) {
         toggle()
       }}
     >
-      <Heart className={cn(isWishlisted && "fill-destructive text-destructive")} />
+      <Heart className={cn(isWishlisted && "fill-primary text-primary")} />
     </Button>
   )
 }

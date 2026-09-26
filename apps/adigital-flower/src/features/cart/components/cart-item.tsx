@@ -2,67 +2,53 @@
 
 import type { CartItem as CartItemType } from "@rawnaq/types"
 import { formatCurrency } from "@rawnaq/utils"
-import { Minus, Plus, X } from "lucide-react"
-import { useLocale, useTranslations } from "next-intl"
+import { useLocale } from "next-intl"
 
-import { Button } from "@rawnaq/ui/components/button"
+import { QuantityStepper } from "@rawnaq/ui/components/quantity-stepper"
 
 import { useCartStore } from "../hooks/use-cart-store"
 
 export function CartItem({ item }: { item: CartItemType }) {
-  const t = useTranslations("Cart")
   const locale = useLocale()
-  const removeItem = useCartStore((state) => state.removeItem)
   const updateQuantity = useCartStore((state) => state.updateQuantity)
 
+  const product = item.product
+  const primaryImage = product.images[0]
+
   return (
-    <div className="flex gap-3 py-3.5 items-start">
-      {item.product.images[0] && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={item.product.images[0].url}
-          alt={item.product.images[0].alt ?? item.product.name}
-          className="size-16 sm:size-20 rounded-lg object-cover shrink-0 border bg-muted/30"
+    <div className="border rounded-xl p-3 flex flex-col gap-3 bg-card sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+      <div className="flex items-center gap-3 min-w-0 sm:gap-3.5">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border bg-white dark:bg-muted/30 flex items-center justify-center">
+          {primaryImage ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={primaryImage.url}
+              alt={primaryImage.alt ?? product.name}
+              className="size-full object-cover p-0.5 rounded-lg"
+            />
+          ) : (
+            <div className="size-full bg-muted flex items-center justify-center text-xs text-muted-foreground">
+              -
+            </div>
+          )}
+        </div>
+        <div className="min-w-0 flex-1">
+          <h4 className="font-medium text-xs leading-snug text-foreground line-clamp-2 wrap-break-word sm:text-sm">
+            {product.name}
+          </h4>
+          <p className="text-sm font-bold text-primary mt-0.5">
+            {formatCurrency(product.price.amount, product.price.currency, locale)}
+          </p>
+        </div>
+      </div>
+      <div className="flex items-center justify-end gap-1.5 shrink-0">
+        <QuantityStepper
+          value={item.quantity}
+          onChange={(q: number) => updateQuantity(item.id, q)}
+          max={product.stockCount ?? 99}
         />
-      )}
-      <div className="flex flex-1 flex-col gap-1 min-w-0">
-        <div className="flex items-start justify-between gap-2">
-          <p className="text-xs sm:text-sm font-medium line-clamp-2">{item.product.name}</p>
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            aria-label={t("remove")}
-            onClick={() => removeItem(item.id)}
-            className="shrink-0 -mt-1 -me-1 text-muted-foreground hover:text-destructive"
-          >
-            <X className="size-4" />
-          </Button>
-        </div>
-        <p className="text-muted-foreground text-xs sm:text-sm font-semibold">
-          {formatCurrency(item.product.price.amount, item.product.price.currency, locale)}
-        </p>
-        <div className="flex items-center gap-1.5 sm:gap-2 mt-1">
-          <Button
-            variant="outline"
-            size="icon-xs"
-            className="size-8 touch-manipulation"
-            aria-label={t("decrease")}
-            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-          >
-            <Minus className="size-3.5" />
-          </Button>
-          <span className="w-5 text-center text-xs sm:text-sm font-semibold">{item.quantity}</span>
-          <Button
-            variant="outline"
-            size="icon-xs"
-            className="size-8 touch-manipulation"
-            aria-label={t("increase")}
-            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-          >
-            <Plus className="size-3.5" />
-          </Button>
-        </div>
       </div>
     </div>
   )
 }
+

@@ -75,7 +75,7 @@ export function CartDrawer() {
             </Button>
           </div>
         ) : (
-          <div className="flex-1 divide-y overflow-y-auto pe-1">
+          <div className="flex-1 space-y-3 overflow-y-auto pe-1">
             {items.map((item) => (
               <CartItem key={item.id} item={item} />
             ))}

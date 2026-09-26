@@ -23,7 +23,7 @@ export function CartTrigger() {
     >
       <ShoppingCart />
       {itemCount > 0 && (
-        <span className="bg-primary text-primary-foreground absolute -top-1 -inset-e-1 flex size-4 items-center justify-center rounded-full text-[10px]">
+        <span className="bg-primary text-primary-foreground absolute -top-2 -inset-e-1 flex size-5 font-bold items-center justify-center rounded-full text-[10px]">
           {itemCount}
         </span>
       )}
