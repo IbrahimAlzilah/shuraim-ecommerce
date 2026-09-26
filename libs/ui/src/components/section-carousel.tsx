@@ -62,11 +62,11 @@ export function SectionCarousel<T>({
         <div className="hidden md:block">
           <CarouselPrevious
             aria-label={prevLabel}
-            className="absolute top-1/2 -translate-y-1/2 -start-2 lg:-start-4 size-10 border border-primary/20 bg-background/90 text-primary shadow-xs backdrop-blur-sm transition-all hover:bg-primary hover:text-primary-foreground disabled:opacity-0"
+            className="absolute top-1/2 -translate-y-1/2 active:-translate-y-1/2 -start-2 lg:-start-4 size-10 border border-primary/20 bg-background/90 text-primary shadow-xs backdrop-blur-sm transition-all hover:bg-primary hover:text-primary-foreground disabled:opacity-0"
           />
           <CarouselNext
             aria-label={nextLabel}
-            className="absolute top-1/2 -translate-y-1/2 -end-2 lg:-end-4 size-10 border border-primary/20 bg-background/90 text-primary shadow-xs backdrop-blur-sm transition-all hover:bg-primary hover:text-primary-foreground disabled:opacity-0"
+            className="absolute top-1/2 -translate-y-1/2 active:-translate-y-1/2 -end-2 lg:-end-4 size-10 border border-primary/20 bg-background/90 text-primary shadow-xs backdrop-blur-sm transition-all hover:bg-primary hover:text-primary-foreground disabled:opacity-0"
           />
         </div>
       </Carousel>
