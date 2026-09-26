@@ -124,6 +124,8 @@
     "emptyCartTitle": "Your cart is currently empty",
     "emptyCartDesc": "You haven't added any products yet. Explore our curated selection!",
     "continueShopping": "Browse featured products",
+    "addedToCart": "Added to cart",
+    "addedToCartDesc": "Item has been added to your shopping cart",
     "freeShippingQualified": "Congratulations! You qualified for free delivery across Oman!",
     "freeShippingAddMore": "Add {amount} more for free shipping + gift"
   },

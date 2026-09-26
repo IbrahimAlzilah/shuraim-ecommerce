@@ -13,6 +13,7 @@ import { CartDrawer } from "@/features/cart"
 import { AuthModal } from "@/features/auth"
 import { SearchDrawer } from "@/features/search-filters"
 import { getProducts } from "@/features/catalog"
+import { ToastContainer } from "@/providers/toast-provider"
 import { fontMono, kufi } from "@/fonts"
 import { localeDirection, routing } from "@rawnaq/i18n/routing"
 import { cn } from "@rawnaq/ui/lib/utils"
@@ -58,16 +59,18 @@ export default async function RootLayout({
       <body suppressHydrationWarning>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <div className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom,0))] md:pb-0">
-              <AnnouncementBar />
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <CartDrawer />
-              <AuthModal />
-              <SearchDrawer allProducts={allProducts} />
-              <MobileBottomBar />
-            </div>
+            <ToastContainer>
+              <div className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom,0))] md:pb-0">
+                <AnnouncementBar />
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+                <CartDrawer />
+                <AuthModal />
+                <SearchDrawer allProducts={allProducts} />
+                <MobileBottomBar />
+              </div>
+            </ToastContainer>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

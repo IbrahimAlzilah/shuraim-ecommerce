@@ -14,6 +14,7 @@ import { WhyUsSection } from "../components/trust-highlights/why-us-section"
 export async function HomeView() {
   const {
     banners,
+    promoBanners,
     categories,
     brands,
     flashDeals,
@@ -22,21 +23,27 @@ export async function HomeView() {
     newArrivals,
   } = await getHomeContent()
 
-  const [firstBanner, secondBanner] = banners
-
   return (
     <div className="mx-auto max-w-7xl space-y-8 px-4 py-6 pb-8 sm:px-6 lg:space-y-12">
       <HeroSlider banners={banners} />
       <FeaturedCategories categories={categories} />
       <FlashDealsSection deals={flashDeals} />
       <BrandStrip brands={brands} />
-      {firstBanner && secondBanner && (
-        <DualPromoBanners banners={[firstBanner, secondBanner]} />
+      {promoBanners?.dual && (
+        <DualPromoBanners banners={promoBanners.dual} />
       )}
       <BestSellersSection products={bestSellers} />
       <CuratedCollection products={curated} />
-      {firstBanner && <FullWidthPromoBanner banner={firstBanner} />}
+      {promoBanners?.fullWidth && (
+        <FullWidthPromoBanner banner={promoBanners.fullWidth} />
+      )}
       <NewArrivalsSection products={newArrivals} />
+      {promoBanners?.secondaryDual && (
+        <DualPromoBanners banners={promoBanners.secondaryDual} />
+      )}
+      {promoBanners?.secondaryFullWidth && (
+        <FullWidthPromoBanner banner={promoBanners.secondaryFullWidth} />
+      )}
       <WhyUsSection />
       <TestimonialsSection />
     </div>

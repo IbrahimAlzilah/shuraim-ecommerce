@@ -7,6 +7,7 @@ import { useState } from "react"
 
 import { Button } from "@rawnaq/ui/components/button"
 
+import { useToast } from "@/providers/toast-provider"
 import { useCartStore } from "../hooks/use-cart-store"
 
 interface AddToCartButtonProps {
@@ -15,6 +16,7 @@ interface AddToCartButtonProps {
   size?: "default" | "sm" | "lg" | "icon" | "icon-sm"
   className?: string
   showIcon?: boolean
+  openDrawerOnAdd?: boolean
 }
 
 export function AddToCartButton({
@@ -23,8 +25,10 @@ export function AddToCartButton({
   size = "default",
   className,
   showIcon = true,
+  openDrawerOnAdd = false,
 }: AddToCartButtonProps) {
   const t = useTranslations("Cart")
+  const { toast } = useToast()
   const addItem = useCartStore((state) => state.addItem)
   const openDrawer = useCartStore((state) => state.openDrawer)
   const [justAdded, setJustAdded] = useState(false)
@@ -33,8 +37,14 @@ export function AddToCartButton({
     event.preventDefault()
     event.stopPropagation()
     addItem(product)
-    openDrawer()
+    if (openDrawerOnAdd) {
+      openDrawer()
+    }
     setJustAdded(true)
+    toast({
+      title: t("addedToCart"),
+      description: t("addedToCartDesc"),
+    })
     window.setTimeout(() => setJustAdded(false), 1500)
   }
 

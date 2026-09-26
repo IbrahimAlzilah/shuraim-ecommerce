@@ -6,11 +6,23 @@ import { useLocale, useTranslations } from "next-intl"
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
 
+import { useCartStore } from "../hooks/use-cart-store"
 import { FreeShippingProgress } from "./free-shipping-progress"
 
-export function CartSummary({ subtotal }: { subtotal: number }) {
+interface CartSummaryProps {
+  subtotal: number
+  onCheckout?: () => void
+}
+
+export function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
   const t = useTranslations("Cart")
   const locale = useLocale()
+  const closeDrawer = useCartStore((state) => state.closeDrawer)
+
+  const handleCheckout = () => {
+    closeDrawer()
+    onCheckout?.()
+  }
 
   return (
     <div className="flex flex-col gap-3.5 border-t pt-4">
@@ -26,8 +38,10 @@ export function CartSummary({ subtotal }: { subtotal: number }) {
       </div>
 
       {/* Checkout Button */}
-      <Button asChild size="lg" className="w-full text-sm font-semibold">
-        <Link href="/checkout">{t("checkout")}</Link>
+      <Button asChild size="lg" className="w-full text-sm font-semibold" onClick={handleCheckout}>
+        <Link href="/checkout" onClick={handleCheckout}>
+          {t("checkout")}
+        </Link>
       </Button>
     </div>
   )

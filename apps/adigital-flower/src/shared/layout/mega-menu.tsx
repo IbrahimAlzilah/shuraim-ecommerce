@@ -45,7 +45,7 @@ export function MegaMenu({ items = NAVIGATION_ITEMS }: MegaMenuProps) {
                   className={cn(
                     "flex items-center gap-1.5 px-3.5 py-3 text-sm font-medium transition-colors duration-200",
                     item.isSpecial
-                      ? "text-[#E76F51] font-bold hover:text-[#B93E36]"
+                      ? "text-[#E76F51] font-medium hover:text-[#B93E36]"
                       : "text-foreground/90 hover:text-primary",
                     isSelected && "text-primary border-b-2 border-primary",
                   )}

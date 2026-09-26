@@ -3,21 +3,23 @@ import { getBrands, getProducts } from "@/features/catalog"
 import type { HomeContent } from "../types/home"
 import { getFeaturedCategories } from "./get-featured-categories"
 import { getFlashDeals } from "./get-flash-deals"
-import { getHomeBanners } from "./get-home-banners"
+import { getHomeBanners, getPromoBanners } from "./get-home-banners"
 
 const SECTION_ITEM_COUNT = 8
 
 export async function getHomeContent(): Promise<HomeContent> {
-  const [banners, categories, brands, flashDeals, { items }] = await Promise.all([
+  const [banners, promoBanners, categories, brands, flashDeals, { items }] = await Promise.all([
     getHomeBanners(),
+    getPromoBanners(),
     getFeaturedCategories(),
     getBrands(),
     getFlashDeals(),
-    getProducts({ pageSize: 32 }),
+    getProducts({ pageSize: 48 }),
   ])
 
   return {
     banners,
+    promoBanners,
     categories,
     brands: brands.slice(0, SECTION_ITEM_COUNT),
     flashDeals: flashDeals.slice(0, SECTION_ITEM_COUNT),

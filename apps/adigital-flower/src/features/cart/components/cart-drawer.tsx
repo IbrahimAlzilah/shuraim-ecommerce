@@ -1,9 +1,10 @@
 "use client"
 
+import { useEffect } from "react"
 import { ShoppingBag, X, Sparkles } from "lucide-react"
 import { useTranslations } from "next-intl"
 
-import { Link } from "@rawnaq/i18n/navigation"
+import { Link, usePathname } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
 
 import { useCart } from "../hooks/use-cart"
@@ -13,9 +14,16 @@ import { CartSummary } from "./cart-summary"
 
 export function CartDrawer() {
   const t = useTranslations("Cart")
+  const pathname = usePathname()
   const isOpen = useCartStore((state) => state.isDrawerOpen)
   const closeDrawer = useCartStore((state) => state.closeDrawer)
   const { items, subtotal } = useCart()
+
+  useEffect(() => {
+    if (isOpen) {
+      closeDrawer()
+    }
+  }, [pathname, closeDrawer])
 
   if (!isOpen) {
     return null
@@ -74,7 +82,9 @@ export function CartDrawer() {
           </div>
         )}
 
-        {items.length > 0 && <CartSummary subtotal={subtotal} />}
+        {items.length > 0 && (
+          <CartSummary subtotal={subtotal} onCheckout={closeDrawer} />
+        )}
       </div>
     </div>
   )

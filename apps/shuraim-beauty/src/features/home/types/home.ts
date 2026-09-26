@@ -2,11 +2,8 @@ import type { Brand, Product, ProductCategory } from "@rawnaq/types"
 
 export interface HomeBanner {
   id: string
-  title?: string
-  subtitle?: string
   imageUrl: string
   href: string
-  ctaLabel?: string
 }
 
 export interface FlashDeal {

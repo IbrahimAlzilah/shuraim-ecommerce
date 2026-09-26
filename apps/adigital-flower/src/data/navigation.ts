@@ -40,8 +40,8 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     banner: {
       title: { ar: "بشرة متألقة تدوم", en: "Radiant Skin Forever" },
       subtitle: { ar: "أقوى سيرومات الترطيب والعلاج الأصلية 100%", en: "Top 100% Authentic Serums" },
-      imageUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&auto=format&fit=crop&q=80",
-      link: "/categories/skincare",
+      imageUrl: "https://cdn.files.salla.network/homepage/1099831979/e13e31a9-fe41-49fd-8cc5-1337746df01a_1440x587.webp",
+      link: "/products?category=skincare",
       badge: "خصومات حصرية",
     },
   },
@@ -70,20 +70,20 @@ export const NAVIGATION_ITEMS: NavItem[] = [
       },
     ],
     featuredBrands: [
-      { id: "mb1", name: "Huda Beauty", slug: "huda-beauty" },
-      { id: "mb2", name: "Dior Makeup", slug: "dior" },
-      { id: "mb3", name: "Charlotte Tilbury", slug: "charlotte-tilbury" },
+      { id: "mb1", name: "Rare Beauty", slug: "rare-beauty" },
+      { id: "mb2", name: "Benefit", slug: "benefit" },
+      { id: "mb3", name: "NARS", slug: "nars" },
     ],
     banner: {
       title: { ar: "إطلالة ساحرة لكل يوم", en: "Enchanting Look" },
       subtitle: { ar: "أحدث درجات المكياج العالمية بتركيبات ثابتة", en: "New Luxury Shades" },
-      imageUrl: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&auto=format&fit=crop&q=80",
-      link: "/categories/makeup",
+      imageUrl: "https://cdn.files.salla.network/homepage/1099831979/4fd8017c-73ef-48f6-8f6f-dfd7a4146845.webp",
+      link: "/products?category=makeup",
     },
   },
   {
     id: "accessories",
-    title: { ar: "الإكسسوارات", en: "Accessories" },
+    title: { ar: "الإكسسوارات والعدسات", en: "Accessories & Lenses" },
     slug: "accessories",
     columns: [
       {
@@ -95,9 +95,9 @@ export const NAVIGATION_ITEMS: NavItem[] = [
         ],
       },
       {
-        title: { ar: "نظارات ومقتنيات", en: "Eyewear & Lifestyle" },
+        title: { ar: "نظارات وعدسات تجميلية", en: "Eyewear & Beauty Lenses" },
         items: [
-          { id: "acc4", name: { ar: "نظارات شمسية عصرية", en: "Sunglasses" }, slug: "sunglasses", isPopular: true },
+          { id: "acc4", name: { ar: "عدسات لنس مي الأصلية", en: "Lensme Lenses" }, slug: "lenses", isPopular: true },
           { id: "acc5", name: { ar: "حقائب يد ومحافظ صغيرة", en: "Handbags & Wallets" }, slug: "handbags" },
           { id: "acc6", name: { ar: "إكسسوارات شعر وأطواق", en: "Hair Accessories" }, slug: "hair-accessories" },
         ],
@@ -105,40 +105,40 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     ],
     banner: {
       title: { ar: "لمسة أناقة تميز حضورك", en: "Elevate Your Elegance" },
-      subtitle: { ar: "أحدث صيحات المجوهرات والإكسسوارات العصرية بتصاميم راقية", en: "Latest Trendy Jewelry & Fashion Accessories" },
-      imageUrl: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&auto=format&fit=crop&q=80",
-      link: "/categories/accessories",
+      subtitle: { ar: "أحدث صيحات العدسات والإكسسوارات العصرية بتصاميم راقية", en: "Latest Trendy Lenses & Fashion Accessories" },
+      imageUrl: "https://cdn.files.salla.network/homepage/1099831979/f31348e7-53ed-43c4-affe-36a890b287a1.webp",
+      link: "/products?category=accessories",
       badge: "تشكيلة جديدة",
     },
   },
   {
     id: "electronics",
-    title: { ar: "الإلكترونيات والجمال الذكي", en: "Beauty Tech & Electronics" },
+    title: { ar: "الأجهزة والجمال الذكي", en: "Beauty Tech & Devices" },
     slug: "electronics",
-    badge: "تقنية",
+    badge: "أجهزة",
     columns: [
       {
         title: { ar: "أجهزة العناية الذكية", en: "Smart Beauty Devices" },
         items: [
-          { id: "el-dev1", name: { ar: "أجهزة تنظيف الوجه بالموجات", en: "Sonic Face Cleansers" }, slug: "sonic-cleansers", isPopular: true },
-          { id: "el-dev2", name: { ar: "أجهزة تدليك وشد البشرة", en: "Skin Lifting & Microcurrent" }, slug: "skin-lifting", isPopular: true },
-          { id: "el-dev3", name: { ar: "أجهزة إزالة الشعر بالليزر المنزلي", en: "IPL Laser Hair Removal" }, slug: "ipl-hair-removal", isPopular: true },
+          { id: "el-dev1", name: { ar: "جهاز إزالة الشعر أنولا بدون ألم", en: "Anola Hair Removal Device" }, slug: "electronics", isPopular: true },
+          { id: "el-dev2", name: { ar: "أداة تدليك غواشا لشد الرقبة والوجه", en: "Gua Sha Face & Neck Lifting" }, slug: "electronics", isPopular: true },
+          { id: "el-dev3", name: { ar: "أنظمة ديرما رولر لتحفيز الكولاجين", en: "Derma Roller Systems" }, slug: "electronics", isPopular: true },
         ],
       },
       {
         title: { ar: "تصفيف الشعر والإلكترونيات", en: "Hair Styling & Tech Gadgets" },
         items: [
-          { id: "el-dev4", name: { ar: "مصففات ومجففات شعر أيونية", en: "Ionic Hair Dryers & Stylers" }, slug: "hair-dryers", isPopular: true },
-          { id: "el-dev5", name: { ar: "أجهزة تمويج الشعر السيراميكية", en: "Ceramic Curling Irons" }, slug: "curling-irons" },
-          { id: "el-dev6", name: { ar: "ساعات ذكية وسماعات أنيقة", en: "Smart Watches & Earbuds" }, slug: "smart-wearables" },
+          { id: "el-dev4", name: { ar: "مصففات ومجففات شعر أيونية", en: "Ionic Hair Dryers & Stylers" }, slug: "electronics", isPopular: true },
+          { id: "el-dev5", name: { ar: "أجهزة تمويج الشعر السيراميكية", en: "Ceramic Curling Irons" }, slug: "electronics" },
+          { id: "el-dev6", name: { ar: "ماكينات العناية الشخصية", en: "Personal Care Shavers" }, slug: "electronics" },
         ],
       },
     ],
     banner: {
       title: { ar: "تقنيات العناية والجمال الذكي", en: "Smart Beauty & Lifestyle Tech" },
-      subtitle: { ar: "أجهزة ذكية متطورة للعناية بالبشرة والشعر ومواكبة العصر", en: "Advanced smart devices for skincare, hair & modern lifestyle" },
-      imageUrl: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&auto=format&fit=crop&q=80",
-      link: "/categories/electronics",
+      subtitle: { ar: "أجهزة ذكية متطورة للعناية بالبشرة والشعر بتقنيات مبتكرة", en: "Advanced smart devices for skincare & hair" },
+      imageUrl: "https://cdn.files.salla.network/homepage/1099831979/5f79bc6f-e5c0-4cd0-aec7-f7dd4b397e6e.webp",
+      link: "/products?category=electronics",
       badge: "أحدث التقنيات",
     },
   },
@@ -150,19 +150,44 @@ export const NAVIGATION_ITEMS: NavItem[] = [
       {
         title: { ar: "تشكيلة العطور الفاخرة", en: "Luxury Perfumes" },
         items: [
-          { id: "fg1", name: { ar: "عطور نسائية فاخرة", en: "Women's Perfume" }, slug: "women-perfumes", isPopular: true },
-          { id: "fg2", name: { ar: "عطور النيش العالمية", en: "Niche Fragrances" }, slug: "niche-perfumes", isPopular: true },
-          { id: "fg3", name: { ar: "بخور وعود فاخر", en: "Oud & Bakhoor" }, slug: "oud-bakhoor" },
-          { id: "fg4", name: { ar: "معطرات الجسم والشعر", en: "Hair & Body Mists" }, slug: "body-mists" },
+          { id: "fg1", name: { ar: "عطور نسائية فاخرة", en: "Women's Perfume" }, slug: "fragrance", isPopular: true },
+          { id: "fg2", name: { ar: "عطور النيش الشرقية والعود", en: "Niche & Oud Fragrances" }, slug: "fragrance", isPopular: true },
+          { id: "fg3", name: { ar: "مسك الطهارة الأصلي", en: "Musk Tahara" }, slug: "fragrance" },
+          { id: "fg4", name: { ar: "معطرات الجسم والمناطق الحساسة", en: "Body Mists" }, slug: "fragrance", isPopular: true },
         ],
       },
     ],
+    banner: {
+      title: { ar: "روائح آسرة تأسر الحواس", en: "Captivating Fragrances" },
+      subtitle: { ar: "توليفات ملكية تجمع العود الكمبودي والمسك والزهور النادرة", en: "Royal Blends of Oud, Musk & Rare Florals" },
+      imageUrl: "https://cdn.files.salla.network/homepage/1099831979/d1599950-3a07-4d56-ab8d-3915ed34e5df.webp",
+      link: "/products?category=fragrance",
+      badge: "عطور نيش",
+    },
   },
   {
     id: "offers",
     title: { ar: "عروض حصرية 🔥", en: "Special Offers" },
     slug: "offers",
     isSpecial: true,
+    columns: [
+      {
+        title: { ar: "باقات التوفير والخصومات", en: "Mega Savings & Bundles" },
+        items: [
+          { id: "off1", name: { ar: "خصومات حصرية حتى 50%", en: "Discounts up to 50%" }, slug: "bundles", isPopular: true },
+          { id: "off2", name: { ar: "بكجات العناية بالبشرة", en: "Skincare Bundles" }, slug: "bundles", isPopular: true },
+          { id: "off3", name: { ar: "عروض الأجهزة والجمال الذكي", en: "Beauty Tech Deals" }, slug: "electronics", isPopular: true },
+          { id: "off4", name: { ar: "باقات العدسات والإكسسوارات", en: "Lenses & Accessories Offers" }, slug: "accessories" },
+        ],
+      },
+    ],
+    banner: {
+      title: { ar: "عروض التوفير وبكجات الجمال الكبرى", en: "Mega Savings & Beauty Bundles" },
+      subtitle: { ar: "خصومات حصرية تصل حتى 50% على باقات العناية المتكاملة", en: "Exclusive Discounts up to 50%" },
+      imageUrl: "https://cdn.files.salla.network/homepage/1099831979/c0f07d94-6379-4490-8690-f4565a0e52c9.webp",
+      link: "/products?category=bundles",
+      badge: "خصم حتى 50%",
+    },
   },
 ]
 

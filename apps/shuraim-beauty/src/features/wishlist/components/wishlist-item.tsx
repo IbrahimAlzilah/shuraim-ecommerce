@@ -8,16 +8,23 @@ import { useCart } from "@/features/cart"
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
 
+import { useToast } from "@/providers/toast-provider"
 import { useWishlist } from "../hooks/use-wishlist"
 
 export function WishlistItem({ product }: { product: Product }) {
   const t = useTranslations("Wishlist")
+  const tCart = useTranslations("Cart")
   const locale = useLocale()
   const { toggle } = useWishlist(product.id)
   const { addItem } = useCart()
+  const { toast } = useToast()
 
   function handleMoveToCart() {
     addItem(product)
+    toast({
+      title: tCart("addedToCart"),
+      description: tCart("addedToCartDesc"),
+    })
     toggle()
   }
 

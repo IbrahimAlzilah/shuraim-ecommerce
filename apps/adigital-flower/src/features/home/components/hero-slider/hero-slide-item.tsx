@@ -11,7 +11,7 @@ export function HeroSlideItem({ banner }: { banner: HomeBanner }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={banner.imageUrl}
-        alt={banner.title || "Banner"}
+        alt="Banner"
         className="size-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
       />
     </Link>

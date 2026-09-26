@@ -14,7 +14,7 @@ export function DualPromoBanners({ banners }: { banners: [HomeBanner, HomeBanner
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={banner.imageUrl}
-            alt={banner.title || "Promo Banner"}
+            alt="Promo Banner"
             className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </Link>

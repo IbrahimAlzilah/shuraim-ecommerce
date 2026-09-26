@@ -54,7 +54,7 @@ export function CheckoutView() {
   }
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6 lg:p-8">
+    <div className="mx-auto flex max-w-7xl flex-col gap-6 p-4 sm:p-6 lg:p-8">
       <div className="grid gap-6 lg:grid-cols-12 items-start">
         {/* Main Step Column */}
         <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-6 rounded-2xl border bg-card p-4 sm:p-6 shadow-xs">
