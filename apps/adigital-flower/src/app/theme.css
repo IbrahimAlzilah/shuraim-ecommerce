@@ -4,7 +4,7 @@
    Overrides @rawnaq/ui/globals.css tokens. */
 
 :root {
-  --background: oklch(0.982 0.008 115);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.22 0.025 175);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.22 0.025 175);

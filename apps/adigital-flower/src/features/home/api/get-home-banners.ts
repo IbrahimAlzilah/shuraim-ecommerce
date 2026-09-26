@@ -79,11 +79,6 @@ const mockBanners: HomeBanner[] = [
     imageUrl: "https://cdn.files.salla.network/other/1099831979/571fe904-b89f-45f4-9efe-1fc35eb95cfb-original.webp",
     href: "/products?category=fragrance",
   },
-  {
-    id: "b-bestsellers-hero",
-    imageUrl: "https://cdn.files.salla.network/other/1099831979/e88ff418-bd30-492f-b7e4-79ed8474900d-original.webp",
-    href: "/products?badge=best-seller",
-  },
 ]
 
 const promoBanners: PromoBanners = {

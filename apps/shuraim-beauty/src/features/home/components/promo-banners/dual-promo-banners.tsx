@@ -9,7 +9,7 @@ export function DualPromoBanners({ banners }: { banners: [HomeBanner, HomeBanner
         <Link
           key={banner.id}
           href={banner.href}
-          className="group relative aspect-video overflow-hidden rounded-2xl border border-border/60 shadow-xs transition-all duration-300 hover:shadow-md"
+          className="group relative aspect-video overflow-hidden rounded-2xl border border-border/60 transition-all duration-300 hover:shadow-xs"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
