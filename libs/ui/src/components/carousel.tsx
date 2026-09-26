@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "cn"
 
 import { Button } from "./button"
+import { useDirection, type DirectionType } from "./direction-provider"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -19,7 +20,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
-  dir?: "rtl" | "ltr"
+  dir?: DirectionType
 }
 
 type CarouselContextProps = {
@@ -56,12 +57,39 @@ function Carousel({
   dir,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
-  const direction: "rtl" | "ltr" =
-    dir ||
-    (opts?.direction as "rtl" | "ltr") ||
-    (typeof document !== "undefined" && document.documentElement.dir === "rtl"
-      ? "rtl"
-      : "ltr")
+  const contextDirection = useDirection(dir)
+  const [docDir, setDocDir] = React.useState<DirectionType>(() => {
+    if (dir) return dir
+    if (opts?.direction) return opts.direction as DirectionType
+    if (contextDirection) return contextDirection
+    if (typeof document !== "undefined") {
+      return (document.documentElement.dir as DirectionType) || "ltr"
+    }
+    return "ltr"
+  })
+
+  React.useEffect(() => {
+    if (dir || opts?.direction) return
+
+    const getDir = (): DirectionType =>
+      (document.documentElement.dir as DirectionType) || contextDirection || "ltr"
+
+    setDocDir(getDir())
+
+    const observer = new MutationObserver(() => {
+      setDocDir(getDir())
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["dir"],
+    })
+
+    return () => observer.disconnect()
+  }, [dir, opts?.direction, contextDirection])
+
+  const direction: DirectionType =
+    dir || (opts?.direction as DirectionType) || contextDirection || docDir || "ltr"
 
   const [carouselRef, api] = useEmblaCarousel(
     {
@@ -126,6 +154,15 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
+    api.reInit({
+      ...opts,
+      axis: orientation === "horizontal" ? "x" : "y",
+      direction: orientation === "horizontal" ? direction : undefined,
+    })
+  }, [api, opts, orientation, direction])
+
+  React.useEffect(() => {
+    if (!api) return
 
     const syncApi = (embla: CarouselApi) => {
       if (!embla) return
@@ -151,7 +188,7 @@ function Carousel({
       value={{
         carouselRef,
         api,
-        opts,
+        opts: { ...opts, direction },
         orientation:
           orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
         scrollPrev,
@@ -169,6 +206,7 @@ function Carousel({
         className={cn("relative", className)}
         role="region"
         aria-roledescription="carousel"
+        data-slot="carousel"
         dir={direction}
         {...props}
       >
@@ -182,16 +220,23 @@ function CarouselContent({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { carouselRef, orientation } = useCarousel()
+  const { carouselRef, orientation, dir } = useCarousel()
 
   return (
-    <div ref={carouselRef} className="overflow-hidden">
+    <div
+      ref={carouselRef}
+      key={dir}
+      className="overflow-hidden"
+      data-slot="carousel-content"
+      dir={dir}
+    >
       <div
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ms-4" : "-mt-4 flex-col",
           className
         )}
+        dir={dir}
         {...props}
       />
     </div>
@@ -208,6 +253,7 @@ function CarouselItem({
     <div
       role="group"
       aria-roledescription="slide"
+      data-slot="carousel-item"
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "ps-4" : "pt-4",
@@ -224,15 +270,18 @@ function CarouselPrevious({
   size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { scrollPrev, canScrollPrev } = useCarousel()
+  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
     <Button
+      data-slot="carousel-previous"
       variant={variant}
       size={size}
       className={cn(
-        "absolute top-1/2 -translate-y-1/2 z-10 size-8 rounded-full",
-        "inset-s-2",
+        "absolute z-10 size-8 rounded-full",
+        orientation === "horizontal"
+          ? "start-2 top-1/2 -translate-y-1/2"
+          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollPrev}
@@ -251,15 +300,18 @@ function CarouselNext({
   size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { scrollNext, canScrollNext } = useCarousel()
+  const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
     <Button
+      data-slot="carousel-next"
       variant={variant}
       size={size}
       className={cn(
-        "absolute top-1/2 -translate-y-1/2 z-10 size-8 rounded-full",
-        "inset-e-2",
+        "absolute z-10 size-8 rounded-full",
+        orientation === "horizontal"
+          ? "end-2 top-1/2 -translate-y-1/2"
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
       disabled={!canScrollNext}
@@ -293,6 +345,7 @@ function CarouselDots({
         "absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5 z-10",
         className
       )}
+      data-slot="carousel-dots"
       {...props}
     >
       {scrollSnaps.map((_, index) => (

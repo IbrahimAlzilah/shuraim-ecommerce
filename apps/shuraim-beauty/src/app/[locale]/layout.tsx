@@ -17,6 +17,7 @@ import { ToastContainer } from "@/providers/toast-provider"
 import { fontMono, kufi } from "@/fonts"
 import { localeDirection, routing } from "@rawnaq/i18n/routing"
 import { cn } from "@rawnaq/ui/lib/utils"
+import { DirectionProvider } from "@rawnaq/ui/components/direction-provider"
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -59,18 +60,20 @@ export default async function RootLayout({
       <body suppressHydrationWarning>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <ToastContainer>
-              <div className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom,0))] md:pb-0">
-                <AnnouncementBar />
-                <Header />
-                <main className="flex-1">{children}</main>
-                <Footer />
-                <CartDrawer />
-                <AuthModal />
-                <SearchDrawer allProducts={allProducts} />
-                <MobileBottomBar />
-              </div>
-            </ToastContainer>
+            <DirectionProvider dir={localeDirection[locale]}>
+              <ToastContainer>
+                <div className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom,0))] md:pb-0">
+                  <AnnouncementBar />
+                  <Header />
+                  <main className="flex-1">{children}</main>
+                  <Footer />
+                  <CartDrawer />
+                  <AuthModal />
+                  <SearchDrawer allProducts={allProducts} />
+                  <MobileBottomBar />
+                </div>
+              </ToastContainer>
+            </DirectionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
