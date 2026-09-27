@@ -1,7 +1,7 @@
 "use client"
 
 import type { Review } from "@rawnaq/types"
-import { Star } from "lucide-react"
+import { Loader2, Star } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { type FormEvent, useState } from "react"
 
@@ -127,8 +127,12 @@ export function AddReviewModal({
             />
           </div>
 
-          <Button type="submit" disabled={isSubmitting} className="mt-2">
-            {t("submit")}
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className={cn("mt-2", isSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90")}
+          >
+            {isSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("submit")}
           </Button>
         </form>
       </DialogContent>

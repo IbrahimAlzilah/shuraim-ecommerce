@@ -1,11 +1,13 @@
 "use client"
 
 import type { CartDiscount } from "@rawnaq/types"
+import { Loader2 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
+import { cn } from "@rawnaq/ui/lib/utils"
 
 export function CouponInput({
   discount,
@@ -46,9 +48,16 @@ export function CouponInput({
           type="button"
           variant="outline"
           disabled={isApplying || (!discount && !code.trim())}
+          className={cn(isApplying && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90")}
           onClick={handleClick}
         >
-          {discount ? t("coupon.remove") : t("coupon.apply")}
+          {isApplying ? (
+            <Loader2 className="size-4 animate-spin shrink-0" />
+          ) : discount ? (
+            t("coupon.remove")
+          ) : (
+            t("coupon.apply")
+          )}
         </Button>
       </div>
       {discount && (

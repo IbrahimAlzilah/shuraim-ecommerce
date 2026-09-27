@@ -2,11 +2,14 @@
 
 import type { Product } from "@rawnaq/types"
 import { formatCurrency } from "@rawnaq/utils"
+import { Loader2 } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
+import { useState } from "react"
 
 import { useCart } from "@/features/cart"
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
+import { cn } from "@rawnaq/ui/lib/utils"
 
 import { useToast } from "@/providers/toast-provider"
 import { useWishlist } from "../hooks/use-wishlist"
@@ -18,8 +21,17 @@ export function WishlistItem({ product }: { product: Product }) {
   const { toggle } = useWishlist(product.id)
   const { addItem, openDrawer } = useCart()
   const { toast } = useToast()
+  const [isMoving, setIsMoving] = useState(false)
+  const [isRemoving, setIsRemoving] = useState(false)
 
-  function handleMoveToCart() {
+  async function handleMoveToCart() {
+    if (isMoving || isRemoving || !product.inStock) return
+
+    setIsMoving(true)
+
+    // Interactive loading state with tactile feedback
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
     addItem(product)
     toast({
       title: tCart("addedToCart"),
@@ -29,6 +41,19 @@ export function WishlistItem({ product }: { product: Product }) {
       },
     })
     toggle()
+    setIsMoving(false)
+  }
+
+  async function handleRemove() {
+    if (isMoving || isRemoving) return
+
+    setIsRemoving(true)
+
+    // Interactive loading state with tactile feedback
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    toggle()
+    setIsRemoving(false)
   }
 
   return (
@@ -55,11 +80,28 @@ export function WishlistItem({ product }: { product: Product }) {
         </div>
       </div>
       <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
-        <Button size="sm" onClick={handleMoveToCart} disabled={!product.inStock} className="text-xs font-semibold h-8 sm:h-9">
-          {t("moveToCart")}
+        <Button
+          size="sm"
+          onClick={handleMoveToCart}
+          disabled={!product.inStock || isMoving || isRemoving}
+          className={cn(
+            "text-xs font-semibold h-8 sm:h-9",
+            isMoving && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+          )}
+        >
+          {isMoving ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("moveToCart")}
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => toggle()} className="text-xs text-muted-foreground hover:text-destructive h-8 sm:h-9">
-          {t("remove")}
+        <Button
+          size="sm"
+          variant="ghost"
+          onClick={handleRemove}
+          disabled={isMoving || isRemoving}
+          className={cn(
+            "text-xs text-muted-foreground hover:text-destructive h-8 sm:h-9",
+            isRemoving && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+          )}
+        >
+          {isRemoving ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("remove")}
         </Button>
       </div>
     </div>

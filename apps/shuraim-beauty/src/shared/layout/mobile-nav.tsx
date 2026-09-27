@@ -2,17 +2,32 @@
 
 import type { NavItem } from "@/features/catalog"
 import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Phone, Globe } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { Button } from "@rawnaq/ui/components/button"
 import { LocaleSwitcher } from "@/shared/layout/locale-switcher"
+import { useDeliveryLocationStore, OMAN_CITIES } from "@/features/customer-account"
+import { OmanFlag } from "@/shared/layout/oman-flag"
 
 export function MobileNav({ nav }: { nav: NavItem[] }) {
   const t = useTranslations("Header")
+  const locale = useLocale()
+  const isAr = locale === "ar"
   const [isOpen, setIsOpen] = useState(false)
+
+  const { city, setIsOpen: openLocationModal } = useDeliveryLocationStore()
+  const currentCityObj = OMAN_CITIES.find(
+    (c) => c.nameAr === city || c.nameEn.toLowerCase() === city.toLowerCase()
+  )
+  const displayCityName = currentCityObj
+    ? isAr
+      ? currentCityObj.nameAr
+      : currentCityObj.nameEn
+    : city
+  const displayCountry = isAr ? "سلطنة عُمان" : "Oman"
 
   useEffect(() => {
     if (isOpen) {
@@ -65,6 +80,27 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                 <X className="size-5" />
               </Button>
             </div>
+
+            {/* Delivery Location Mobile Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                close()
+                openLocationModal(true)
+              }}
+              className="flex items-center justify-between border-b bg-primary/5 px-4 py-3 shrink-0 hover:bg-primary/10 transition-colors cursor-pointer text-start w-full"
+            >
+              <div className="flex items-center gap-2.5">
+                <OmanFlag className="h-4 w-6 rounded-xs shadow-xs border border-border/60 object-cover shrink-0" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-muted-foreground">{t("deliverTo")}</span>
+                  <span className="text-xs font-bold text-foreground">
+                    {displayCityName}{isAr ? "، " : ", "}{displayCountry}
+                  </span>
+                </div>
+              </div>
+              <ChevronDown className="size-4 text-muted-foreground rtl:-rotate-90 ltr:rotate-90 shrink-0" />
+            </button>
 
             {/* Quick Highlights */}
             <div className="grid grid-cols-2 gap-2 border-b bg-muted/30 p-3 shrink-0">

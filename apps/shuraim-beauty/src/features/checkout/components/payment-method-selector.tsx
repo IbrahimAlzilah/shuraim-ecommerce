@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckCircle2, Circle, CreditCard, ShieldCheck } from "lucide-react"
+import { CheckCircle2, Circle, CreditCard, Loader2, ShieldCheck } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@rawnaq/ui/components/button"
@@ -123,9 +123,12 @@ export function PaymentMethodSelector({
         <Button
           onClick={onSubmit}
           disabled={!selected || isSubmitting}
-          className="flex-1 text-sm font-semibold"
+          className={cn(
+            "flex-1 text-sm font-semibold",
+            isSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+          )}
         >
-          {isSubmitting ? t("processing") : t("placeOrder")}
+          {isSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("placeOrder")}
         </Button>
       </div>
     </div>

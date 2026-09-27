@@ -1,13 +1,14 @@
 "use client"
 
 import type { Address } from "@rawnaq/types"
-import { MapPin, Phone, User } from "lucide-react"
+import { Loader2, MapPin, Phone, User } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState, type FormEvent } from "react"
 
 import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
 import { Label } from "@rawnaq/ui/components/label"
+import { cn } from "@rawnaq/ui/lib/utils"
 
 import { validateAddress, type AddressErrors } from "../utils/validate-address"
 
@@ -47,18 +48,28 @@ export function ShippingAddressForm({
     ...address,
   })
   const [errors, setErrors] = useState<AddressErrors>({})
+  const [isLoading, setIsLoading] = useState(false)
 
   function update(field: keyof Address, value: string) {
     setValues((current) => ({ ...current, [field]: value }))
   }
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
+
+    if (isLoading) return
+
     const foundErrors = validateAddress(values)
     setErrors(foundErrors)
 
     if (Object.keys(foundErrors).length === 0) {
+      setIsLoading(true)
+
+      // Interactive loading state with tactile feedback
+      await new Promise((resolve) => setTimeout(resolve, 500))
+
       onSubmit(values as Address)
+      setIsLoading(false)
     }
   }
 
@@ -163,8 +174,16 @@ export function ShippingAddressForm({
       </div>
 
       <div className="flex justify-end pt-2">
-        <Button type="submit" size="lg" className="w-full sm:w-auto px-8 font-semibold">
-          {t("continue")}
+        <Button
+          type="submit"
+          size="lg"
+          disabled={isLoading}
+          className={cn(
+            "w-full sm:w-auto px-8 font-semibold",
+            isLoading && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+          )}
+        >
+          {isLoading ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("continue")}
         </Button>
       </div>
     </form>

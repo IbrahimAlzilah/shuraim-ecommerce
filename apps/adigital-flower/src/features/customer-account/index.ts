@@ -1,3 +1,7 @@
-// Public API of this feature — only export what other features/app routes need.
-// Deep imports into ./api, ./components, ./hooks, ./types, ./utils from outside
-// this folder are not allowed; go through this file instead.
+// Public API of customer-account feature
+export {
+  useDeliveryLocationStore,
+  YEMEN_CITIES,
+  type DeliveryLocationState,
+  type CityOption,
+} from "./hooks/use-delivery-location-store"

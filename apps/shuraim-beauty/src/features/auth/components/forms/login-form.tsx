@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Smartphone, Mail, ArrowRight, ShieldCheck } from "lucide-react"
+import { Smartphone, Mail, ArrowRight, Loader2, ShieldCheck } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
@@ -12,6 +12,7 @@ import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
 import { Label } from "@rawnaq/ui/components/label"
 import { PasswordInput } from "@rawnaq/ui/components/password-input"
+import { cn } from "@rawnaq/ui/lib/utils"
 
 import { useAuthActions } from "../../hooks/use-auth-actions"
 import { loginSchema, type LoginFormValues } from "../../schemas/auth-schemas"
@@ -156,8 +157,15 @@ export function LoginForm({
 
             {phoneError && <p className="text-destructive text-xs">{phoneError}</p>}
 
-            <Button type="submit" disabled={isPhoneSubmitting} className="mt-2 text-sm font-semibold">
-              {isPhoneSubmitting ? "جاري الإرسال..." : "إرسال رمز التحقق"}
+            <Button
+              type="submit"
+              disabled={isPhoneSubmitting}
+              className={cn(
+                "mt-2 text-sm font-medium",
+                isPhoneSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+              )}
+            >
+              {isPhoneSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : "إرسال رمز التحقق"}
             </Button>
           </form>
         ) : (
@@ -179,8 +187,15 @@ export function LoginForm({
 
             {phoneError && <p className="text-destructive text-xs text-center">{phoneError}</p>}
 
-            <Button type="submit" disabled={isPhoneSubmitting} className="text-sm font-semibold">
-              {isPhoneSubmitting ? "جاري التحقق..." : "تأكيد وتسجيل الدخول"}
+            <Button
+              type="submit"
+              disabled={isPhoneSubmitting}
+              className={cn(
+                "text-sm font-semibold",
+                isPhoneSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+              )}
+            >
+              {isPhoneSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : "تأكيد وتسجيل الدخول"}
             </Button>
 
             <button
@@ -237,8 +252,15 @@ export function LoginForm({
             </Link>
           )}
 
-          <Button type="submit" disabled={isSubmitting} className="mt-2 text-sm font-semibold">
-            {t("login")}
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className={cn(
+              "mt-2 text-sm font-semibold",
+              isSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
+            )}
+          >
+            {isSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("login")}
           </Button>
         </form>
       )}
