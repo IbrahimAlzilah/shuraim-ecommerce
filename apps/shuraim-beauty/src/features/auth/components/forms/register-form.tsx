@@ -6,10 +6,12 @@ import { useTranslations } from "next-intl"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
+import { OmanFlag } from "@/shared/layout/oman-flag"
 import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
 import { Label } from "@rawnaq/ui/components/label"
 import { PasswordInput } from "@rawnaq/ui/components/password-input"
+import { PhoneNumberInput } from "@rawnaq/ui/components/phone-number-input"
 import { cn } from "@rawnaq/ui/lib/utils"
 
 import { useAuthActions } from "../../hooks/use-auth-actions"
@@ -17,6 +19,9 @@ import {
   registerSchema,
   type RegisterFormValues,
 } from "../../schemas/auth-schemas"
+
+const DEFAULT_COUNTRY_CODE = "+968"
+const DEFAULT_COUNTRY_FLAG = <OmanFlag className="size-full" />
 
 export function RegisterForm({ onSuccess }: { onSuccess: () => void }) {
   const t = useTranslations("Auth")
@@ -40,7 +45,7 @@ export function RegisterForm({ onSuccess }: { onSuccess: () => void }) {
   }
 
   return (
-    <form onSubmit={(event) => void handleSubmit(onSubmit)(event)} className="flex flex-col gap-3">
+    <form onSubmit={(event) => void handleSubmit(onSubmit)(event)} className="flex flex-col gap-6">
       <div className="flex flex-col gap-1">
         <Label htmlFor="register-name">{t("name")}</Label>
         <Input
@@ -62,6 +67,20 @@ export function RegisterForm({ onSuccess }: { onSuccess: () => void }) {
         />
         {errors.email && (
           <span className="text-destructive text-xs">{t(errors.email.message as "invalidEmail")}</span>
+        )}
+      </div>
+      <div className="flex flex-col gap-1">
+        <Label htmlFor="register-phone">{t("phone")}</Label>
+        <PhoneNumberInput
+          id="register-phone"
+          countryCode={DEFAULT_COUNTRY_CODE}
+          countryFlag={DEFAULT_COUNTRY_FLAG}
+          placeholder="9XXXXXXX"
+          aria-invalid={Boolean(errors.phone)}
+          {...register("phone")}
+        />
+        {errors.phone && (
+          <span className="text-destructive text-xs">{t(errors.phone.message as "invalidPhone")}</span>
         )}
       </div>
       <div className="flex flex-col gap-1">

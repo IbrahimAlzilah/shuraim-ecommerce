@@ -9,6 +9,7 @@ import {
 export interface RegisterInput {
   name: string
   email: string
+  phone: string
   password: string
 }
 
@@ -26,6 +27,7 @@ export async function register(input: RegisterInput): Promise<RegisterResult> {
     id: `demo-user-${Date.now()}`,
     name: input.name,
     email: input.email,
+    phone: input.phone,
     password: input.password,
     addresses: [],
   }

@@ -1,6 +1,15 @@
 import { z } from "zod"
 
+import { isYemeniPhoneNumber } from "@rawnaq/utils"
+
 export const emailSchema = z.string().trim().email({ message: "invalidEmail" })
+
+export const phoneSchema = z
+  .string()
+  .trim()
+  .refine((value) => isYemeniPhoneNumber(value), {
+    message: "invalidPhone",
+  })
 
 export const passwordSchema = z
   .string()
@@ -20,6 +29,7 @@ export const registerSchema = z
   .object({
     name: z.string().trim().min(2, { message: "required" }),
     email: emailSchema,
+    phone: phoneSchema,
     password: passwordSchema,
     confirmPassword: z.string(),
   })

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Check, ChevronDown, MapPin, Truck, Building2, CheckCircle2 } from "lucide-react"
+import { Check, ChevronDown, Truck, Building2, CheckCircle2 } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 
 import { useDeliveryLocationStore, YEMEN_CITIES } from "@/features/customer-account"
@@ -61,8 +61,7 @@ export function LocationBadge() {
           setInputAddress(addressLine)
           setIsOpen(true)
         }}
-        className="hidden items-center gap-2 rounded-xl p-1.5 text-xs text-foreground transition-all duration-200 hover:bg-accent/70 lg:flex cursor-pointer text-start outline-none focus-visible:ring-2 focus-visible:ring-primary/40 border border-transparent hover:border-border/60"
-        aria-label={t("deliveryLocationModalTitle")}
+        className="hidden items-center gap-2 rounded-xl p-1.5 text-xs text-foreground transition-all duration-200 lg:flex cursor-pointer text-start outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         <div className="relative flex items-center justify-center shrink-0">
           <YemenFlag className="h-4 w-6 rounded-xs shadow-xs border border-border/60 object-cover" />
@@ -70,7 +69,6 @@ export function LocationBadge() {
 
         <div className="flex flex-col leading-tight">
           <div className="flex items-center gap-1 text-muted-foreground">
-            <MapPin className="text-primary size-3 shrink-0" />
             <span>{t("deliverTo")}</span>
           </div>
           <span className="max-w-36 truncate font-semibold text-foreground">

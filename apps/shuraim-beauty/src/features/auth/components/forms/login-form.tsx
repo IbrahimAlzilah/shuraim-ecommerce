@@ -1,18 +1,24 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Smartphone, Mail, ArrowRight, Loader2, ShieldCheck } from "lucide-react"
+import { ArrowRight, Loader2, ShieldCheck } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
+import { OmanFlag } from "@/shared/layout/oman-flag"
 import { Link } from "@rawnaq/i18n/navigation"
 import { isGccPhoneNumber, isOmaniPhoneNumber } from "@rawnaq/utils"
 import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
 import { Label } from "@rawnaq/ui/components/label"
 import { PasswordInput } from "@rawnaq/ui/components/password-input"
+import { PhoneNumberInput } from "@rawnaq/ui/components/phone-number-input"
 import { cn } from "@rawnaq/ui/lib/utils"
+
+const DEFAULT_COUNTRY_CODE = "+968"
+const DEFAULT_COUNTRY_FLAG = <OmanFlag className="size-full" />
+const MOCK_OTP = "123456"
 
 import { useAuthActions } from "../../hooks/use-auth-actions"
 import { loginSchema, type LoginFormValues } from "../../schemas/auth-schemas"
@@ -60,12 +66,12 @@ export function LoginForm({
 
     const cleaned = phone.replace(/\s|-/g, "")
     if (!cleaned) {
-      setPhoneError("يرجى إدخال رقم الجوال")
+      setPhoneError(t("phoneRequired"))
       return
     }
 
     if (!isOmaniPhoneNumber(cleaned) && !isGccPhoneNumber(cleaned)) {
-      setPhoneError("يرجى إدخال رقم هاتف عُماني صحيح (مثال: 9XXXXXXX أو 7XXXXXXX أو +968)")
+      setPhoneError(t("invalidPhone"))
       return
     }
 
@@ -73,7 +79,7 @@ export function LoginForm({
     setTimeout(() => {
       setIsPhoneSubmitting(false)
       setOtpStep("enter-otp")
-      setOtpCode("123456") // Pre-fill mock demo OTP for instant convenience
+      setOtpCode(MOCK_OTP) // Pre-fill mock demo OTP for instant convenience
     }, 400)
   }
 
@@ -82,7 +88,7 @@ export function LoginForm({
     setPhoneError(null)
 
     if (otpCode.length < 6) {
-      setPhoneError("يرجى إدخال رمز التحقق المكوّن من 6 أرقام")
+      setPhoneError(t("otpIncomplete"))
       return
     }
 
@@ -91,7 +97,7 @@ export function LoginForm({
       await loginWithPhone(phone)
       onSuccess()
     } catch {
-      setPhoneError("رمز التحقق غير صحيح أو منتهي الصلاحية")
+      setPhoneError(t("invalidCode"))
     } finally {
       setIsPhoneSubmitting(false)
     }
@@ -113,8 +119,7 @@ export function LoginForm({
               : "text-muted-foreground hover:text-foreground"
           }`}
         >
-          <Smartphone className="size-3.5" />
-          <span>رقم الجوال (OTP)</span>
+          <span>{t("phoneOtpTab")}</span>
         </button>
 
         <button
@@ -129,8 +134,7 @@ export function LoginForm({
               : "text-muted-foreground hover:text-foreground"
           }`}
         >
-          <Mail className="size-3.5" />
-          <span>البريد الإلكتروني</span>
+          <span>{t("emailTab")}</span>
         </button>
       </div>
 
@@ -139,19 +143,19 @@ export function LoginForm({
           <form onSubmit={handleSendOtp} className="flex flex-col gap-3">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="login-phone" className="text-xs font-semibold">
-                رقم الجوال
+                {t("phone")}
               </Label>
-              <Input
+              <PhoneNumberInput
                 id="login-phone"
-                type="tel"
-                dir="ltr"
-                placeholder="+968 9XXXXXXX"
+                countryCode={DEFAULT_COUNTRY_CODE}
+                countryFlag={DEFAULT_COUNTRY_FLAG}
+                placeholder="9XXXXXXX"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 autoFocus
               />
               <span className="text-[11px] text-muted-foreground">
-                سنرسل لك رمز تحقق سريع عبر رسالة نصية قصيرة SMS
+                {t("otpHint")}
               </span>
             </div>
 
@@ -165,7 +169,7 @@ export function LoginForm({
                 isPhoneSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
               )}
             >
-              {isPhoneSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : "إرسال رمز التحقق"}
+              {isPhoneSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("sendVerificationCode")}
             </Button>
           </form>
         ) : (
@@ -173,15 +177,15 @@ export function LoginForm({
             <div className="rounded-lg bg-primary/5 p-3 text-xs border border-primary/20 text-foreground">
               <div className="flex items-center gap-1.5 font-semibold text-primary mb-1">
                 <ShieldCheck className="size-4" />
-                <span>رمز التحقق التجريبي: 123456</span>
+                <span>{t("demoOtpNotice", { code: MOCK_OTP })}</span>
               </div>
               <p className="text-muted-foreground">
-                تم إرسال رمز التحقق إلى الرقم: <strong className="text-foreground" dir="ltr">{phone}</strong>
+                {t("otpSentTo")} <strong className="text-foreground" dir="ltr">{phone}</strong>
               </p>
             </div>
 
             <div className="flex flex-col items-center gap-2 py-2">
-              <Label className="text-xs font-semibold">أدخل الرمز المكون من 6 أرقام</Label>
+              <Label className="text-xs font-semibold">{t("enterVerificationCode")}</Label>
               <OtpVerificationInput value={otpCode} onChange={setOtpCode} />
             </div>
 
@@ -195,7 +199,7 @@ export function LoginForm({
                 isPhoneSubmitting && "cursor-not-allowed disabled:cursor-not-allowed disabled:opacity-90"
               )}
             >
-              {isPhoneSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : "تأكيد وتسجيل الدخول"}
+              {isPhoneSubmitting ? <Loader2 className="size-4 animate-spin shrink-0" /> : t("confirmAndSignIn")}
             </Button>
 
             <button
@@ -204,7 +208,7 @@ export function LoginForm({
               className="flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-foreground"
             >
               <ArrowRight className="size-3.5 rtl:rotate-180" />
-              <span>تعديل رقم الجوال</span>
+              <span>{t("editPhoneNumber")}</span>
             </button>
           </form>
         )
