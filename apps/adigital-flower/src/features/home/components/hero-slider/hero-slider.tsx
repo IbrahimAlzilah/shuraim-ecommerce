@@ -72,7 +72,7 @@ export function HeroSlider({ banners }: { banners: HomeBanner[] }) {
             <button
               type="button"
               onClick={() => api?.scrollPrev()}
-              className="absolute start-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-foreground shadow-md opacity-0 group-hover:opacity-100 hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none cursor-pointer"
+              className="absolute inset-s-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-foreground shadow-md opacity-0 group-hover:opacity-100 hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none cursor-pointer"
               aria-label={t("hero.previous")}
             >
               <ChevronLeft className="size-5 rtl:rotate-180" />
@@ -80,7 +80,7 @@ export function HeroSlider({ banners }: { banners: HomeBanner[] }) {
             <button
               type="button"
               onClick={() => api?.scrollNext()}
-              className="absolute end-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-foreground shadow-md opacity-0 group-hover:opacity-100 hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none cursor-pointer"
+              className="absolute inset-e-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/70 text-foreground shadow-md opacity-0 group-hover:opacity-100 hover:bg-white hover:text-primary transition-all duration-300 focus:outline-none cursor-pointer"
               aria-label={t("hero.next")}
             >
               <ChevronRight className="size-5 rtl:rotate-180" />

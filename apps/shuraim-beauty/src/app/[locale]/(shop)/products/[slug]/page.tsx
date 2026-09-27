@@ -3,7 +3,17 @@ import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
 
 import { routing } from "@rawnaq/i18n/routing"
-import { ProductDetailsView } from "@/features/catalog"
+import { ProductDetailsView, getProducts } from "@/features/catalog"
+
+export async function generateStaticParams() {
+  const { items } = await getProducts({ pageSize: 100 })
+  return routing.locales.flatMap((locale) =>
+    items.map((product) => ({
+      locale,
+      slug: product.slug,
+    }))
+  )
+}
 
 export default async function ProductDetailsPage({
   params,
@@ -18,3 +28,4 @@ export default async function ProductDetailsPage({
 
   return <ProductDetailsView slug={slug} />
 }
+

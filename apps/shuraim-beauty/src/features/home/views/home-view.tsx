@@ -10,6 +10,7 @@ import { DualPromoBanners } from "../components/promo-banners/dual-promo-banners
 import { FullWidthPromoBanner } from "../components/promo-banners/full-width-promo-banner"
 import { TestimonialsSection } from "../components/testimonials/testimonials-section"
 import { WhyUsSection } from "../components/trust-highlights/why-us-section"
+import type { HomeBanner } from "../types/home"
 
 export async function HomeView() {
   const {
@@ -22,20 +23,22 @@ export async function HomeView() {
     newArrivals,
   } = await getHomeContent()
 
-  const [firstBanner, secondBanner] = banners
+  const heroBanners = banners.slice(0, 4)
+  const [b0, b1, , , b4, b5, b6] = banners
+  const dualBanners: [HomeBanner, HomeBanner] | null =
+    b4 && b5 ? [b4, b5] : b0 && b1 ? [b0, b1] : null
+  const fullWidthBanner = b6 ?? b0
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 px-4 py-6 pb-8 sm:px-6 lg:space-y-12">
-      <HeroSlider banners={banners} />
+      <HeroSlider banners={heroBanners} />
       <FeaturedCategories categories={categories} />
       <FlashDealsSection deals={flashDeals} />
       <BrandStrip brands={brands} />
-      {firstBanner && secondBanner && (
-        <DualPromoBanners banners={[firstBanner, secondBanner]} />
-      )}
+      {dualBanners && <DualPromoBanners banners={dualBanners} />}
       <BestSellersSection products={bestSellers} />
       <CuratedCollection products={curated} />
-      {firstBanner && <FullWidthPromoBanner banner={firstBanner} />}
+      {fullWidthBanner && <FullWidthPromoBanner banner={fullWidthBanner} />}
       <NewArrivalsSection products={newArrivals} />
       <WhyUsSection />
       <TestimonialsSection />

@@ -47,7 +47,7 @@ export async function ProductDetailsView({ slug }: { slug: string }) {
 
       <div className="grid gap-6 md:grid-cols-2 lg:gap-12 items-start">
         {/* Product Gallery */}
-        <div className="sticky top-24">
+        <div className="relative z-0 md:sticky md:top-24">
           <ProductGallery images={product.images} />
         </div>
 
@@ -126,8 +126,8 @@ export async function ProductDetailsView({ slug }: { slug: string }) {
             </div>
           )}
 
-          {/* Action Button */}
-          <div className="pt-2">
+          {/* Action Button (hidden on mobile — StickyMobileBuyBar covers it there) */}
+          <div className="hidden pt-2 md:block">
             <AddToCartButton
               product={product}
               size="lg"

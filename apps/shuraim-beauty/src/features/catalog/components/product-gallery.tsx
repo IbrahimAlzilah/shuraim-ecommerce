@@ -71,7 +71,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
               variant="secondary"
               size="icon-sm"
               aria-label={t("previousImage")}
-              className="absolute inset-s-2 top-1/2 -translate-y-1/2"
+              className="absolute inset-s-2 top-1/2 -translate-y-1/2 rounded-full"
               onClick={previous}
             >
               <ChevronLeft className="rtl:rotate-180" />
@@ -80,7 +80,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
               variant="secondary"
               size="icon-sm"
               aria-label={t("nextImage")}
-              className="absolute inset-e-2 top-1/2 -translate-y-1/2"
+              className="absolute inset-e-2 top-1/2 -translate-y-1/2 rounded-full"
               onClick={next}
             >
               <ChevronRight className="rtl:rotate-180" />
