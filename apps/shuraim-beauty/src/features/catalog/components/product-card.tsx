@@ -34,7 +34,7 @@ export function ProductCard({ product }: { product: Product }) {
           <img
             src={primaryImage.url}
             alt={primaryImage.alt ?? product.name}
-            className={`h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105 ${
+            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
               !product.inStock ? "grayscale opacity-70" : ""
             }`}
           />
@@ -45,7 +45,7 @@ export function ProductCard({ product }: { product: Product }) {
           <img
             src={hoverImage.url}
             alt={hoverImage.alt ?? product.name}
-            className="absolute inset-0 h-full w-full object-contain p-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           />
         )}
 

@@ -55,7 +55,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
   return (
     <div className="flex flex-col gap-3">
       <div
-        className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-border/60 bg-muted/10 p-3 sm:p-4 touch-pan-y shadow-xs"
+        className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-border/60 bg-muted/10 touch-pan-y shadow-xs"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -63,7 +63,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
         <img
           src={activeImage.url}
           alt={activeImage.alt ?? ""}
-          className="max-h-full max-w-full object-contain select-none transition-transform duration-300 hover:scale-105"
+          className="size-full object-cover select-none transition-transform duration-500 hover:scale-105"
         />
 
         {images.length > 1 && (
@@ -104,7 +104,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
               aria-label={t("selectImage", { index: index + 1 })}
               onClick={() => select(index)}
               className={cn(
-                "relative size-16 sm:size-20 shrink-0 overflow-hidden rounded-xl border bg-muted/10 p-1.5 transition-all duration-200",
+                "relative size-16 sm:size-20 shrink-0 overflow-hidden rounded-xl border bg-muted/10 transition-all duration-200",
                 index === activeIndex
                   ? "border-primary ring-2 ring-primary/40 shadow-xs"
                   : "border-border/70 opacity-70 hover:opacity-100 hover:border-primary/50"
@@ -114,7 +114,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
               <img
                 src={image.url}
                 alt={image.alt ?? ""}
-                className="size-full object-contain"
+                className="size-full object-cover"
               />
             </button>
           ))}
