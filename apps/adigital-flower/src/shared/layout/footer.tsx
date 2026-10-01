@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { FooterSection } from "@/shared/layout/footer-section"
-import { WhatsAppIcon } from "@rawnaq/ui/components/whatsapp-icon"
 
 export function Footer() {
   const t = useTranslations("Footer")
@@ -71,24 +70,11 @@ export function Footer() {
             </ul>
           </FooterSection>
 
-          {/* Customer Service & WhatsApp */}
+          {/* Customer Service */}
           <div className="flex flex-col gap-3 sm:col-span-1 md:col-span-1 pt-1 sm:pt-0">
             <h4 className="text-sm font-bold text-foreground">{t("customerService")}</h4>
             <div className="flex flex-col gap-2.5 text-xs text-muted-foreground">
               <p className="leading-relaxed">{t("customerServiceNote")}</p>
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border bg-background p-2.5 font-medium text-foreground hover:border-primary transition-colors"
-              >
-                <WhatsAppIcon className="size-4 text-[#25D366] shrink-0" />
-                <div className="flex flex-col text-start">
-                  <span className="font-bold text-emerald-600">{t("whatsappSupport")}</span>
-                  <span className="text-[11px] text-muted-foreground">{t("instantReply")}</span>
-                </div>
-              </a>
-
               <a
                 href="mailto:care@adigitalflower.com"
                 className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground pt-1"
