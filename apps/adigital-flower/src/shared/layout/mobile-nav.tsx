@@ -1,7 +1,7 @@
 "use client"
 
 import type { NavItem } from "@/features/catalog"
-import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Globe } from "lucide-react"
+import { Menu, X, ChevronDown, ChevronRight, Sparkles, Tag, HelpCircle, Globe } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
@@ -100,7 +100,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                   </span>
                 </div>
               </div>
-              <ChevronDown className="size-4 text-muted-foreground rtl:-rotate-90 ltr:rotate-90 shrink-0" />
+              <ChevronRight className="size-4 text-muted-foreground rtl:rotate-180 shrink-0" />
             </button>
 
             {/* Quick Highlights */}
