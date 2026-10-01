@@ -24,7 +24,7 @@ export function FreeShippingProgress({ subtotal }: { subtotal: number }) {
         )}
         <span className="font-medium text-foreground">
           {isQualified ? (
-            <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
+            <span className="text-emerald-700 dark:text-emerald-400 font-medium">
               {t("freeShippingQualified")}
             </span>
           ) : (
@@ -39,7 +39,7 @@ export function FreeShippingProgress({ subtotal }: { subtotal: number }) {
       </div>
 
       {/* Progress Bar Container */}
-      <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
         <div
           className={`h-full transition-all duration-500 ${
             isQualified ? "bg-emerald-500" : "bg-primary"
