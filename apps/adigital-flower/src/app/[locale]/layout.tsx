@@ -19,6 +19,7 @@ import { fontMono, kufi } from "@/fonts"
 import { localeDirection, routing } from "@rawnaq/i18n/routing"
 import { cn } from "@rawnaq/ui/lib/utils"
 import { DirectionProvider } from "@rawnaq/ui/components/direction-provider"
+import { FloatingWhatsApp } from "@rawnaq/ui/components/floating-whatsapp"
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -82,6 +83,7 @@ export default async function RootLayout({
                   <AuthModal />
                   <SearchDrawer allProducts={allProducts} />
                   <MobileBottomBar />
+                  <FloatingWhatsApp />
                 </div>
               </ToastContainer>
             </DirectionProvider>

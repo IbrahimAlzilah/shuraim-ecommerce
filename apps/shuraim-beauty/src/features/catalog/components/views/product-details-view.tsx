@@ -131,7 +131,7 @@ export async function ProductDetailsView({ slug }: { slug: string }) {
             <AddToCartButton
               product={product}
               size="lg"
-              className="w-full text-base font-bold shadow-md"
+              className="w-full text-base font-medium rounded-full"
             />
           </div>
 

@@ -1,7 +1,7 @@
 "use client"
 
 import type { NavItem } from "@/features/catalog"
-import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Phone, Globe } from "lucide-react"
+import { Menu, X, ChevronDown, Sparkles, Tag, HelpCircle, Globe } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
@@ -11,6 +11,7 @@ import { Button } from "@rawnaq/ui/components/button"
 import { LocaleSwitcher } from "@/shared/layout/locale-switcher"
 import { useDeliveryLocationStore, YEMEN_CITIES } from "@/features/customer-account"
 import { YemenFlag } from "@/shared/layout/yemen-flag"
+import { WhatsAppIcon } from "@rawnaq/ui/components/whatsapp-icon"
 
 export function MobileNav({ nav }: { nav: NavItem[] }) {
   const t = useTranslations("Header")
@@ -201,7 +202,7 @@ export function MobileNav({ nav }: { nav: NavItem[] }) {
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 font-semibold text-emerald-600 hover:underline"
               >
-                <Phone className="size-3.5 shrink-0" />
+                <WhatsAppIcon className="size-3.5 text-[#25D366] shrink-0" />
                 <span>{t("chatWhatsapp")}</span>
               </a>
             </div>

@@ -1,8 +1,9 @@
-import { CheckCircle, Phone, Mail } from "lucide-react"
+import { CheckCircle, Mail } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { Link } from "@rawnaq/i18n/navigation"
 import { FooterSection } from "@/shared/layout/footer-section"
+import { WhatsAppIcon } from "@rawnaq/ui/components/whatsapp-icon"
 
 export function Footer() {
   const t = useTranslations("Footer")
@@ -11,10 +12,10 @@ export function Footer() {
   return (
     <footer className="border-t bg-muted/20 text-foreground transition-colors">
       {/* Main Footer Links */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-12 sm:px-6">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 sm:gap-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:pt-12 sm:px-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 sm:gap-8">
           {/* Brand & Bio */}
-          <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-2">
+          <div className="flex flex-col gap-4 sm:col-span-2 md:col-span-2">
             <Link href="/" className="inline-block group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -31,48 +32,8 @@ export function Footer() {
                 <CheckCircle className="size-4 text-emerald-600 shrink-0" />
                 <span>{t("licensed")}</span>
               </div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="font-semibold text-foreground">{t("cr")}</span>
-                <span dir="ltr">{t("crNumber")}</span>
-              </div>
             </div>
           </div>
-
-          {/* Categories */}
-          <FooterSection title={t("storeSections")}>
-            <ul className="flex flex-col gap-2">
-              <li>
-                <Link href="/products?category=skincare" className="hover:text-primary transition-colors py-0.5 inline-block">
-                  {t("categories.skincare")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?category=makeup" className="hover:text-primary transition-colors py-0.5 inline-block">
-                  {t("categories.makeup")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?category=hair-care" className="hover:text-primary transition-colors py-0.5 inline-block">
-                  {t("categories.hairCare")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?category=fragrance" className="hover:text-primary transition-colors py-0.5 inline-block">
-                  {t("categories.fragrance")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?category=accessories" className="hover:text-primary transition-colors py-0.5 inline-block">
-                  {t("categories.accessories")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?category=electronics" className="hover:text-primary transition-colors py-0.5 inline-block">
-                  {t("categories.electronics")}
-                </Link>
-              </li>
-            </ul>
-          </FooterSection>
 
           {/* Quick links */}
           <FooterSection title={t("quickLinks")}>
@@ -111,7 +72,7 @@ export function Footer() {
           </FooterSection>
 
           {/* Customer Service & WhatsApp */}
-          <div className="flex flex-col gap-3 sm:col-span-2 md:col-span-2 lg:col-span-1 pt-1 sm:pt-0">
+          <div className="flex flex-col gap-3 sm:col-span-1 md:col-span-1 pt-1 sm:pt-0">
             <h4 className="text-sm font-bold text-foreground">{t("customerService")}</h4>
             <div className="flex flex-col gap-2.5 text-xs text-muted-foreground">
               <p className="leading-relaxed">{t("customerServiceNote")}</p>
@@ -121,7 +82,7 @@ export function Footer() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border bg-background p-2.5 font-medium text-foreground hover:border-primary transition-colors"
               >
-                <Phone className="size-4 text-emerald-600 shrink-0" />
+                <WhatsAppIcon className="size-4 text-[#25D366] shrink-0" />
                 <div className="flex flex-col text-start">
                   <span className="font-bold text-emerald-600">{t("whatsappSupport")}</span>
                   <span className="text-[11px] text-muted-foreground">{t("instantReply")}</span>
@@ -140,7 +101,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Payment Gateways */}
-        <div className="mt-8 sm:mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row text-xs text-muted-foreground text-center sm:text-start">
+        <div className="mt-8 sm:mt-10 flex flex-col items-center justify-between gap-4 border-t pt-6 sm:flex-row text-xs text-muted-foreground text-center sm:text-start">
           <p>{t("copyright", { year })}</p>
 
           {/* Payment Method Badges */}

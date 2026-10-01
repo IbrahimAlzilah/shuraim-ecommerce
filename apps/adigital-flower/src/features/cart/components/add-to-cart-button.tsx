@@ -37,7 +37,6 @@ export function AddToCartButton({
   const addItem = useCartStore((state) => state.addItem)
   const updateQuantity = useCartStore((state) => state.updateQuantity)
   const openDrawer = useCartStore((state) => state.openDrawer)
-  const [justAdded, setJustAdded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -62,7 +61,6 @@ export function AddToCartButton({
 
     addItem(product)
     setIsLoading(false)
-    setJustAdded(true)
 
     if (openDrawerOnAdd) {
       openDrawer()
@@ -77,8 +75,6 @@ export function AddToCartButton({
         },
       },
     })
-
-    window.setTimeout(() => setJustAdded(false), 1500)
   }
 
   if (showStepperWhenInCart && cartItem) {
@@ -110,11 +106,6 @@ export function AddToCartButton({
     >
       {isLoading ? (
         <Loader2 className="size-4 animate-spin shrink-0" />
-      ) : justAdded ? (
-        <>
-          <Check className="size-4 animate-in zoom-in-50 duration-200" />
-          <span>{t("addedToCart")}</span>
-        </>
       ) : (
         <>
           {showIcon && <ShoppingBag className="size-4 shrink-0" />}

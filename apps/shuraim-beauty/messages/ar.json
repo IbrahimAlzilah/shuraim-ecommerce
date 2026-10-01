@@ -41,11 +41,9 @@
     "defaultLocation": "سلطنة عُمان - مسقط",
     "deliveryLocationModalTitle": "عنوان وموقع التوصيل المحدد",
     "deliveryLocationModalDesc": "اختر مدينتك أو عنوانك لتأكيد مواعيد التوصيل الدقيقة والشحن السريع لطلبك.",
-    "currentSelectedLocation": "العنوان المحدد حالياً للتوصيل:",
     "changeCity": "اختيار المدينة / الولاية:",
     "customAddressPlaceholder": "اكتب الحي، اسم الشارع، أو تفاصيل المبنى...",
     "confirmLocation": "تأكيد وحفظ العنوان",
-    "deliveryNotice": "شحن وتوصيل سريع ومضمون لكافة ولايات ومحافظات سلطنة عُمان 🇴🇲",
     "freeDeliveryThreshold": "توصيل مجاني للطلبات فوق 20 ر.ع.",
     "toggleTheme": "تبديل المظهر",
     "close": "إغلاق",
@@ -73,8 +71,6 @@
     "brandBio": "منصة الجمال والعناية المتخصصة في تقديم أشهر الماركات العالمية والكورية الأصلية. نحرص على تقديم تجربة تسوق راقية تجمع بين الجودة، التميز، والأسعار المناسبة.",
     "licensed": "متجر مرخص ومعتمد في سلطنة عُمان (MOCIIP)",
     "vat": "الرقم التعريفي الضريبي (VAT):",
-    "cr": "السجل التجاري:",
-    "storeSections": "أقسام المتجر",
     "quickLinks": "روابط تهمك",
     "customerService": "خدمة العملاء",
     "customerServiceNote": "نسعد بخدمتكِ والإجابة على أي استفسارات تخص منتجاتك المفضلة.",
@@ -88,20 +84,9 @@
     "faq": "الأسئلة الشائعة",
     "cod": "دفع عند الاستلام",
     "copyright": "متجر شريم © {year} — جميع الحقوق محفوظة.",
-    "crNumber": "CR 1384920 (مسقط)",
-    "categories": {
-      "skincare": "العناية بالبشرة",
-      "makeup": "المكياج ومستحضرات التجميل",
-      "hairCare": "العناية بالشعر",
-      "fragrance": "العطور الأصلية",
-      "koreanCare": "العناية الكورية",
-      "bundles": "بكجات التوفير"
-    },
     "paymentBadges": {
-      "omannet": "خصم عُمان OmanNet",
       "thawani": "ثواني Thawani",
       "applePay": "Apple Pay",
-      "tabby": "تابي Tabby",
       "cards": "Visa / Master"
     }
   },

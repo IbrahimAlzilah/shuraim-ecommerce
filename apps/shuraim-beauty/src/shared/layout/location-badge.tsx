@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Check, ChevronDown, Truck, Building2, CheckCircle2 } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 
 import { useDeliveryLocationStore, OMAN_CITIES } from "@/features/customer-account"
@@ -94,62 +94,28 @@ export function LocationBadge() {
             </div>
           </div>
 
-          {/* Currently Selected Address Card */}
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 flex flex-col gap-3">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs font-semibold text-primary flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-emerald-600" />
-                {t("currentSelectedLocation")}
-              </span>
-              <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                {displayCountry} 🇴🇲
-              </span>
-            </div>
 
-            <div className="flex flex-col">
-              <span className="font-bold text-base text-foreground">
-                {displayCityName}{isAr ? "، " : ", "}{displayCountry}
-              </span>
-              <span className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">
-                <Building2 className="size-3.5 shrink-0 text-muted-foreground" />
-                {inputAddress.trim() || addressLine || (isAr ? "حي الموالح، شارع النور" : "Al Mawaleh, Al Noor St")}
-              </span>
-            </div>
-
-            <div className="border-t border-border/60 pt-2.5 flex items-center justify-between text-[11px] text-muted-foreground">
-              <span className="flex items-center gap-1">
-                <Truck className="size-3.5 text-primary" />
-                {t("deliveryNotice")}
-              </span>
-            </div>
-          </div>
-
-          {/* City Quick Selector */}
-          <div className="flex flex-col gap-2.5">
-            <label className="text-xs font-semibold text-foreground">
+          {/* City Selector */}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="delivery-city-select" className="text-xs font-semibold text-foreground">
               {t("changeCity")}
             </label>
-            <div className="grid grid-cols-3 gap-2">
-              {OMAN_CITIES.map((c) => {
-                const isSelected =
-                  c.nameAr === city ||
-                  c.nameEn.toLowerCase() === city.toLowerCase()
-                return (
-                  <button
-                    key={c.id}
-                    type="button"
-                    onClick={() => handleCitySelect(c.nameAr)}
-                    className={`flex items-center justify-between px-3 py-2 text-xs font-medium rounded-lg border transition-all duration-150 cursor-pointer ${
-                      isSelected
-                        ? "bg-primary text-primary-foreground border-primary shadow-xs"
-                        : "bg-background hover:bg-accent/60 text-foreground border-border/80"
-                    }`}
-                  >
-                    <span>{isAr ? c.nameAr : c.nameEn}</span>
-                    {isSelected && <Check className="size-3.5 shrink-0" />}
-                  </button>
-                )
-              })}
+            <div className="relative">
+              <select
+                id="delivery-city-select"
+                value={currentCityObj ? currentCityObj.nameAr : city}
+                onChange={(e) => handleCitySelect(e.target.value)}
+                className="w-full h-11 appearance-none rounded-xl border border-input bg-background px-3.5 pe-10 text-xs sm:text-sm font-medium text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer"
+              >
+                {OMAN_CITIES.map((c) => (
+                  <option key={c.id} value={c.nameAr}>
+                    {isAr ? c.nameAr : c.nameEn}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 end-0 flex items-center pe-3 text-muted-foreground">
+                <ChevronDown className="size-4" />
+              </div>
             </div>
           </div>
 

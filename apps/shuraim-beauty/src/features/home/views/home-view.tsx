@@ -23,11 +23,15 @@ export async function HomeView() {
     newArrivals,
   } = await getHomeContent()
 
-  const heroBanners = banners.slice(0, 4)
-  const [b0, b1, , , b4, b5, b6] = banners
+  const heroBanners = banners.slice(0, 5)
+  const b0 = banners[0]
+  const b1 = banners[1]
+  const b5 = banners[5]
+  const b6 = banners[6]
+  const b7 = banners[7]
   const dualBanners: [HomeBanner, HomeBanner] | null =
-    b4 && b5 ? [b4, b5] : b0 && b1 ? [b0, b1] : null
-  const fullWidthBanner = b6 ?? b0
+    b5 && b6 ? [b5, b6] : b0 && b1 ? [b0, b1] : null
+  const fullWidthBanner = b7 ?? b0
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 px-4 py-6 pb-8 sm:px-6 lg:space-y-12">

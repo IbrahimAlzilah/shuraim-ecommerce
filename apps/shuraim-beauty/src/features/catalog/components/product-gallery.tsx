@@ -53,9 +53,9 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3">
       <div
-        className="relative overflow-hidden touch-pan-y"
+        className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-border/60 bg-muted/10 p-3 sm:p-4 touch-pan-y shadow-xs"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -63,49 +63,58 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
         <img
           src={activeImage.url}
           alt={activeImage.alt ?? ""}
-          className="aspect-square w-full rounded-lg object-cover select-none"
+          className="max-h-full max-w-full object-contain select-none transition-transform duration-300 hover:scale-105"
         />
+
+        {images.length > 1 && (
+          <span className="absolute bottom-3 end-3 rounded-full bg-background/85 px-2.5 py-0.5 text-xs font-semibold text-foreground/80 shadow-xs border border-border/50 backdrop-blur-xs">
+            {activeIndex + 1} / {images.length}
+          </span>
+        )}
+
         {images.length > 1 && (
           <>
             <Button
               variant="secondary"
               size="icon-sm"
               aria-label={t("previousImage")}
-              className="absolute inset-s-2 top-1/2 -translate-y-1/2 rounded-full"
+              className="absolute inset-s-3 top-1/2 -translate-y-1/2 rounded-full bg-background/85 shadow-md backdrop-blur-xs transition-all hover:bg-background"
               onClick={previous}
             >
-              <ChevronLeft className="rtl:rotate-180" />
+              <ChevronLeft className="size-4 rtl:rotate-180" />
             </Button>
             <Button
               variant="secondary"
               size="icon-sm"
               aria-label={t("nextImage")}
-              className="absolute inset-e-2 top-1/2 -translate-y-1/2 rounded-full"
+              className="absolute inset-e-3 top-1/2 -translate-y-1/2 rounded-full bg-background/85 shadow-md backdrop-blur-xs transition-all hover:bg-background"
               onClick={next}
             >
-              <ChevronRight className="rtl:rotate-180" />
+              <ChevronRight className="size-4 rtl:rotate-180" />
             </Button>
           </>
         )}
       </div>
 
       {images.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex gap-2.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
           {images.map((image, index) => (
             <button
               key={image.url}
               aria-label={t("selectImage", { index: index + 1 })}
               onClick={() => select(index)}
               className={cn(
-                "size-14 shrink-0 overflow-hidden rounded-md ring-1 transition-all",
-                index === activeIndex ? "ring-2 ring-primary" : "ring-border hover:ring-muted-foreground/50"
+                "relative size-16 sm:size-20 shrink-0 overflow-hidden rounded-xl border bg-muted/10 p-1.5 transition-all duration-200",
+                index === activeIndex
+                  ? "border-primary ring-2 ring-primary/40 shadow-xs"
+                  : "border-border/70 opacity-70 hover:opacity-100 hover:border-primary/50"
               )}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={image.url}
                 alt={image.alt ?? ""}
-                className="size-full object-cover"
+                className="size-full object-contain"
               />
             </button>
           ))}

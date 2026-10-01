@@ -41,11 +41,9 @@
     "defaultLocation": "Sultanate of Oman - Muscat",
     "deliveryLocationModalTitle": "Selected Delivery Location",
     "deliveryLocationModalDesc": "Select your city or address to ensure accurate delivery times and fast shipping for your order.",
-    "currentSelectedLocation": "Currently selected delivery address:",
     "changeCity": "Select City / Governorate:",
     "customAddressPlaceholder": "Enter neighborhood, street name, or building details...",
     "confirmLocation": "Confirm & Save Address",
-    "deliveryNotice": "Fast and guaranteed delivery to all governorates of the Sultanate of Oman 🇴🇲",
     "freeDeliveryThreshold": "Free delivery on orders over 20 OMR",
     "toggleTheme": "Toggle theme",
     "close": "Close",
@@ -73,8 +71,6 @@
     "brandBio": "Specialized beauty & care platform delivering 100% authentic global brands.",
     "licensed": "Licensed and verified store in Sultanate of Oman (MOCIIP)",
     "vat": "VAT Number:",
-    "cr": "Commercial Registration:",
-    "storeSections": "Store Sections",
     "quickLinks": "Quick Links",
     "customerService": "Customer Service",
     "customerServiceNote": "We are happy to assist you and answer any queries.",
@@ -88,20 +84,9 @@
     "faq": "FAQ",
     "cod": "Cash on Delivery",
     "copyright": "Shuraim Store © {year} — All rights reserved.",
-    "crNumber": "CR 1384920 (Muscat)",
-    "categories": {
-      "skincare": "Skincare",
-      "makeup": "Makeup & Cosmetics",
-      "hairCare": "Hair Care",
-      "fragrance": "Authentic Fragrances",
-      "koreanCare": "Korean Care",
-      "bundles": "Value Bundles"
-    },
     "paymentBadges": {
-      "omannet": "OmanNet Debit",
       "thawani": "Thawani Pay",
       "applePay": "Apple Pay",
-      "tabby": "Tabby",
       "cards": "Visa / Master"
     }
   },

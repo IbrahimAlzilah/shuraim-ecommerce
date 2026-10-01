@@ -8,7 +8,7 @@ export function CategoryCircleCard({ category }: { category: ProductCategory }) 
       href={`/products?category=${category.slug}`}
       className="group flex flex-col items-center gap-2.5 text-center"
     >
-      <div className="relative size-20 sm:size-24 rounded-full overflow-hidden p-1 border-2 border-border/60 group-hover:border-primary/40 transition-all duration-300 bg-card">
+      <div className="relative size-24 sm:size-28 rounded-full overflow-hidden p-1 border-2 border-border/60 group-hover:border-primary/40 transition-all duration-300 bg-card">
         {category.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
