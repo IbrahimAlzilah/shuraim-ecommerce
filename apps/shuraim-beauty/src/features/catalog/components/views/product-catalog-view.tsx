@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server"
 
-import { ProductFilters } from "@/features/search-filters"
+import { ProductFilters, ProductSort } from "@/features/search-filters"
 
 import { getBrands } from "../../api/get-brands"
 import { getCategories } from "../../api/get-categories"
@@ -37,31 +37,39 @@ export async function ProductCatalogView({
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-6 p-4 sm:p-6">
-      <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground">{t("title")}</h1>
-        <p className="text-sm text-muted-foreground">
-          {t("subtitle")}
-        </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-col gap-1">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">{t("title")}</h1>
+          <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <p className="text-sm text-muted-foreground">
+            {t("resultsCount", { count: sortedProducts.length })}
+          </p>
+          <ProductSort currentSort={sort} />
+        </div>
       </div>
 
-      <ProductFilters
-        categories={categories}
-        brands={brands}
-        currentCategory={categorySlug}
-        currentBrand={brandSlug}
-        currentSort={sort}
-      />
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+        <ProductFilters
+          categories={categories}
+          brands={brands}
+          currentCategory={categorySlug}
+          currentBrand={brandSlug}
+        />
 
-      {sortedProducts.length === 0 ? (
-        <div className="rounded-xl border border-dashed py-16 text-center">
-          <p className="text-base font-medium text-foreground">{t("noResults")}</p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {t("noResultsAdvice")}
-          </p>
+        <div className="min-w-0 flex-1">
+          {sortedProducts.length === 0 ? (
+            <div className="rounded-xl border border-dashed py-16 text-center">
+              <p className="text-base font-medium text-foreground">{t("noResults")}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{t("noResultsAdvice")}</p>
+            </div>
+          ) : (
+            <ProductGrid products={sortedProducts} />
+          )}
         </div>
-      ) : (
-        <ProductGrid products={sortedProducts} />
-      )}
+      </div>
     </div>
   )
 }

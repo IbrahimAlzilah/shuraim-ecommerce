@@ -1,20 +1,97 @@
 "use client"
 
 import { useState } from "react"
-import { SlidersHorizontal, Check, ChevronDown, X } from "lucide-react"
+import { Check, ChevronUp, SlidersHorizontal } from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 
-import { Button } from "@rawnaq/ui/components/button"
 import { cn } from "@rawnaq/ui/lib/utils"
 import type { Brand, ProductCategory } from "@rawnaq/types"
+
+const COLLAPSED_COUNT = 5
 
 interface ProductFiltersProps {
   categories?: ProductCategory[]
   brands?: Brand[]
   currentCategory?: string
   currentBrand?: string
-  currentSort?: string
+}
+
+interface FilterGroupProps {
+  title: string
+  options: { id: string; slug: string; name: string }[]
+  selected?: string
+  onSelect: (slug: string | null) => void
+}
+
+function FilterGroup({ title, options, selected, onSelect }: FilterGroupProps) {
+  const t = useTranslations("Catalog")
+  const [isOpen, setIsOpen] = useState(true)
+  const [showAll, setShowAll] = useState(false)
+
+  const visible = showAll ? options : options.slice(0, COLLAPSED_COUNT)
+
+  return (
+    <section className="flex flex-col gap-3 border-t pt-4 first:border-t-0 first:pt-0">
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between text-start text-sm font-semibold text-foreground"
+      >
+        <span>{title}</span>
+        <ChevronUp
+          className={cn(
+            "size-4 text-muted-foreground transition-transform duration-200",
+            !isOpen && "rotate-180"
+          )}
+        />
+      </button>
+
+      {isOpen && (
+        <>
+          <ul className="flex flex-col gap-2.5">
+            {visible.map((option) => {
+              const isActive = selected === option.slug
+              return (
+                <li key={option.id}>
+                  <label className="flex cursor-pointer items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    <input
+                      type="checkbox"
+                      checked={isActive}
+                      onChange={() => onSelect(isActive ? null : option.slug)}
+                      className="peer sr-only"
+                    />
+                    <span
+                      className={cn(
+                        "flex size-4 shrink-0 items-center justify-center rounded-[4px] border transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-ring",
+                        isActive ? "border-primary bg-primary text-primary-foreground" : "border-input bg-background"
+                      )}
+                    >
+                      {isActive && <Check className="size-3" strokeWidth={3} />}
+                    </span>
+                    <span className={cn("line-clamp-1", isActive && "font-medium text-foreground")}>
+                      {option.name}
+                    </span>
+                  </label>
+                </li>
+              )
+            })}
+          </ul>
+
+          {options.length > COLLAPSED_COUNT && (
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="self-start text-xs font-medium text-primary hover:underline"
+            >
+              {showAll ? t("showLess") : t("showMore")}
+            </button>
+          )}
+        </>
+      )}
+    </section>
+  )
 }
 
 export function ProductFilters({
@@ -22,7 +99,6 @@ export function ProductFilters({
   brands = [],
   currentCategory,
   currentBrand,
-  currentSort = "featured",
 }: ProductFiltersProps) {
   const t = useTranslations("Catalog")
   const router = useRouter()
@@ -35,7 +111,7 @@ export function ProductFilters({
 
   function updateQuery(key: string, value: string | null) {
     const params = new URLSearchParams(searchParams.toString())
-    if (value && value !== "all") {
+    if (value) {
       params.set(key, value)
     } else {
       params.delete(key)
@@ -53,134 +129,59 @@ export function ProductFilters({
   const rootCategories = categories.filter((c) => c.parentId === null)
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border bg-card p-3 sm:p-4 shadow-xs">
-      {/* Top Filter & Sort Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5">
-        {/* Mobile toggle button / Desktop Title */}
-        <div className="flex items-center gap-2">
+    <aside className="w-full shrink-0 lg:sticky lg:top-24 lg:w-64 lg:self-start">
+      <div className="rounded-2xl border bg-card p-4 shadow-xs">
+        <div className="flex items-center justify-between">
           <button
             type="button"
             onClick={() => setIsOpenMobile((prev) => !prev)}
-            className="flex items-center gap-2 text-sm font-semibold text-foreground md:cursor-default"
             aria-expanded={isOpenMobile}
+            className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-foreground lg:cursor-default"
           >
-            <SlidersHorizontal className="size-4 text-primary shrink-0" />
-            <span>{t("filterAndSort")}</span>
+            <SlidersHorizontal className="size-4 text-primary lg:hidden" />
+            <span>{t("filters")}</span>
             {activeFiltersCount > 0 && (
-              <span className="flex size-5 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground">
+              <span className="flex size-5 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground lg:hidden">
                 {activeFiltersCount}
               </span>
             )}
-            <ChevronDown
-              className={cn(
-                "size-4 text-muted-foreground transition-transform duration-200 md:hidden",
-                isOpenMobile && "rotate-180"
-              )}
-            />
           </button>
 
           {activeFiltersCount > 0 && (
-            <Button
+            <button
               type="button"
-              variant="ghost"
-              size="xs"
               onClick={clearAllFilters}
-              className="text-xs text-muted-foreground hover:text-destructive h-7 px-2"
+              className="text-xs font-semibold text-destructive hover:underline"
             >
-              <X className="size-3 me-1" />
-              <span>{t("clearFilters")}</span>
-            </Button>
+              {t("clearFilters")}
+            </button>
           )}
         </div>
 
-        {/* Sort Selector */}
-        <div className="flex items-center gap-2 ms-auto">
-          <label htmlFor="product-sort" className="text-xs text-muted-foreground whitespace-nowrap hidden sm:inline">
-            {t("sortBy")}
-          </label>
-          <select
-            id="product-sort"
-            value={currentSort}
-            onChange={(e) => updateQuery("sort", e.target.value)}
-            className="rounded-lg border bg-background px-2.5 py-1 text-xs font-medium text-foreground outline-none focus:border-primary"
-          >
-            <option value="featured">{t("sortFeatured")}</option>
-            <option value="price-asc">{t("sortPriceAsc")}</option>
-            <option value="price-desc">{t("sortPriceDesc")}</option>
-            <option value="rating">{t("sortRating")}</option>
-          </select>
+        <div
+          className={cn(
+            "mt-4 flex-col gap-4 border-t pt-4 lg:flex",
+            isOpenMobile ? "flex" : "hidden"
+          )}
+        >
+          {rootCategories.length > 0 && (
+            <FilterGroup
+              title={t("categories")}
+              options={rootCategories}
+              selected={currentCategory}
+              onSelect={(slug) => updateQuery("category", slug)}
+            />
+          )}
+          {brands.length > 0 && (
+            <FilterGroup
+              title={t("brands")}
+              options={brands}
+              selected={currentBrand}
+              onSelect={(slug) => updateQuery("brand", slug)}
+            />
+          )}
         </div>
       </div>
-
-      {/* Filter Body: Collapsible on mobile, always visible on md+ */}
-      <div
-        className={cn(
-          "flex-col gap-3 pt-2 border-t md:flex",
-          isOpenMobile ? "flex animate-in fade-in-50 duration-200" : "hidden md:flex"
-        )}
-      >
-        {/* Category Pills */}
-        {rootCategories.length > 0 && (
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-muted-foreground">{t("categories")}:</span>
-            <div className="flex flex-wrap gap-1.5">
-              <Button
-                type="button"
-                variant={!currentCategory ? "default" : "outline"}
-                size="xs"
-                onClick={() => updateQuery("category", null)}
-                className="text-xs h-7 px-3 rounded-full"
-              >
-                {t("all")}
-              </Button>
-              {rootCategories.map((cat) => {
-                const isActive = currentCategory === cat.slug
-                return (
-                  <Button
-                    key={cat.id}
-                    type="button"
-                    variant={isActive ? "default" : "outline"}
-                    size="xs"
-                    onClick={() => updateQuery("category", isActive ? null : cat.slug)}
-                    className="text-xs h-7 px-3 rounded-full"
-                  >
-                    {cat.name}
-                  </Button>
-                )
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Brand Pills */}
-        {brands.length > 0 && (
-          <div className="flex flex-col gap-2 border-t pt-2.5">
-            <span className="text-xs font-medium text-muted-foreground">{t("brands")}:</span>
-            <div className="flex flex-wrap gap-1.5">
-              {brands.map((brand) => {
-                const isActive = currentBrand === brand.slug
-                return (
-                  <button
-                    key={brand.id}
-                    type="button"
-                    onClick={() => updateQuery("brand", isActive ? null : brand.slug)}
-                    className={cn(
-                      "inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs transition-colors",
-                      isActive
-                        ? "border-primary bg-primary text-primary-foreground font-semibold"
-                        : "border-border bg-background hover:bg-muted text-foreground"
-                    )}
-                  >
-                    {isActive && <Check className="size-3" />}
-                    <span>{brand.name}</span>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+    </aside>
   )
 }
-

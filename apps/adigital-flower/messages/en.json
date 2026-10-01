@@ -159,7 +159,10 @@
     "categories": "Categories",
     "brands": "Brands",
     "all": "All",
-    "clearFilters": "Clear all"
+    "clearFilters": "Clear all",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "resultsCount": "{count, plural, one {# product} other {# products}}"
   },
   "Checkout": {
     "steps": {

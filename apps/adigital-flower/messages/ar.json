@@ -150,7 +150,7 @@
     "guaranteedAuthentic": "أصلي ومضمون 100% من الوكيل",
     "easyReturns": "استرجاع سهل خلال 14 يوماً",
     "filterAndSort": "تصفية وترتيب",
-    "filters": "الفلاتر",
+    "filters": "التصفية",
     "sortBy": "ترتيب حسب:",
     "sortFeatured": "المميز",
     "sortPriceAsc": "السعر: من الأقل للأعلى",
@@ -159,7 +159,10 @@
     "categories": "التصنيفات",
     "brands": "الماركات",
     "all": "الكل",
-    "clearFilters": "إعادة ضبط"
+    "clearFilters": "إعادة ضبط",
+    "showMore": "عرض المزيد",
+    "showLess": "عرض أقل",
+    "resultsCount": "{count, plural, one {# منتج} two {منتجان} few {# منتجات} other {# منتج}}"
   },
   "Checkout": {
     "steps": {
