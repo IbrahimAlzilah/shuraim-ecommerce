@@ -1,11 +1,9 @@
 "use client"
 
 import type { ProductImage } from "@rawnaq/types"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useRef } from "react"
 
-import { Button } from "@rawnaq/ui/components/button"
 import { cn } from "@rawnaq/ui/lib/utils"
 
 import { useProductGallery } from "../hooks/use-product-gallery"
@@ -71,33 +69,10 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
             {activeIndex + 1} / {images.length}
           </span>
         )}
-
-        {images.length > 1 && (
-          <>
-            <Button
-              variant="secondary"
-              size="icon-sm"
-              aria-label={t("previousImage")}
-              className="absolute inset-s-3 top-1/2 -translate-y-1/2 rounded-full bg-background/85 shadow-md backdrop-blur-xs transition-all hover:bg-background"
-              onClick={previous}
-            >
-              <ChevronLeft className="size-4 rtl:rotate-180" />
-            </Button>
-            <Button
-              variant="secondary"
-              size="icon-sm"
-              aria-label={t("nextImage")}
-              className="absolute inset-e-3 top-1/2 -translate-y-1/2 rounded-full bg-background/85 shadow-md backdrop-blur-xs transition-all hover:bg-background"
-              onClick={next}
-            >
-              <ChevronRight className="size-4 rtl:rotate-180" />
-            </Button>
-          </>
-        )}
       </div>
 
       {images.length > 1 && (
-        <div className="flex gap-2.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
+        <div className="flex justify-center items-center gap-2.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
           {images.map((image, index) => (
             <button
               key={image.url}

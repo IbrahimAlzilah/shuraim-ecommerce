@@ -49,7 +49,12 @@ export function SectionCarousel<T>({
         }}
         className="w-full"
       >
-        <CarouselContent className="-ms-3 md:-ms-4">
+        {/* The viewport must clip for scrolling, so pad it (and cancel the padding with
+            negative margins) to leave room for card borders and shadows. */}
+        <CarouselContent
+          className="-ms-3 md:-ms-4"
+          viewportClassName="-mx-1.5 -my-2 px-1.5 py-2"
+        >
           {children}
           {hasItems &&
             renderItem &&

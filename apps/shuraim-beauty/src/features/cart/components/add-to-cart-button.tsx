@@ -108,7 +108,7 @@ export function AddToCartButton({
         <Loader2 className="size-4 animate-spin shrink-0" />
       ) : (
         <>
-          {showIcon && <ShoppingBag className="size-4 shrink-0" />}
+          {showIcon && <ShoppingBag className="size-3.5 shrink-0" />}
           <span>{product.inStock ? t("addToCart") : t("outOfStock")}</span>
         </>
       )}

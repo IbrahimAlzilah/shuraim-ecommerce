@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Product Details */}
-      <CardContent className="flex flex-1 flex-col justify-between gap-2.5 px-3 sm:px-3.5">
+      <CardContent className="flex flex-1 flex-col justify-between gap-1.5 px-3 sm:px-3.5">
         <div className="flex flex-col gap-1.5">
           {/* Subtitle / Category / Brand */}
           {product.subtitle && (

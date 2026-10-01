@@ -218,15 +218,16 @@ function Carousel({
 
 function CarouselContent({
   className,
+  viewportClassName,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & { viewportClassName?: string }) {
   const { carouselRef, orientation, dir } = useCarousel()
 
   return (
     <div
       ref={carouselRef}
       key={dir}
-      className="overflow-hidden"
+      className={cn("overflow-hidden", viewportClassName)}
       data-slot="carousel-content"
       dir={dir}
     >

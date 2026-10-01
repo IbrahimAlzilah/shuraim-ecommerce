@@ -26,10 +26,10 @@ export function FloatingWhatsApp({
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className={`fixed z-40 flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_6px_22px_rgba(37,211,102,0.45)] hover:bg-[#20bd5a] hover:scale-105 active:scale-95 transition-all duration-300 size-12 sm:size-14 bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-6 end-5 md:end-6 group ${className}`}
+      className={`fixed z-40 flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_rgba(0,0,0,0.16)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.4)] hover:bg-[#20bd5a] hover:scale-105 active:scale-95 transition-all duration-300 size-10 sm:size-12 bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-6 end-4 md:end-6 group ${className}`}
       {...props}
     >
-      <WhatsAppIcon className="size-6 sm:size-7 text-white transition-transform duration-300 group-hover:scale-110 shrink-0" />
+      <WhatsAppIcon className="size-5 sm:size-6 text-white transition-transform duration-300 group-hover:scale-110 shrink-0" />
       <span className="sr-only">{label}</span>
     </a>
   )
