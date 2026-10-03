@@ -20,7 +20,6 @@ export function ProductCard({ product }: { product: Product }) {
     : 0
 
   const primaryImage = product.images[0]
-  const hoverImage = product.images[1] ?? primaryImage
 
   return (
     <Card className="group relative flex h-full flex-col pt-0 overflow-hidden transition-all duration-300 hover:shadow-xs">
@@ -34,18 +33,9 @@ export function ProductCard({ product }: { product: Product }) {
           <img
             src={primaryImage.url}
             alt={primaryImage.alt ?? product.name}
-            className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+            className={`h-full w-full object-cover ${
               !product.inStock ? "grayscale opacity-70" : ""
             }`}
-          />
-        )}
-
-        {hoverImage && hoverImage !== primaryImage && product.inStock && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={hoverImage.url}
-            alt={hoverImage.alt ?? product.name}
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           />
         )}
 

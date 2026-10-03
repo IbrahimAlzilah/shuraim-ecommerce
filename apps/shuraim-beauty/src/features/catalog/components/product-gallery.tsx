@@ -61,7 +61,7 @@ export function ProductGallery({ images }: { images: ProductImage[] }) {
         <img
           src={activeImage.url}
           alt={activeImage.alt ?? ""}
-          className="size-full object-cover select-none transition-transform duration-500 hover:scale-105"
+          className="size-full object-cover select-none"
         />
 
         {images.length > 1 && (
