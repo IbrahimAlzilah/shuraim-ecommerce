@@ -365,6 +365,15 @@ export const mockBrands: Brand[] = [
     "image": "/images/brands/rdl.svg",
     "productImage": "/images/products/rdl-babyface-facial-cleanser.jpg",
     "featured": false
+  },
+  {
+    "id": "b-eqqualberry",
+    "slug": "eqqualberry",
+    "name": "إكوالبيري - EQQUALBERRY",
+    "description": "عناية كورية نقية بالبشرة لتهدئة وترميم حاجز البشرة الطبيعي.",
+    "logo": "/images/brands/eqqualberry.svg",
+    "image": "/images/brands/eqqualberry.svg",
+    "featured": false
   }
 ];
 
@@ -376,7 +385,7 @@ function category(id: string): ProductCategory {
   return found;
 }
 
-export const mockProducts: Product[] = [
+const rawProducts: Product[] = [
   {
     id: "prod-cosrx-hyaluronic-cream",
     slug: "cosrx-hyaluronic-acid-intensive-cream",
@@ -1728,6 +1737,11 @@ export const mockProducts: Product[] = [
     stockCount: 22
   }
 ];
+
+export const mockProducts: Product[] = rawProducts.map((product) => ({
+  ...product,
+  brand: product.brandId ? mockBrands.find((b) => b.id === product.brandId) : undefined,
+}));
 
 export const mockCollections: Collection[] = [
   {

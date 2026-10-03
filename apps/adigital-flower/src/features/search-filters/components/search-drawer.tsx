@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl"
 import { useEffect, useRef } from "react"
 
 import { Link } from "@rawnaq/i18n/navigation"
-import { formatCurrency } from "@rawnaq/utils"
+import { formatCurrency, getLocalizedBrandName } from "@rawnaq/utils"
 import { Button } from "@rawnaq/ui/components/button"
 import { Input } from "@rawnaq/ui/components/input"
 import type { Product } from "@rawnaq/types"
@@ -158,7 +158,9 @@ export function SearchDrawer({ allProducts = [] }: { allProducts?: Product[] }) 
                       )}
                       <div className="flex flex-1 flex-col overflow-hidden">
                         <span className="line-clamp-1 text-xs text-muted-foreground">
-                          {product.subtitle}
+                          {product.brand
+                            ? getLocalizedBrandName(product.brand.name, locale)
+                            : product.subtitle}
                         </span>
                         <span className="line-clamp-1 text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                           {product.name}

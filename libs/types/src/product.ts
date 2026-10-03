@@ -1,3 +1,5 @@
+import type { Brand } from "./brand"
+
 export interface ProductPrice {
   amount: number
   currency: string
@@ -48,6 +50,7 @@ export interface Product {
   images: ProductImage[]
   categories: ProductCategory[]
   brandId?: string
+  brand?: Brand
   variants?: ProductVariantGroup[]
   inStock: boolean
   stockCount?: number

@@ -406,7 +406,7 @@ function category(id: string): ProductCategory {
   return found
 }
 
-export const mockProducts: Product[] = [
+const rawProducts: Product[] = [
   // --- SECTION 1: SMART BEAUTY DEVICES & ELECTRONICS ---
   {
     id: "p-anola-device",
@@ -1133,6 +1133,11 @@ export const mockProducts: Product[] = [
     inStock: true,
   },
 ]
+
+export const mockProducts: Product[] = rawProducts.map((product) => ({
+  ...product,
+  brand: product.brandId ? mockBrands.find((b) => b.id === product.brandId) : undefined,
+}))
 
 export const mockCollections: Collection[] = [
   {

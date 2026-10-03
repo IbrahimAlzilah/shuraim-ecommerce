@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation"
-import { getTranslations } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 import { Star, Truck, ShieldCheck, RotateCcw, Gift, ChevronRight } from "lucide-react"
 
 import { AddToCartButton } from "@/features/cart"
 import { ProductReviewsSection } from "@/features/reviews"
 import { WishlistButton } from "@/features/wishlist"
 import { Link } from "@rawnaq/i18n/navigation"
+import { getLocalizedBrandName } from "@rawnaq/utils"
 
 import { getProductBySlug } from "../../api/get-product-by-slug"
 import { ProductGallery } from "../product-gallery"
@@ -16,6 +17,7 @@ import { StickyMobileBuyBar } from "../sticky-mobile-buy-bar"
 
 export async function ProductDetailsView({ slug }: { slug: string }) {
   const t = await getTranslations("Catalog")
+  const locale = await getLocale()
   const product = await getProductBySlug(slug)
 
   if (!product) {
@@ -55,7 +57,14 @@ export async function ProductDetailsView({ slug }: { slug: string }) {
         <div className="flex flex-col gap-5">
           {/* Brand & Wishlist header */}
           <div className="flex items-center justify-between gap-4">
-            {product.subtitle ? (
+            {product.brand ? (
+              <Link
+                href={`/products?brand=${product.brand.slug}`}
+                className="text-xs font-semibold uppercase tracking-wider text-primary hover:underline"
+              >
+                {getLocalizedBrandName(product.brand.name, locale)}
+              </Link>
+            ) : product.subtitle ? (
               <span className="text-xs font-semibold uppercase tracking-wider text-primary">
                 {product.subtitle}
               </span>

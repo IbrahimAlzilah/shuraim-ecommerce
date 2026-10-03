@@ -31,3 +31,29 @@ export function isYemeniPhoneNumber(input: string): boolean {
   return YEMENI_PHONE_REGEX.test(input.replace(/\s|-/g, ""))
 }
 
+/**
+ * Extracts the localized brand name based on the current locale ('ar' | 'en').
+ * If the brand name contains a separator (e.g. "كوسركس - COSRX"),
+ * it extracts the Arabic or English part. If no separator exists, or the target language
+ * is not present, it safely falls back to the original name.
+ */
+export function getLocalizedBrandName(name?: string, locale = "ar"): string {
+  if (!name) return ""
+
+  const parts = name.split(/\s+[-–—]\s+/)
+  if (parts.length > 1) {
+    const arabicPart = parts.find((p) => /[\u0600-\u06FF]/.test(p))
+    const englishPart = parts.find((p) => /[A-Za-z]/.test(p) && !/[\u0600-\u06FF]/.test(p))
+
+    if (locale === "ar" && arabicPart) {
+      return arabicPart.trim()
+    }
+    if (locale === "en" && englishPart) {
+      return englishPart.trim()
+    }
+  }
+
+  return name.trim()
+}
+
+

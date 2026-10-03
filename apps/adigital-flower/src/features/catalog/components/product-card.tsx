@@ -1,16 +1,18 @@
 import type { Product } from "@rawnaq/types"
 import { Star } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 import { AddToCartButton } from "@/features/cart"
 import { WishlistButton } from "@/features/wishlist"
 import { Link } from "@rawnaq/i18n/navigation"
 import { Card, CardContent } from "@rawnaq/ui/components/card"
+import { getLocalizedBrandName } from "@rawnaq/utils"
 
 import { ProductPrice } from "./product-price"
 
 export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations("Catalog")
+  const locale = useLocale()
   const hasDiscount =
     product.price.compareAtAmount !== undefined &&
     product.price.compareAtAmount > product.price.amount
@@ -64,10 +66,17 @@ export function ProductCard({ product }: { product: Product }) {
       {/* Product Details */}
       <CardContent className="flex flex-1 flex-col justify-between gap-1.5 px-3 sm:px-3.5">
         <div className="flex flex-col gap-1.5">
-          {/* Subtitle / Category / Brand */}
-          {product.subtitle && (
+          {/* Brand Name */}
+          {product.brand ? (
+            <Link
+              href={`/products?brand=${product.brand.slug}`}
+              className="line-clamp-1 text-xs font-medium text-muted-foreground transition-colors hover:text-primary hover:underline w-fit"
+            >
+              {getLocalizedBrandName(product.brand.name, locale)}
+            </Link>
+          ) : product.subtitle ? (
             <p className="line-clamp-1 text-xs text-muted-foreground">{product.subtitle}</p>
-          )}
+          ) : null}
 
           {/* Title */}
           <Link
